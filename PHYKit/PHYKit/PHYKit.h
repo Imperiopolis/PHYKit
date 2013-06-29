@@ -7,6 +7,8 @@
 //
 
 #import "PHYDynamicAnimator.h"
-#import "PHYDynamicBehavior.h"
 #import "PHYDynamicItemBehavior.h"
+#import "PHYDynamicBehavior.h"
+#import "PHYGravityBehavior.h"
+#import "PHYCollisionBehavior.h"
 #import "PHYView.h"
