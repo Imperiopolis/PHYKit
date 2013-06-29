@@ -45,4 +45,9 @@
     self.yComponent = y;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<%@: %p; gravity = <%f, %f>>", [self className], self, self.xComponent, self.yComponent];
+}
+
 @end

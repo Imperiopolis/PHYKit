@@ -20,6 +20,7 @@
 - (void)setBounds:(NSRect)aRect
 {
     [super setBounds:aRect];
+    [self.layer setBounds:aRect];
 }
 
 - (NSRect)bounds
@@ -33,9 +34,7 @@
 {
     if ((self = [super initWithCoder:aDecoder]))
     {
-        self.layer = [CALayer layer];
-
-        [self setWantsLayer: YES];
+        [self setupLayer];
     }
     
     return self;
@@ -50,12 +49,16 @@
 {
     if ((self = [super initWithFrame:frame]))
     {
-        self.layer = [CALayer layer];
-        
-        [self setWantsLayer: YES];
+        [self setupLayer];
     }
     
     return self;
+}
+
+- (void)setupLayer
+{
+    self.layer = [CALayer layer];
+    [self setWantsLayer:YES];
 }
 
 - (void)setBackgroundColor:(NSColor *)backgroundColor
@@ -67,7 +70,6 @@
 {
     return [NSColor colorWithCGColor:self.layer.backgroundColor];
 }
-
 
 - (void)setTransform:(CGAffineTransform)transform
 {
@@ -81,21 +83,26 @@
 
 - (void)setFrame:(NSRect)frameRect
 {
-    _frame = frameRect;
+    [super setFrame:frameRect];
     
-    self.layer.frame = NSRectToCGRect(frameRect);
+#warning we shouldn't have to set the anchor point here. Look for answers at http://developer.apple.com/library/mac/#releasenotes/Cocoa/AppKit.html
+    self.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    
+    self.layer.position = CGPointMake(CGRectGetMidX(frameRect), CGRectGetMidY(frameRect));
+    self.layer.bounds = CGRectMake(0, 0, frameRect.size.width, frameRect.size.height);
 }
 
 - (void)setCenter:(CGPoint)center
 {
-    CGRect frame = self.layer.frame;
-    frame.origin = center;
-    self.layer.frame = frame;
+    CGRect frame = NSRectToCGRect(self.frame);
+    frame.origin = CGPointMake(center.x - CGRectGetWidth(frame) / 2,
+                               center.y - CGRectGetHeight(frame) / 2);
+    [self setFrame:frame];
 }
 
 - (CGPoint)center
 {
-    return self.layer.frame.origin;
+    return self.layer.position;
 }
 
 - (NSString *)description
