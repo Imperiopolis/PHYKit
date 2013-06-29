@@ -19,7 +19,7 @@
 		2D458620177E6B370000096B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D45861E177E6B370000096B /* InfoPlist.strings */; };
 		2D458622177E6B370000096B /* NewtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D458621177E6B370000096B /* NewtonTests.m */; };
 		2D458632177E6C200000096B /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D458630177E6BF90000096B /* PHYKit.framework */; };
-		2D458634177E6C270000096B /* PHYKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2D458633177E6C270000096B /* PHYKit.framework */; };
+		2D484DA4177F535400036DF0 /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D484DA3177F535400036DF0 /* PHYKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		2D45861F177E6B370000096B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D458621177E6B370000096B /* NewtonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewtonTests.m; sourceTree = "<group>"; };
 		2D45862B177E6BF90000096B /* PHYKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PHYKit.xcodeproj; path = ../../PHYKit/PHYKit.xcodeproj; sourceTree = "<group>"; };
-		2D458633177E6C270000096B /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PHYKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Newton-gmilwnvcwcenticsadexhgdvarns/Build/Products/Debug/PHYKit.framework"; sourceTree = "<group>"; };
+		2D484DA3177F535400036DF0 /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PHYKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D458632177E6C200000096B /* PHYKit.framework in Frameworks */,
+				2D484DA4177F535400036DF0 /* PHYKit.framework in Frameworks */,
 				2D4585F8177E6B370000096B /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,7 +109,7 @@
 		2D4585F6177E6B370000096B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D458633177E6C270000096B /* PHYKit.framework */,
+				2D484DA3177F535400036DF0 /* PHYKit.framework */,
 				2D4585F7177E6B370000096B /* Cocoa.framework */,
 				2D458616177E6B370000096B /* XCTest.framework */,
 				2D4585F9177E6B370000096B /* Other Frameworks */,
@@ -280,7 +281,6 @@
 				2D458610177E6B370000096B /* Images.xcassets in Resources */,
 				2D458608177E6B370000096B /* Credits.rtf in Resources */,
 				2D45860E177E6B370000096B /* MainMenu.xib in Resources */,
-				2D458634177E6C270000096B /* PHYKit.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +433,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Newton-gmilwnvcwcenticsadexhgdvarns/Build/Products/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Newton/Newton-Prefix.pch";
 				INFOPLIST_FILE = "Newton/Newton-Info.plist";
@@ -446,6 +450,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Newton-gmilwnvcwcenticsadexhgdvarns/Build/Products/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Newton/Newton-Prefix.pch";
 				INFOPLIST_FILE = "Newton/Newton-Info.plist";
