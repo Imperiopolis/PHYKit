@@ -1,0 +1,14 @@
+
+# Ignore Xcode files 
+xcuserdata
+*.pbxuser
+build/
+project.xcworkspace
+
+# Ignore OS X Files
+.DS_Store
+
+# Ignore VIM Files
+*.orig
+*~
+*.swp
