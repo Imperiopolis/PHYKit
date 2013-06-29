@@ -15,7 +15,6 @@
 @implementation PHYView
 
 // For the PHYDyanmicItem Protocol
-@synthesize center;
 
 // NSView already implements bounds, but the protocol made me do it
 - (void)setBounds:(NSRect)aRect
@@ -35,6 +34,7 @@
     if ((self = [super initWithCoder:aDecoder]))
     {
         self.layer = [CALayer layer];
+
         [self setWantsLayer: YES];
     }
     
@@ -51,6 +51,7 @@
     if ((self = [super initWithFrame:frame]))
     {
         self.layer = [CALayer layer];
+        
         [self setWantsLayer: YES];
     }
     
@@ -82,10 +83,19 @@
 {
     _frame = frameRect;
     
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
     self.layer.frame = NSRectToCGRect(frameRect);
-    [CATransaction commit];
+}
+
+- (void)setCenter:(CGPoint)center
+{
+    CGRect frame = self.layer.frame;
+    frame.origin = center;
+    self.layer.frame = frame;
+}
+
+- (CGPoint)center
+{
+    return self.layer.frame.origin;
 }
 
 - (NSString *)description

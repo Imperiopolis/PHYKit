@@ -60,7 +60,7 @@
 		2D45861F177E6B370000096B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D458621177E6B370000096B /* NewtonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewtonTests.m; sourceTree = "<group>"; };
 		2D45862B177E6BF90000096B /* PHYKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PHYKit.xcodeproj; path = ../../PHYKit/PHYKit.xcodeproj; sourceTree = "<group>"; };
-		2D458633177E6C270000096B /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = PHYKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Newton-gmilwnvcwcenticsadexhgdvarns/Build/Products/Debug/PHYKit.framework"; sourceTree = "<group>"; };
+		2D458633177E6C270000096B /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PHYKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Newton-gmilwnvcwcenticsadexhgdvarns/Build/Products/Debug/PHYKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,6 +513,7 @@
 				2D458627177E6B370000096B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D458628177E6B370000096B /* Build configuration list for PBXNativeTarget "NewtonTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +522,7 @@
 				2D45862A177E6B370000096B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
