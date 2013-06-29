@@ -18,8 +18,6 @@
 		2D951146177A286000196C2C /* PHYDynamicItemBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D951147177A286000196C2C /* PHYDynamicItemBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */; };
 		2D951148177A28C700196C2C /* PHYKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D951125177A264C00196C2C /* PHYKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D95114E177A39C600196C2C /* NSView+PHYViews.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D95114C177A39C600196C2C /* NSView+PHYViews.h */; };
-		2D95114F177A39C600196C2C /* NSView+PHYViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95114D177A39C600196C2C /* NSView+PHYViews.m */; };
 		6313788E177A299A0016F625 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6313788D177A299A0016F625 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +39,6 @@
 		2D951132177A267200196C2C /* PHYView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYView.m; sourceTree = "<group>"; };
 		2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYDynamicItemBehavior.h; sourceTree = "<group>"; };
 		2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYDynamicItemBehavior.m; sourceTree = "<group>"; };
-		2D95114C177A39C600196C2C /* NSView+PHYViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+PHYViews.h"; sourceTree = "<group>"; };
-		2D95114D177A39C600196C2C /* NSView+PHYViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+PHYViews.m"; sourceTree = "<group>"; };
 		6313788D177A299A0016F625 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -108,8 +104,6 @@
 				2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */,
 				2D951131177A267200196C2C /* PHYView.h */,
 				2D951132177A267200196C2C /* PHYView.m */,
-				2D95114C177A39C600196C2C /* NSView+PHYViews.h */,
-				2D95114D177A39C600196C2C /* NSView+PHYViews.m */,
 				2D95111F177A264C00196C2C /* Supporting Files */,
 			);
 			path = PHYKit;
@@ -137,7 +131,6 @@
 				2D951135177A267200196C2C /* PHYDynamicBehavior.h in Headers */,
 				2D951137177A267200196C2C /* PHYView.h in Headers */,
 				2D951146177A286000196C2C /* PHYDynamicItemBehavior.h in Headers */,
-				2D95114E177A39C600196C2C /* NSView+PHYViews.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +201,6 @@
 				2D951136177A267200196C2C /* PHYDynamicBehavior.m in Sources */,
 				2D951138177A267200196C2C /* PHYView.m in Sources */,
 				2D951147177A286000196C2C /* PHYDynamicItemBehavior.m in Sources */,
-				2D95114F177A39C600196C2C /* NSView+PHYViews.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

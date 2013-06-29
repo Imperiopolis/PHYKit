@@ -7,131 +7,90 @@
 //
 
 #import "PHYView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface PHYView ()
-
 @end
 
 @implementation PHYView
 
-@synthesize superview=_superview;
+// For the PHYDyanmicItem Protocol
+@synthesize center;
 
-- (void)setSuperview:(id)superview
+// NSView already implements bounds, but the protocol made me do it
+- (void)setBounds:(NSRect)aRect
 {
-    
+    [super setBounds:aRect];
 }
 
-- (instancetype)init
+- (NSRect)bounds
 {
-    return [self initWithFrame:CGRectZero];
+    return _bounds;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
+
+// Call PHYView initWithFrame instead of super
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    if ((self = [super init]))
+    if ((self = [super initWithCoder:aDecoder]))
     {
-        _clearsContextBeforeDrawing = YES;
-        _userInteractionEnabled = YES;
-        _subviews = [NSMutableSet set];
-        
-        _layer = [CALayer layer];
-        _layer.delegate = self;
-//        _layer.layoutManager = [UIViewLayoutManager layoutManager];
-        
-        self.contentScaleFactor = 0;
-        self.frame = frame;
-        self.alpha = 1;
-        self.opaque = YES;
-        [self setNeedsDisplay];
+        self.layer = [CALayer layer];
+        [self setWantsLayer: YES];
     }
     
     return self;
 }
 
-- (void)setNeedsDisplay
+- (instancetype)init
 {
-    [_layer setNeedsDisplay];
+    return [self initWithFrame:NSZeroRect];
 }
 
-
-- (PHYView *)hitTest:(CGPoint)point
+- (instancetype)initWithFrame:(NSRect)frame
 {
-    return nil;
-}
-
-- (BOOL)pointInside:(CGPoint)point
-{
-    return NO;
-}
-
-
-- (void)removeFromSuperview
-{
+    if ((self = [super initWithFrame:frame]))
+    {
+        self.layer = [CALayer layer];
+        [self setWantsLayer: YES];
+    }
     
+    return self;
 }
 
-- (void)insertSubview:(PHYView *)view atIndex:(NSInteger)index
+- (void)setBackgroundColor:(NSColor *)backgroundColor
 {
-    
+    self.layer.backgroundColor = backgroundColor.CGColor;
 }
 
-- (void)exchangeSubviewAtIndex:(NSInteger)index1 withSubviewAtIndex:(NSInteger)index2
+- (NSColor*)backgroundColor
 {
-    
-}
-
-
-- (void)addSubview:(PHYView *)view
-{
-    
-}
-
-- (void)insertSubview:(PHYView *)view belowSubview:(PHYView *)siblingSubview
-{
-    
-}
-
-- (void)insertSubview:(PHYView *)view aboveSubview:(PHYView *)siblingSubview
-{
-    
+    return [NSColor colorWithCGColor:self.layer.backgroundColor];
 }
 
 
-- (void)bringSubviewToFront:(PHYView *)view
+- (void)setTransform:(CGAffineTransform)transform
 {
-    
+    self.layer.transform = CATransform3DMakeAffineTransform(transform);
 }
 
-- (void)sendSubviewToBack:(PHYView *)view
+- (CGAffineTransform)transform
 {
-    
+    return CATransform3DGetAffineTransform(self.layer.transform);
 }
 
-
-- (void)didAddSubview:(PHYView *)subview
+- (void)setFrame:(NSRect)frameRect
 {
+    _frame = frameRect;
     
-}
-
-- (void)willRemoveSubview:(PHYView *)subview
-{
-    
-}
-
-
-- (void)willMoveToSuperview:(PHYView *)newSuperview
-{
-    
-}
-
-- (void)didMoveToSuperview
-{
-    
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    self.layer.frame = NSRectToCGRect(frameRect);
+    [CATransaction commit];
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p; frame = %@; hidden = %@; layer = %@>", [self className], self, NSStringFromRect(NSRectFromCGRect(self.frame)), (self.hidden ? @"YES" : @"NO"), self.layer];
+    return [NSString stringWithFormat:@"<%@: %p; frame = %@; layer = %@>", [self className], self, NSStringFromRect(NSRectFromCGRect(self.frame)), self.layer];
 }
 
 @end
