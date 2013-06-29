@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2D4585E6177E68750000096B /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4585E4177E685F0000096B /* PHYKit.framework */; };
-		2D4585E8177E687A0000096B /* PHYKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2D4585E7177E687A0000096B /* PHYKit.framework */; };
 		2D4585EA177E68D70000096B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4585E9177E68D70000096B /* QuartzCore.framework */; };
+		2D484DAB177F53FE00036DF0 /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D484DAA177F53FE00036DF0 /* PHYKit.framework */; };
 		6367067217721DD600A0960C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367067117721DD600A0960C /* Cocoa.framework */; };
 		6367067C17721DD600A0960C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6367067A17721DD600A0960C /* InfoPlist.strings */; };
 		6367067E17721DD600A0960C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367067D17721DD600A0960C /* main.m */; };
@@ -30,8 +30,8 @@
 
 /* Begin PBXFileReference section */
 		2D4585DF177E685F0000096B /* PHYKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PHYKit.xcodeproj; path = ../../PHYKit/PHYKit.xcodeproj; sourceTree = "<group>"; };
-		2D4585E7177E687A0000096B /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = PHYKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Animator-dhtsikqvukfpkzfdcmyshhzymmde/Build/Products/Debug/PHYKit.framework"; sourceTree = "<group>"; };
 		2D4585E9177E68D70000096B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2D484DAA177F53FE00036DF0 /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PHYKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6367066E17721DD600A0960C /* Animator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6367067117721DD600A0960C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6367067417721DD600A0960C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -53,6 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D4585EA177E68D70000096B /* QuartzCore.framework in Frameworks */,
+				2D484DAB177F53FE00036DF0 /* PHYKit.framework in Frameworks */,
 				2D4585E6177E68750000096B /* PHYKit.framework in Frameworks */,
 				6367067217721DD600A0960C /* Cocoa.framework in Frameworks */,
 			);
@@ -98,8 +99,8 @@
 		6367067017721DD600A0960C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D484DAA177F53FE00036DF0 /* PHYKit.framework */,
 				2D4585E9177E68D70000096B /* QuartzCore.framework */,
-				2D4585E7177E687A0000096B /* PHYKit.framework */,
 				6367067117721DD600A0960C /* Cocoa.framework */,
 				6367067317721DD600A0960C /* Other Frameworks */,
 			);
@@ -207,7 +208,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6367067C17721DD600A0960C /* InfoPlist.strings in Resources */,
-				2D4585E8177E687A0000096B /* PHYKit.framework in Resources */,
 				6367068217721DD600A0960C /* Credits.rtf in Resources */,
 				6367068817721DD600A0960C /* MainMenu.xib in Resources */,
 			);
@@ -318,6 +318,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Animator-dhtsikqvukfpkzfdcmyshhzymmde/Build/Products/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Animator/Animator-Prefix.pch";
 				INFOPLIST_FILE = "Animator/Animator-Info.plist";
@@ -330,6 +334,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Animator-dhtsikqvukfpkzfdcmyshhzymmde/Build/Products/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Animator/Animator-Prefix.pch";
 				INFOPLIST_FILE = "Animator/Animator-Info.plist";
