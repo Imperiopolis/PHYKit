@@ -102,7 +102,7 @@
 
 - (void)updatePhysics
 {
-    self.physicsTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+    self.physicsTimer = [NSTimer scheduledTimerWithTimeInterval:0.001
                                                          target:self
                                                        selector:@selector(_updatePhysics:)
                                                        userInfo:nil
@@ -113,7 +113,7 @@
 
 - (void)_updatePhysics:(NSTimer*)timer
 {
-    self.elapsedTime += 0.1;
+    self.elapsedTime += 0.001;
     
     for (id <PHYDynamicItem> item in self.items)
     {
