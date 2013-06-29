@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface DragView : NSView
+@interface DragView : PHYView
 
 @end

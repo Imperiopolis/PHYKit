@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D071224177DE6D80021871E /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D071222177DE6C20021871E /* PHYKit.framework */; };
-		2D071226177DE6DC0021871E /* PHYKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2D071225177DE6DC0021871E /* PHYKit.framework */; };
+		2D70EF31177E4C3A00C9505C /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D071222177DE6C20021871E /* PHYKit.framework */; };
+		2D70EF33177E4C3E00C9505C /* PHYKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2D70EF32177E4C3E00C9505C /* PHYKit.framework */; };
 		2D7F2D9E177268F30043F66B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7F2D9D177268F30043F66B /* Cocoa.framework */; };
 		2D7F2DA8177268F30043F66B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F2DA6177268F30043F66B /* InfoPlist.strings */; };
 		2D7F2DAA177268F40043F66B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F2DA9177268F40043F66B /* main.m */; };
@@ -31,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		2D07121D177DE6C20021871E /* PHYKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PHYKit.xcodeproj; path = ../../../PHYKit/PHYKit.xcodeproj; sourceTree = "<group>"; };
-		2D071225177DE6DC0021871E /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = PHYKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/DragonDrop-cnnzbrhowskotlfhanpxopjebkdh/Build/Products/Debug/PHYKit.framework"; sourceTree = "<group>"; };
+		2D70EF32177E4C3E00C9505C /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = PHYKit.framework; path = ../../PHYKit/build/Debug/PHYKit.framework; sourceTree = "<group>"; };
 		2D7F2D9A177268F30043F66B /* DragonDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7F2D9D177268F30043F66B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2D7F2DA0177268F30043F66B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D071224177DE6D80021871E /* PHYKit.framework in Frameworks */,
+				2D70EF31177E4C3A00C9505C /* PHYKit.framework in Frameworks */,
 				2D95114B177A2F7A00196C2C /* QuartzCore.framework in Frameworks */,
 				2D7F2D9E177268F30043F66B /* Cocoa.framework in Frameworks */,
 			);
@@ -93,7 +93,7 @@
 		2D7F2D9C177268F30043F66B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D071225177DE6DC0021871E /* PHYKit.framework */,
+				2D70EF32177E4C3E00C9505C /* PHYKit.framework */,
 				2D7F2DBD17726BAC0043F66B /* QuartzCore.framework */,
 				2D7F2D9D177268F30043F66B /* Cocoa.framework */,
 				2D7F2D9F177268F30043F66B /* Other Frameworks */,
@@ -215,7 +215,7 @@
 				2D7F2DA8177268F30043F66B /* InfoPlist.strings in Resources */,
 				2D7F2DAE177268F40043F66B /* Credits.rtf in Resources */,
 				2D7F2DB4177268F40043F66B /* MainMenu.xib in Resources */,
-				2D071226177DE6DC0021871E /* PHYKit.framework in Resources */,
+				2D70EF33177E4C3E00C9505C /* PHYKit.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
