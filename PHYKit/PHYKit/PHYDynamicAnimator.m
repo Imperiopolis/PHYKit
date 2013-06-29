@@ -71,8 +71,16 @@
     
     for (id <PHYDynamicItem> item in self.items)
     {
-        // this check is not right, need to see if any of the object is in the rect, not just the center
-        if (CGRectContainsPoint(rect, item.center))
+#warning update this to use the transform to take rotation into account
+        CGPoint itemCenter = item.center;
+        CGRect itemBounds = NSRectToCGRect(item.bounds);
+        
+        CGRect itemRect = CGRectMake(itemCenter.x - CGRectGetWidth(itemBounds) / 2,
+                                     itemCenter.y - CGRectGetHeight(itemBounds) / 2,
+                                     itemBounds.size.width,
+                                     itemBounds.size.height);
+        
+        if (CGRectIntersectsRect(rect, itemRect))
         {
             [items addObject: item];
         }
@@ -104,26 +112,26 @@
 {
     self.physicsTimer = [NSTimer scheduledTimerWithTimeInterval:0.001
                                                          target:self
-                                                       selector:@selector(_updatePhysics:)
+                                                       selector:@selector(updatePhysicsWithTimer:)
                                                        userInfo:nil
                                                         repeats:YES];
-    
     [[NSRunLoop currentRunLoop] run];
 }
 
-- (void)_updatePhysics:(NSTimer*)timer
+- (void)updatePhysicsWithTimer:(NSTimer*)timer
 {
     self.elapsedTime += 0.001;
     
     for (id <PHYDynamicItem> item in self.items)
     {
-        CGPoint distance;
+        CGPoint distance = CGPointZero;
         
         for (PHYDynamicBehavior *behavior in self.behaviors)
         {
             if ([behavior isKindOfClass:[PHYGravityBehavior class]])
             {                
-                distance = CGPointMake(.5 * [(PHYGravityBehavior*)behavior xComponent] * (self.elapsedTime*self.elapsedTime), .5 * [(PHYGravityBehavior*)behavior yComponent] * (self.elapsedTime*self.elapsedTime));
+                distance = CGPointMake(.5 * [(PHYGravityBehavior *)behavior xComponent] * (self.elapsedTime * self.elapsedTime),
+                                       .5 * [(PHYGravityBehavior *)behavior yComponent] * (self.elapsedTime * self.elapsedTime));
             }
         }
         
@@ -134,12 +142,6 @@
             point.y += distance.y;
             item.center = point;
         }
-    }
-    
-    // stop, everything is off screen. also need to check for equilibrium
-    if (![[self itemsInRect:self.referenceView.frame] count])
-    {
-        [self stopPhysics];
     }
 }
 
