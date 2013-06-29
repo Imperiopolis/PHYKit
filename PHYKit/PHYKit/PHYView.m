@@ -103,4 +103,10 @@
     return [NSString stringWithFormat:@"<%@: %p; frame = %@; layer = %@>", [self className], self, NSStringFromRect(NSRectFromCGRect(self.frame)), self.layer];
 }
 
+// use a flipped coordinate system like UIView
+- (BOOL)isFlipped
+{
+    return YES;
+}
+
 @end

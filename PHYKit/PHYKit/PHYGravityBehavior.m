@@ -23,7 +23,7 @@
     {
         _items = [NSMutableArray arrayWithArray:items];
         self.xComponent = 0;
-        self.yComponent = -1;
+        self.yComponent = 1;
     }
     
     return self;
