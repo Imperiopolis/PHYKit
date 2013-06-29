@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63646D44177228E000A6D94B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63646D43177228E000A6D94B /* QuartzCore.framework */; };
+		2D4585E6177E68750000096B /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4585E4177E685F0000096B /* PHYKit.framework */; };
+		2D4585E8177E687A0000096B /* PHYKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 2D4585E7177E687A0000096B /* PHYKit.framework */; };
+		2D4585EA177E68D70000096B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4585E9177E68D70000096B /* QuartzCore.framework */; };
 		6367067217721DD600A0960C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367067117721DD600A0960C /* Cocoa.framework */; };
 		6367067C17721DD600A0960C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6367067A17721DD600A0960C /* InfoPlist.strings */; };
 		6367067E17721DD600A0960C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367067D17721DD600A0960C /* main.m */; };
@@ -16,8 +18,20 @@
 		6367068817721DD600A0960C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6367068617721DD600A0960C /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2D4585E3177E685F0000096B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D4585DF177E685F0000096B /* PHYKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D951115177A264C00196C2C;
+			remoteInfo = PHYKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		63646D43177228E000A6D94B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2D4585DF177E685F0000096B /* PHYKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PHYKit.xcodeproj; path = ../../PHYKit/PHYKit.xcodeproj; sourceTree = "<group>"; };
+		2D4585E7177E687A0000096B /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = PHYKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Animator-dhtsikqvukfpkzfdcmyshhzymmde/Build/Products/Debug/PHYKit.framework"; sourceTree = "<group>"; };
+		2D4585E9177E68D70000096B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6367066E17721DD600A0960C /* Animator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6367067117721DD600A0960C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6367067417721DD600A0960C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -38,7 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63646D44177228E000A6D94B /* QuartzCore.framework in Frameworks */,
+				2D4585EA177E68D70000096B /* QuartzCore.framework in Frameworks */,
+				2D4585E6177E68750000096B /* PHYKit.framework in Frameworks */,
 				6367067217721DD600A0960C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,10 +61,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D4585E0177E685F0000096B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D4585E4177E685F0000096B /* PHYKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D4585E5177E68670000096B /* Project Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				2D4585DF177E685F0000096B /* PHYKit.xcodeproj */,
+			);
+			name = "Project Dependencies";
+			sourceTree = "<group>";
+		};
 		6367066517721DD600A0960C = {
 			isa = PBXGroup;
 			children = (
-				63646D43177228E000A6D94B /* QuartzCore.framework */,
+				2D4585E5177E68670000096B /* Project Dependencies */,
 				6367067717721DD600A0960C /* Animator */,
 				6367067017721DD600A0960C /* Frameworks */,
 				6367066F17721DD600A0960C /* Products */,
@@ -67,6 +98,8 @@
 		6367067017721DD600A0960C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D4585E9177E68D70000096B /* QuartzCore.framework */,
+				2D4585E7177E687A0000096B /* PHYKit.framework */,
 				6367067117721DD600A0960C /* Cocoa.framework */,
 				6367067317721DD600A0960C /* Other Frameworks */,
 			);
@@ -145,6 +178,12 @@
 			mainGroup = 6367066517721DD600A0960C;
 			productRefGroup = 6367066F17721DD600A0960C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2D4585E0177E685F0000096B /* Products */;
+					ProjectRef = 2D4585DF177E685F0000096B /* PHYKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6367066D17721DD600A0960C /* Animator */,
@@ -152,12 +191,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		2D4585E4177E685F0000096B /* PHYKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PHYKit.framework;
+			remoteRef = 2D4585E3177E685F0000096B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		6367066C17721DD600A0960C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6367067C17721DD600A0960C /* InfoPlist.strings in Resources */,
+				2D4585E8177E687A0000096B /* PHYKit.framework in Resources */,
 				6367068217721DD600A0960C /* Credits.rtf in Resources */,
 				6367068817721DD600A0960C /* MainMenu.xib in Resources */,
 			);
