@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3A85A444-8EAF-4CFA-AAAE-616CEEE4035D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DynamicsCatalog</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DCCA657E-0955-43F4-9DC8-96722E00F51C</key>
+		<string>ssh://bitbucket.org/Imperiopolis/ui-physics-simulator.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Mockups &amp; Tests/Apple DynamicsCatalog sample code/DynamicsCatalog.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DCCA657E-0955-43F4-9DC8-96722E00F51C</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://bitbucket.org/Imperiopolis/ui-physics-simulator.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DCCA657E-0955-43F4-9DC8-96722E00F51C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DCCA657E-0955-43F4-9DC8-96722E00F51C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ui-physics-simulator</string>
+		</dict>
+	</array>
+</dict>
+</plist>

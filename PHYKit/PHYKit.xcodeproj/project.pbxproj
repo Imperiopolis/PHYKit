@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D458637177E6CFE0000096B /* PHYDynamicGravityBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D458635177E6CFE0000096B /* PHYDynamicGravityBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D458638177E6CFE0000096B /* PHYDynamicGravityBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D458636177E6CFE0000096B /* PHYDynamicGravityBehavior.m */; };
+		2D458637177E6CFE0000096B /* PHYGravityBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D458635177E6CFE0000096B /* PHYGravityBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D458638177E6CFE0000096B /* PHYGravityBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D458636177E6CFE0000096B /* PHYGravityBehavior.m */; };
+		2D45863B177F0B1F0000096B /* PHYCollisionBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D45863C177F0B1F0000096B /* PHYCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D45863A177F0B1F0000096B /* PHYCollisionBehavior.m */; };
 		2D951119177A264C00196C2C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D951118177A264C00196C2C /* Cocoa.framework */; };
 		2D951123177A264C00196C2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D951121177A264C00196C2C /* InfoPlist.strings */; };
 		2D951133177A267200196C2C /* PHYDynamicAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D95112D177A267200196C2C /* PHYDynamicAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,8 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D458635177E6CFE0000096B /* PHYDynamicGravityBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYDynamicGravityBehavior.h; sourceTree = "<group>"; };
-		2D458636177E6CFE0000096B /* PHYDynamicGravityBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYDynamicGravityBehavior.m; sourceTree = "<group>"; };
+		2D458635177E6CFE0000096B /* PHYGravityBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYGravityBehavior.h; sourceTree = "<group>"; };
+		2D458636177E6CFE0000096B /* PHYGravityBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYGravityBehavior.m; sourceTree = "<group>"; };
+		2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYCollisionBehavior.h; sourceTree = "<group>"; };
+		2D45863A177F0B1F0000096B /* PHYCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYCollisionBehavior.m; sourceTree = "<group>"; };
 		2D951115177A264C00196C2C /* PHYKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PHYKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D951118177A264C00196C2C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2D95111B177A264C00196C2C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -106,8 +110,10 @@
 				2D951130177A267200196C2C /* PHYDynamicBehavior.m */,
 				2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */,
 				2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */,
-				2D458635177E6CFE0000096B /* PHYDynamicGravityBehavior.h */,
-				2D458636177E6CFE0000096B /* PHYDynamicGravityBehavior.m */,
+				2D458635177E6CFE0000096B /* PHYGravityBehavior.h */,
+				2D458636177E6CFE0000096B /* PHYGravityBehavior.m */,
+				2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */,
+				2D45863A177F0B1F0000096B /* PHYCollisionBehavior.m */,
 				2D951131177A267200196C2C /* PHYView.h */,
 				2D951132177A267200196C2C /* PHYView.m */,
 				2D95111F177A264C00196C2C /* Supporting Files */,
@@ -135,7 +141,8 @@
 				2D951148177A28C700196C2C /* PHYKit.h in Headers */,
 				2D951133177A267200196C2C /* PHYDynamicAnimator.h in Headers */,
 				2D951135177A267200196C2C /* PHYDynamicBehavior.h in Headers */,
-				2D458637177E6CFE0000096B /* PHYDynamicGravityBehavior.h in Headers */,
+				2D458637177E6CFE0000096B /* PHYGravityBehavior.h in Headers */,
+				2D45863B177F0B1F0000096B /* PHYCollisionBehavior.h in Headers */,
 				2D951137177A267200196C2C /* PHYView.h in Headers */,
 				2D951146177A286000196C2C /* PHYDynamicItemBehavior.h in Headers */,
 			);
@@ -206,9 +213,10 @@
 			files = (
 				2D951134177A267200196C2C /* PHYDynamicAnimator.m in Sources */,
 				2D951136177A267200196C2C /* PHYDynamicBehavior.m in Sources */,
+				2D45863C177F0B1F0000096B /* PHYCollisionBehavior.m in Sources */,
 				2D951138177A267200196C2C /* PHYView.m in Sources */,
 				2D951147177A286000196C2C /* PHYDynamicItemBehavior.m in Sources */,
-				2D458638177E6CFE0000096B /* PHYDynamicGravityBehavior.m in Sources */,
+				2D458638177E6CFE0000096B /* PHYGravityBehavior.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
