@@ -13,6 +13,7 @@
 @interface PHYDynamicAnimator ()
 {
     NSMutableArray *_behaviors;
+    NSUInteger _elapsedMillis;
 }
 @property (nonatomic, strong) NSView *referenceView;
 @property (nonatomic) NSTimeInterval elapsedTime;
@@ -118,9 +119,14 @@
     [[NSRunLoop currentRunLoop] run];
 }
 
+- (NSTimeInterval)elapsedTime
+{
+    return (NSTimeInterval)_elapsedMillis / 1000;
+}
+
 - (void)updatePhysicsWithTimer:(NSTimer*)timer
 {
-    self.elapsedTime += 0.001;
+    _elapsedMillis += 1;
     
     for (id <PHYDynamicItem> item in self.items)
     {
@@ -135,7 +141,9 @@
             }
         }
         
-        if (!CGPointEqualToPoint(distance, CGPointZero))
+        // update at 60Hz, and when we have data
+        if (!CGPointEqualToPoint(distance, CGPointZero) &&
+            ((_elapsedMillis % 100) == 0))
         {
             CGPoint point = item.center;
             point.x += distance.x;
