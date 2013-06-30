@@ -125,32 +125,28 @@
 }
 
 - (void)updatePhysicsWithTimer:(NSTimer*)timer
-{
-    _elapsedMillis += 1;
-    
+{    
     for (id <PHYDynamicItem> item in self.items)
     {
-        CGPoint distance = CGPointZero;
+        CGPoint velocity = CGPointZero;
         
         for (PHYDynamicBehavior *behavior in self.behaviors)
         {
             if ([behavior isKindOfClass:[PHYGravityBehavior class]])
-            {                
-                distance = CGPointMake(.5 * [(PHYGravityBehavior *)behavior xComponent] * (self.elapsedTime * self.elapsedTime),
-                                       .5 * [(PHYGravityBehavior *)behavior yComponent] * (self.elapsedTime * self.elapsedTime));
+            {
+                NSTimeInterval elapsedTime = self.elapsedTime;
+                velocity = CGPointMake(([(PHYGravityBehavior *)behavior xComponent] * 1000) * elapsedTime,
+                                       ([(PHYGravityBehavior *)behavior yComponent] * 1000) * elapsedTime);
             }
         }
         
-        // update at 60Hz, and when we have data
-        if (!CGPointEqualToPoint(distance, CGPointZero) &&
-            ((_elapsedMillis % 16) == 0))
-        {
-            CGPoint point = item.center;
-            point.x += distance.x;
-            point.y += distance.y;
-            item.center = point;
-        }
+        CGPoint point = item.center;
+        point.x += velocity.x * .001;
+        point.y += velocity.y * .001;
+        item.center = point;        
     }
+    
+    _elapsedMillis += 1;
 }
 
 @end
