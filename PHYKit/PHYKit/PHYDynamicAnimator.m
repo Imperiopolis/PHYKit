@@ -143,7 +143,7 @@
         
         // update at 60Hz, and when we have data
         if (!CGPointEqualToPoint(distance, CGPointZero) &&
-            ((_elapsedMillis % 100) == 0))
+            ((_elapsedMillis % 16) == 0))
         {
             CGPoint point = item.center;
             point.x += distance.x;
