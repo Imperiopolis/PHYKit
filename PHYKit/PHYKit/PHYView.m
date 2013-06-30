@@ -10,6 +10,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface PHYView ()
+{
+    CGPoint _center;
+}
 @end
 
 @implementation PHYView
@@ -81,28 +84,19 @@
     return CATransform3DGetAffineTransform(self.layer.transform);
 }
 
-- (void)setFrame:(NSRect)frameRect
-{
-    [super setFrame:frameRect];
-    
-#warning we shouldn't have to set the anchor point here. Look for answers at http://developer.apple.com/library/mac/#releasenotes/Cocoa/AppKit.html
-    self.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    
-    self.layer.position = CGPointMake(CGRectGetMidX(frameRect), CGRectGetMidY(frameRect));
-    self.layer.bounds = CGRectMake(0, 0, frameRect.size.width, frameRect.size.height);
-}
-
 - (void)setCenter:(CGPoint)center
 {
-    CGRect frame = NSRectToCGRect(self.frame);
-    frame.origin = CGPointMake(center.x - CGRectGetWidth(frame) / 2,
-                               center.y - CGRectGetHeight(frame) / 2);
+    _center = center;
+
+    NSRect frame = self.frame;
+    frame.origin = NSMakePoint(center.x - NSWidth(frame) / 2,
+                               center.y - NSHeight(frame) / 2);
     [self setFrame:frame];
 }
 
 - (CGPoint)center
 {
-    return self.layer.position;
+    return _center;
 }
 
 - (NSString *)description
