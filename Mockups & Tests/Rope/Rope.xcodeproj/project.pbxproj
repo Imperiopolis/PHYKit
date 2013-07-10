@@ -454,6 +454,7 @@
 				63C78F8C178CC20E0008A059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63C78F8D178CC20E0008A059 /* Build configuration list for PBXNativeTarget "RopeTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +463,7 @@
 				63C78F8F178CC20E0008A059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+@import CoreMotion;
 
 #define kThickness 5.0
 #define kSegmentLength 40.0
@@ -24,7 +25,11 @@
 @property (strong, nonatomic) UIDynamicAnimator *animator;
 @property (strong, nonatomic) NSMutableArray *viewsArray;
 @property (strong, nonatomic) UIAttachmentBehavior *topAttachment;
+@property (strong, nonatomic) UIGravityBehavior *gravity;
 @property (strong, nonatomic) NSArray *attachments;
+
+@property (strong, nonatomic) CMMotionManager *motionManager;
+@property (strong, nonatomic) NSOperationQueue *motionQueue;
 
 @end
 
@@ -66,9 +71,9 @@
         self.attachments = [NSArray arrayWithArray:attachmentsArray];
     }
     
-    UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:viewsArray];
+    self.gravity = [[UIGravityBehavior alloc] initWithItems:viewsArray];
     
-    [animator addBehavior:gravity];
+    [animator addBehavior:self.gravity];
     
     self.animator = animator;
 
@@ -76,6 +81,16 @@
     [self.view addGestureRecognizer:pan];
     
     self.viewsArray = viewsArray;
+    
+    self.motionQueue = [[NSOperationQueue alloc] init];
+    
+    self.motionManager = [[CMMotionManager alloc] init];
+    [self.motionManager startDeviceMotionUpdatesToQueue:self.motionQueue withHandler:^(CMDeviceMotion *motion, NSError *error) {
+        CMAcceleration gravity = motion.gravity;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.gravity setXComponent:gravity.x yComponent:-gravity.y];
+        });
+    }];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)pan
