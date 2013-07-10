@@ -23,6 +23,10 @@
 		2D951147177A286000196C2C /* PHYDynamicItemBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */; };
 		2D951148177A28C700196C2C /* PHYKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D951125177A264C00196C2C /* PHYKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6313788E177A299A0016F625 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6313788D177A299A0016F625 /* QuartzCore.framework */; };
+		7AFEF42F178D065C0074830D /* PHYPushBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AFEF42D178D065C0074830D /* PHYPushBehavior.h */; };
+		7AFEF430178D065C0074830D /* PHYPushBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFEF42E178D065C0074830D /* PHYPushBehavior.m */; };
+		7AFEF433178D07A40074830D /* PHYSnapBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AFEF431178D07A40074830D /* PHYSnapBehavior.h */; };
+		7AFEF434178D07A40074830D /* PHYSnapBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFEF432178D07A40074830D /* PHYSnapBehavior.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYDynamicItemBehavior.h; sourceTree = "<group>"; };
 		2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYDynamicItemBehavior.m; sourceTree = "<group>"; };
 		6313788D177A299A0016F625 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7AFEF42D178D065C0074830D /* PHYPushBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYPushBehavior.h; sourceTree = "<group>"; };
+		7AFEF42E178D065C0074830D /* PHYPushBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYPushBehavior.m; sourceTree = "<group>"; };
+		7AFEF431178D07A40074830D /* PHYSnapBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYSnapBehavior.h; sourceTree = "<group>"; };
+		7AFEF432178D07A40074830D /* PHYSnapBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYSnapBehavior.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,10 @@
 				2D458636177E6CFE0000096B /* PHYGravityBehavior.m */,
 				2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */,
 				2D45863A177F0B1F0000096B /* PHYCollisionBehavior.m */,
+				7AFEF42D178D065C0074830D /* PHYPushBehavior.h */,
+				7AFEF42E178D065C0074830D /* PHYPushBehavior.m */,
+				7AFEF431178D07A40074830D /* PHYSnapBehavior.h */,
+				7AFEF432178D07A40074830D /* PHYSnapBehavior.m */,
 				2D951131177A267200196C2C /* PHYView.h */,
 				2D951132177A267200196C2C /* PHYView.m */,
 				2D95111F177A264C00196C2C /* Supporting Files */,
@@ -145,6 +157,8 @@
 				2D45863B177F0B1F0000096B /* PHYCollisionBehavior.h in Headers */,
 				2D951137177A267200196C2C /* PHYView.h in Headers */,
 				2D951146177A286000196C2C /* PHYDynamicItemBehavior.h in Headers */,
+				7AFEF42F178D065C0074830D /* PHYPushBehavior.h in Headers */,
+				7AFEF433178D07A40074830D /* PHYSnapBehavior.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +231,8 @@
 				2D951138177A267200196C2C /* PHYView.m in Sources */,
 				2D951147177A286000196C2C /* PHYDynamicItemBehavior.m in Sources */,
 				2D458638177E6CFE0000096B /* PHYGravityBehavior.m in Sources */,
+				7AFEF430178D065C0074830D /* PHYPushBehavior.m in Sources */,
+				7AFEF434178D07A40074830D /* PHYSnapBehavior.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
