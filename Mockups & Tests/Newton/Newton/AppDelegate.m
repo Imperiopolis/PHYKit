@@ -22,8 +22,13 @@
 {
     self.dropView.backgroundColor = [NSColor greenColor];
     self.animator = [[PHYDynamicAnimator alloc] initWithReferenceView:self.window.contentView];
-    PHYGravityBehavior *gravity = [[PHYGravityBehavior alloc] initWithItems:@[self.dropView]];
     
+    PHYView *view = [[PHYView alloc] initWithFrame:NSMakeRect(20, 0200, 100, 100)];
+    view.backgroundColor = [NSColor blueColor];
+    [self.dropView.superview addSubview:view];
+
+    PHYGravityBehavior *gravity = [[PHYGravityBehavior alloc] initWithItems:@[self.dropView, view]];
+
     [self.animator addBehavior:gravity];
 }
 
