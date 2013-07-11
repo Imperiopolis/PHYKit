@@ -31,6 +31,23 @@
     return _bounds;
 }
 
+// flip coordinates when loading a xib
+- (void)awakeFromNib
+{
+#warning find a better thing
+    CGFloat height;
+    if ([self.superview isKindOfClass:NSClassFromString(@"NSThemeFrame")])
+    {
+        height = NSHeight(self.frame);
+    }
+    else
+    {
+        height = NSHeight(self.superview.frame);
+    }
+
+    self.center = CGPointMake(NSMinX(self.frame) + NSWidth(self.frame) / 2,
+                              height - NSMinY(self.frame) - NSHeight(self.frame) / 2);
+}
 
 // Call PHYView initWithFrame instead of super
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -53,6 +70,9 @@
     if ((self = [super initWithFrame:frame]))
     {
         [self setupLayer];
+
+        self.center = CGPointMake(NSMinX(self.frame) + NSWidth(self.frame) / 2,
+                                  NSMinY(self.frame) + NSHeight(self.frame) / 2);
     }
     
     return self;
