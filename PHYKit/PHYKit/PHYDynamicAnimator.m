@@ -9,20 +9,30 @@
 #import "PHYDynamicAnimator.h"
 #import "PHYDynamicBehavior.h"
 #import "PHYGravityBehavior.h"
+#import <QuartzCore/QuartzCore.h>
+#import <CoreVideo/CoreVideo.h>
 
 @interface PHYDynamicAnimator ()
 {
     NSMutableArray *_behaviors;
-    NSUInteger _elapsedMillis;
+    CVDisplayLinkRef _displayLink;
 }
 @property (nonatomic, strong) NSView *referenceView;
 @property (nonatomic) NSTimeInterval elapsedTime;
-@property (nonatomic, weak) NSTimer *physicsTimer;
 @property (nonatomic, weak) NSThread *thread;
 @property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic) NSTimeInterval startTime;
+@property (nonatomic) NSTimeInterval lastTime;
 @end
 
 @implementation PHYDynamicAnimator
+
+static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp* now, const CVTimeStamp* outputTime, CVOptionFlags flagsIn, CVOptionFlags* flagsOut, void* displayLinkContext)
+{
+    [(__bridge PHYDynamicAnimator*)displayLinkContext updatePhysics];
+    
+    return kCVReturnSuccess;
+}
 
 - (instancetype)initWithReferenceView:(NSView*)view
 {
@@ -32,6 +42,13 @@
         self.items = [NSMutableArray array];
         _behaviors = [NSMutableArray array];
         self.thread = [NSThread currentThread];
+        
+        
+        CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
+        
+        // Set the renderer output callback function
+        CVDisplayLinkSetOutputCallback(_displayLink, &displayLinkCallback, (__bridge void*)self);
+        
     }
     
     return self;
@@ -94,38 +111,23 @@
 - (void)startPhysics
 {
     [self.delegate dynamicAnimatorWillResume:self];
-    
-    [NSThread detachNewThreadSelector:@selector(updatePhysics)
-                             toTarget:self
-                           withObject:nil];
+    self.startTime = [NSDate timeIntervalSinceReferenceDate];
+    self.lastTime = self.startTime - 1.0/60;
+ 
+    CVDisplayLinkStart(_displayLink);
 }
 
 // stops when we reach a state of rest or all behaviors and items are removed
 - (void)stopPhysics
 {
-    [self.physicsTimer invalidate];
-    self.physicsTimer = nil;
-    
+    CVDisplayLinkStop(_displayLink);
     [self.delegate dynamicAnimatorDidPause:self];
 }
 
 - (void)updatePhysics
 {
-    self.physicsTimer = [NSTimer scheduledTimerWithTimeInterval:0.001
-                                                         target:self
-                                                       selector:@selector(updatePhysicsWithTimer:)
-                                                       userInfo:nil
-                                                        repeats:YES];
-    [[NSRunLoop currentRunLoop] run];
-}
-
-- (NSTimeInterval)elapsedTime
-{
-    return (NSTimeInterval)_elapsedMillis / 1000;
-}
-
-- (void)updatePhysicsWithTimer:(NSTimer*)timer
-{    
+    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+    
     for (id <PHYDynamicItem> item in self.items)
     {
         CGPoint velocity = CGPointZero;
@@ -141,12 +143,16 @@
         }
         
         CGPoint point = item.center;
-        point.x += velocity.x * .001;
-        point.y += velocity.y * .001;
-        item.center = point;        
+        point.x += velocity.x * (now - self.lastTime);
+        point.y += velocity.y * (now - self.lastTime);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            item.center = point;
+        });
     }
     
-    _elapsedMillis += 1;
+    self.lastTime = now;
+    self.elapsedTime = self.lastTime - self.startTime;
 }
 
 @end
