@@ -118,18 +118,7 @@
 				2D951125177A264C00196C2C /* PHYKit.h */,
 				2D95112D177A267200196C2C /* PHYDynamicAnimator.h */,
 				2D95112E177A267200196C2C /* PHYDynamicAnimator.m */,
-				2D95112F177A267200196C2C /* PHYDynamicBehavior.h */,
-				2D951130177A267200196C2C /* PHYDynamicBehavior.m */,
-				2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */,
-				2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */,
-				2D458635177E6CFE0000096B /* PHYGravityBehavior.h */,
-				2D458636177E6CFE0000096B /* PHYGravityBehavior.m */,
-				2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */,
-				2D45863A177F0B1F0000096B /* PHYCollisionBehavior.m */,
-				7AFEF42D178D065C0074830D /* PHYPushBehavior.h */,
-				7AFEF42E178D065C0074830D /* PHYPushBehavior.m */,
-				7AFEF431178D07A40074830D /* PHYSnapBehavior.h */,
-				7AFEF432178D07A40074830D /* PHYSnapBehavior.m */,
+				63D299AF179B9CCA0098490B /* Behaviors */,
 				2D951131177A267200196C2C /* PHYView.h */,
 				2D951132177A267200196C2C /* PHYView.m */,
 				2D95111F177A264C00196C2C /* Supporting Files */,
@@ -145,6 +134,25 @@
 				2D951124177A264C00196C2C /* PHYKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63D299AF179B9CCA0098490B /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+				2D95112F177A267200196C2C /* PHYDynamicBehavior.h */,
+				2D951130177A267200196C2C /* PHYDynamicBehavior.m */,
+				2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */,
+				2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */,
+				2D458635177E6CFE0000096B /* PHYGravityBehavior.h */,
+				2D458636177E6CFE0000096B /* PHYGravityBehavior.m */,
+				2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */,
+				2D45863A177F0B1F0000096B /* PHYCollisionBehavior.m */,
+				7AFEF42D178D065C0074830D /* PHYPushBehavior.h */,
+				7AFEF42E178D065C0074830D /* PHYPushBehavior.m */,
+				7AFEF431178D07A40074830D /* PHYSnapBehavior.h */,
+				7AFEF432178D07A40074830D /* PHYSnapBehavior.m */,
+			);
+			name = Behaviors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
