@@ -24,9 +24,9 @@
 		2D951147177A286000196C2C /* PHYDynamicItemBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */; };
 		2D951148177A28C700196C2C /* PHYKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D951125177A264C00196C2C /* PHYKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6313788E177A299A0016F625 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6313788D177A299A0016F625 /* QuartzCore.framework */; };
-		7AFEF42F178D065C0074830D /* PHYPushBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AFEF42D178D065C0074830D /* PHYPushBehavior.h */; };
+		7AFEF42F178D065C0074830D /* PHYPushBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AFEF42D178D065C0074830D /* PHYPushBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AFEF430178D065C0074830D /* PHYPushBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFEF42E178D065C0074830D /* PHYPushBehavior.m */; };
-		7AFEF433178D07A40074830D /* PHYSnapBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AFEF431178D07A40074830D /* PHYSnapBehavior.h */; };
+		7AFEF433178D07A40074830D /* PHYSnapBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AFEF431178D07A40074830D /* PHYSnapBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AFEF434178D07A40074830D /* PHYSnapBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFEF432178D07A40074830D /* PHYSnapBehavior.m */; };
 /* End PBXBuildFile section */
 
