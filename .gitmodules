@@ -1,0 +1,3 @@
+[submodule "PHYKit/Box2D"]
+	path = PHYKit/Box2D
+	url = https://github.com/ansman/box2d.git
