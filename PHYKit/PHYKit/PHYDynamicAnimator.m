@@ -175,35 +175,30 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     //TODO: this should really all be Box2D based on Apple Header dumps
     NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
     
-    CGPoint velocity = CGPointZero;
-    NSMutableArray *items = [NSMutableArray array];
-
     for (PHYDynamicBehavior *behavior in self.behaviors)
     {
-        if ([behavior respondsToSelector:@selector(items)])
-        {
-            [items addObjectsFromArray: [(id)behavior items]];
-        }
-
         // Calculate Gravity
         if ([behavior isKindOfClass:[PHYGravityBehavior class]])
         {
+            PHYGravityBehavior *gravity = (PHYGravityBehavior*)behavior;
             NSTimeInterval elapsedTime = self.elapsedTime;
-            velocity = CGPointMake(([(PHYGravityBehavior *)behavior xComponent] * 1000) * elapsedTime,
-                                   ([(PHYGravityBehavior *)behavior yComponent] * 1000) * elapsedTime);
+            CGPoint velocity = CGPointMake((gravity.xComponent * 1000) * elapsedTime,
+                                           (gravity.yComponent * 1000) * elapsedTime);
+
+            for (id <PHYDynamicItem>item in gravity.items)
+            {
+                CGPoint point = item.center;
+                point.x += velocity.x * (now - self.lastTime);
+                point.y += velocity.y * (now - self.lastTime);
+
+                // Update item center and transform on the main thread
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    item.center = point;
+                });
+            }
         }
-    }
 
-    for (id <PHYDynamicItem>item in items)
-    {
-        CGPoint point = item.center;
-        point.x += velocity.x * (now - self.lastTime);
-        point.y += velocity.y * (now - self.lastTime);
-
-        // Update item center and transform on the main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            item.center = point;
-        });
+        //TODO: Add handling for other behaviors
     }
 
     self.lastTime = now;
