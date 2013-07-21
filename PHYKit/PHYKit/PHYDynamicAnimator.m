@@ -93,7 +93,10 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
     [behavior addObserver:self forKeyPath:@"items" options:0 context:NULL];
 
-    [self startPhysics];
+    if ([_behaviors count])
+    {
+        [self startPhysics];
+    }
 }
 
 - (void)removeBehavior:(PHYDynamicBehavior *)behavior
@@ -102,7 +105,11 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
     [behavior removeObserver:self forKeyPath:@"items"];
 
-    if (![_behaviors count])
+    if ([_behaviors count])
+    {
+        [self startPhysics];
+    }
+    else
     {
         [self stopPhysics];
     }
