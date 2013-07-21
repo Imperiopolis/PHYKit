@@ -31,12 +31,18 @@
 
 - (void)addItem:(id <PHYDynamicItem>)item
 {
+    NSIndexSet *idx = [NSIndexSet indexSetWithIndex:[_items count]];
+    [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:idx forKey:@"items"];
     [_items addObject:item];
+    [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:idx forKey:@"items"];
 }
 
 - (void)removeItem:(id <PHYDynamicItem>)item
 {
+    NSIndexSet *idx = [NSIndexSet indexSetWithIndex:[_items indexOfObject:item]];
+    [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:idx forKey:@"items"];
     [_items removeObject:item];
+    [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:idx forKey:@"items"];
 }
 
 - (void)setXComponent:(CGFloat)x yComponent:(CGFloat)y
