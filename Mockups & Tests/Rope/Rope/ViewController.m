@@ -52,7 +52,7 @@
         
         if (i == 0)
         {
-            self.topAttachment = [[UIAttachmentBehavior alloc] initWithItem:view point:CGPointMake(0, -CGRectGetHeight(view.frame) / 2) attachedToAnchor:CGPointMake(CGRectGetWidth(self.view.bounds) / 2, kYOffset)];
+            self.topAttachment = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:UIOffsetMake(0, -CGRectGetHeight(view.frame) / 2) attachedToAnchor:CGPointMake(CGRectGetWidth(self.view.bounds) / 2, kYOffset)];
             self.topAttachment.frequency = kTopDamping;
             self.topAttachment.damping = kTopDamping;
             [animator addBehavior:self.topAttachment];
@@ -60,7 +60,7 @@
         else
         {
             UIView *attachToView = [viewsArray lastObject];
-            UIAttachmentBehavior *attachment = [[UIAttachmentBehavior alloc] initWithItem:view point:CGPointMake(0, -CGRectGetHeight(view.frame) / 2) attachedToItem:attachToView point:CGPointMake(0, CGRectGetHeight(attachToView.frame) / 2)];
+            UIAttachmentBehavior *attachment = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:UIOffsetMake(0, -CGRectGetHeight(view.frame) / 2) attachedToItem:attachToView offsetFromCenter:UIOffsetMake(0, CGRectGetHeight(attachToView.frame) / 2)];
             attachment.frequency = kFrequency;
             attachment.damping = kDamping;
             [animator addBehavior:attachment];
@@ -88,7 +88,7 @@
     [self.motionManager startDeviceMotionUpdatesToQueue:self.motionQueue withHandler:^(CMDeviceMotion *motion, NSError *error) {
         CMAcceleration gravity = motion.gravity;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.gravity setXComponent:gravity.x yComponent:-gravity.y];
+            self.gravity.gravityDirection = CGSizeMake(gravity.x, -gravity.y);
         });
     }];
 }
