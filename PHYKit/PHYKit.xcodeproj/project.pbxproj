@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D094B2517A4083800003684 /* CDStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DC217A403A500B99F05 /* CDStructures.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2617A4083800003684 /* NSCoder-PHYPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DC317A403A500B99F05 /* NSCoder-PHYPath.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2717A4083800003684 /* NSCoding-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DC417A403A500B99F05 /* NSCoding-Protocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2817A4083800003684 /* NSCopying-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DC517A403A500B99F05 /* NSCopying-Protocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2917A4083800003684 /* NSValue-PHYPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DC617A403A500B99F05 /* NSValue-PHYPath.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2A17A4083800003684 /* PHYBody.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DC717A403A500B99F05 /* PHYBody.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2B17A4083800003684 /* PHYContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DC817A403A500B99F05 /* PHYContact.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2C17A4083800003684 /* PHYJoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DC917A403A500B99F05 /* PHYJoint.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2D17A4083800003684 /* PHYJointDistance.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DCA17A403A500B99F05 /* PHYJointDistance.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2E17A4083800003684 /* PHYJointPrismatic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DCB17A403A500B99F05 /* PHYJointPrismatic.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B2F17A4083800003684 /* PHYJointRevolute.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DCC17A403A500B99F05 /* PHYJointRevolute.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B3017A4083800003684 /* PHYJointRope.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DCD17A403A500B99F05 /* PHYJointRope.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B3117A4083800003684 /* PHYJointWeld.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DCE17A403A500B99F05 /* PHYJointWeld.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B3217A4083800003684 /* PHYWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DCF17A403A500B99F05 /* PHYWorld.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2D094B3417A4087F00003684 /* PHYWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D094B3317A4087F00003684 /* PHYWorld.m */; };
 		2D458637177E6CFE0000096B /* PHYGravityBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D458635177E6CFE0000096B /* PHYGravityBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D458638177E6CFE0000096B /* PHYGravityBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D458636177E6CFE0000096B /* PHYGravityBehavior.m */; };
 		2D45863B177F0B1F0000096B /* PHYCollisionBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -126,10 +141,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D094B3317A4087F00003684 /* PHYWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYWorld.m; sourceTree = "<group>"; };
 		2D458635177E6CFE0000096B /* PHYGravityBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYGravityBehavior.h; sourceTree = "<group>"; };
 		2D458636177E6CFE0000096B /* PHYGravityBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYGravityBehavior.m; sourceTree = "<group>"; };
 		2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYCollisionBehavior.h; sourceTree = "<group>"; };
 		2D45863A177F0B1F0000096B /* PHYCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYCollisionBehavior.m; sourceTree = "<group>"; };
+		2D4A4DC217A403A500B99F05 /* CDStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDStructures.h; sourceTree = "<group>"; };
+		2D4A4DC317A403A500B99F05 /* NSCoder-PHYPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoder-PHYPath.h"; sourceTree = "<group>"; };
+		2D4A4DC417A403A500B99F05 /* NSCoding-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoding-Protocol.h"; sourceTree = "<group>"; };
+		2D4A4DC517A403A500B99F05 /* NSCopying-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCopying-Protocol.h"; sourceTree = "<group>"; };
+		2D4A4DC617A403A500B99F05 /* NSValue-PHYPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue-PHYPath.h"; sourceTree = "<group>"; };
+		2D4A4DC717A403A500B99F05 /* PHYBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYBody.h; sourceTree = "<group>"; };
+		2D4A4DC817A403A500B99F05 /* PHYContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYContact.h; sourceTree = "<group>"; };
+		2D4A4DC917A403A500B99F05 /* PHYJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYJoint.h; sourceTree = "<group>"; };
+		2D4A4DCA17A403A500B99F05 /* PHYJointDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYJointDistance.h; sourceTree = "<group>"; };
+		2D4A4DCB17A403A500B99F05 /* PHYJointPrismatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYJointPrismatic.h; sourceTree = "<group>"; };
+		2D4A4DCC17A403A500B99F05 /* PHYJointRevolute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYJointRevolute.h; sourceTree = "<group>"; };
+		2D4A4DCD17A403A500B99F05 /* PHYJointRope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYJointRope.h; sourceTree = "<group>"; };
+		2D4A4DCE17A403A500B99F05 /* PHYJointWeld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYJointWeld.h; sourceTree = "<group>"; };
+		2D4A4DCF17A403A500B99F05 /* PHYWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYWorld.h; sourceTree = "<group>"; };
 		2D92946D178E2BBB00649568 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2D951115177A264C00196C2C /* PHYKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PHYKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D951118177A264C00196C2C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -264,6 +294,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D4A4DC117A4038D00B99F05 /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				2D4A4DC217A403A500B99F05 /* CDStructures.h */,
+				2D4A4DC317A403A500B99F05 /* NSCoder-PHYPath.h */,
+				2D4A4DC417A403A500B99F05 /* NSCoding-Protocol.h */,
+				2D4A4DC517A403A500B99F05 /* NSCopying-Protocol.h */,
+				2D4A4DC617A403A500B99F05 /* NSValue-PHYPath.h */,
+				2D4A4DC717A403A500B99F05 /* PHYBody.h */,
+				2D4A4DC817A403A500B99F05 /* PHYContact.h */,
+				2D4A4DC917A403A500B99F05 /* PHYJoint.h */,
+				2D4A4DCA17A403A500B99F05 /* PHYJointDistance.h */,
+				2D4A4DCB17A403A500B99F05 /* PHYJointPrismatic.h */,
+				2D4A4DCC17A403A500B99F05 /* PHYJointRevolute.h */,
+				2D4A4DCD17A403A500B99F05 /* PHYJointRope.h */,
+				2D4A4DCE17A403A500B99F05 /* PHYJointWeld.h */,
+				2D4A4DCF17A403A500B99F05 /* PHYWorld.h */,
+				2D094B3317A4087F00003684 /* PHYWorld.m */,
+			);
+			name = Physics;
+			sourceTree = "<group>";
+		};
 		2D95110B177A264C00196C2C = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +361,7 @@
 				2D951125177A264C00196C2C /* PHYKit.h */,
 				2D95112D177A267200196C2C /* PHYDynamicAnimator.h */,
 				2D95112E177A267200196C2C /* PHYDynamicAnimator.m */,
+				2D4A4DC117A4038D00B99F05 /* Physics */,
 				63D299AF179B9CCA0098490B /* Behaviors */,
 				2D951131177A267200196C2C /* PHYView.h */,
 				2D951132177A267200196C2C /* PHYView.m */,
@@ -524,6 +577,20 @@
 				2DEE6A25179C2CD3009D4F83 /* b2Contact.h in Headers */,
 				2DEE6A35179C2CD3009D4F83 /* b2GearJoint.h in Headers */,
 				2D951148177A28C700196C2C /* PHYKit.h in Headers */,
+				2D094B2517A4083800003684 /* CDStructures.h in Headers */,
+				2D094B2617A4083800003684 /* NSCoder-PHYPath.h in Headers */,
+				2D094B2717A4083800003684 /* NSCoding-Protocol.h in Headers */,
+				2D094B2817A4083800003684 /* NSCopying-Protocol.h in Headers */,
+				2D094B2917A4083800003684 /* NSValue-PHYPath.h in Headers */,
+				2D094B2A17A4083800003684 /* PHYBody.h in Headers */,
+				2D094B2B17A4083800003684 /* PHYContact.h in Headers */,
+				2D094B2C17A4083800003684 /* PHYJoint.h in Headers */,
+				2D094B2D17A4083800003684 /* PHYJointDistance.h in Headers */,
+				2D094B2E17A4083800003684 /* PHYJointPrismatic.h in Headers */,
+				2D094B2F17A4083800003684 /* PHYJointRevolute.h in Headers */,
+				2D094B3017A4083800003684 /* PHYJointRope.h in Headers */,
+				2D094B3117A4083800003684 /* PHYJointWeld.h in Headers */,
+				2D094B3217A4083800003684 /* PHYWorld.h in Headers */,
 				2DEE6A1F179C2CD3009D4F83 /* b2ChainAndCircleContact.h in Headers */,
 				2DEE6A02179C2CD3009D4F83 /* b2PolygonShape.h in Headers */,
 				2DEE69FA179C2CD3009D4F83 /* b2TimeOfImpact.h in Headers */,
@@ -694,6 +761,7 @@
 				7AFEF430178D065C0074830D /* PHYPushBehavior.m in Sources */,
 				2DEE6A24179C2CD3009D4F83 /* b2Contact.cpp in Sources */,
 				7AFEF434178D07A40074830D /* PHYSnapBehavior.m in Sources */,
+				2D094B3417A4087F00003684 /* PHYWorld.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
