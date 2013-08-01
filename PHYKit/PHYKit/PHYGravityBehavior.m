@@ -7,10 +7,12 @@
 //
 
 #import "PHYGravityBehavior.h"
+#import <math.h>
 
 @interface PHYGravityBehavior ()
 {
     NSMutableArray *_items;
+    CGFloat _angle;
 }
 
 @end
@@ -22,8 +24,7 @@
     if ((self = [super init]))
     {
         _items = [NSMutableArray arrayWithArray:items];
-        self.xComponent = 0;
-        self.yComponent = 1;
+        self.magnitude = 1;
     }
     
     return self;
@@ -45,15 +46,39 @@
     [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:idx forKey:@"items"];
 }
 
-- (void)setXComponent:(CGFloat)x yComponent:(CGFloat)y
+- (void)setAngle:(CGFloat)angle magnitude:(CGFloat)magnitude
 {
-    self.xComponent = x;
-    self.yComponent = y;
+    self.angle = angle;
+    self.magnitude = magnitude;
+}
+
+- (void)setGravityDirection:(CGSize)gravityDirection
+{
+    _gravityDirection = gravityDirection;
+    _magnitude = fabsf(sqrtf(powf(_gravityDirection.height, 2) + powf(_gravityDirection.width, 2)));
+    _angle = gravityDirection.width ? atanf(gravityDirection.height / gravityDirection.width) : 0;
+}
+
+- (void)setAngle:(CGFloat)angle
+{
+    _angle = angle * (180 / M_PI); // convert from radians
+    _gravityDirection = CGSizeMake(sin(_angle) * _magnitude, cos(_angle) * _magnitude);
+}
+
+- (CGFloat)angle
+{
+    return _angle * (M_PI / 180); // convert to radians
+}
+
+- (void)setMagnitude:(CGFloat)magnitude
+{
+    _magnitude = magnitude;
+    _gravityDirection = CGSizeMake(sin(_angle) * _magnitude, cos(_angle) * _magnitude);
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p; gravity = <%f, %f>>", [self className], self, self.xComponent, self.yComponent];
+    return [NSString stringWithFormat:@"<%@: %p; gravity = <%f, %f>>", [self className], self, self.angle, self.magnitude];
 }
 
 @end
