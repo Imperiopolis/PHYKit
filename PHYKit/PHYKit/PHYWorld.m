@@ -1,3 +1,4 @@
+
 //
 //  PHYWorld.m
 //  PHYKit
@@ -9,15 +10,14 @@
 #import <PHYWorld.h>
 #import <Box2D/Box2D.h>
 #import "PHYDynamicBehavior.h"
-
-#define kPixelToMeterRatio 16
+#import "PHYGeometry.h"
 
 @interface PHYWorld ()
 {
     b2World *_b2world;
 }
 
-@property (strong, nonatomic) NSMutableArray *mutableBodies;
+@property (strong, nonatomic) NSMutableDictionary *bodyMap;
 
 @end
 
@@ -39,7 +39,7 @@
         
         _b2world->SetContinuousPhysics(true);
         
-        self.mutableBodies = [NSMutableArray array];
+        self.bodyMap = [NSMutableDictionary dictionary];
     }
     
     return self;
@@ -56,17 +56,20 @@
     _b2world->Step(timeInterval, (int32)velocityIterations, (int32)positionIterations);
     
     //Iterate over the bodies in the physics world
-	for (b2Body* b = _b2world->GetBodyList(); b; b = b->GetNext())
+	for (id<PHYDynamicItem> dynamicItem in self.bodies)
 	{
+        b2Body *b = [self b2BodyFromDynamicItem: dynamicItem];
+        
 		if (b->GetUserData() != NULL)
 		{
-			id<PHYDynamicItem> dynamicItem = (__bridge id<PHYDynamicItem>)b->GetUserData();
-            
 			// y Position subtracted because of flipped coordinate system
-			CGPoint newCenter = CGPointMake(b->GetPosition().x * kPixelToMeterRatio,
-                                            b->GetPosition().y * kPixelToMeterRatio);
-			dynamicItem.center = newCenter;
+			CGPoint newCenter = CGPointMake(b->GetPosition().x * kPointsToMeterRatio,
+                                            b->GetPosition().y * kPointsToMeterRatio);
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                dynamicItem.center = newCenter;
+            });
+
 #warning make sure the minus sign is supposed to be there, and look here if we are getting backwards rotations
 			CGAffineTransform transform = CGAffineTransformMakeRotation(- b->GetAngle());
             
@@ -79,17 +82,23 @@
 
 - (void)removeAllBodies
 {
-    for (b2Body* body = _b2world->GetBodyList(); body; body = body->GetNext())
-	{
+    for (id<PHYDynamicItem> dynamicItem in self.bodies)
+    {
+        b2Body *body = [self b2BodyFromDynamicItem: dynamicItem];
+
         _b2world->DestroyBody(body);
-	}
+    }
     
-    [self.mutableBodies removeAllObjects];
+    [self.bodyMap removeAllObjects];
 }
 
 - (void)removeBody:(id<PHYDynamicItem>)dynamicItem
 {
-#warning need a mapping table so we can look up a b2body, given a dynamic item
+    b2Body *body = [self b2BodyFromDynamicItem: dynamicItem];
+
+    _b2world->DestroyBody(body);
+
+    //[self.bodyMap removeObjectForKey:[NSValue valueWithNonretainedObject:dynamicItem]];
 }
 
 - (void)addBody:(id<PHYDynamicItem>)dynamicItem
@@ -99,11 +108,11 @@
 	bodyDef.type = b2_dynamicBody;
     
 	CGPoint p = dynamicItem.center;
-	CGSize boxSize = CGSizeMake(dynamicItem.bounds.size.width / kPixelToMeterRatio / 2.0,
-                                dynamicItem.bounds.size.height / kPixelToMeterRatio / 2.0);
+	CGSize boxSize = CGSizeMake(dynamicItem.bounds.size.width / kPointsToMeterRatio / 2.0,
+                                dynamicItem.bounds.size.height / kPointsToMeterRatio / 2.0);
     
-	bodyDef.position.Set(p.x / kPixelToMeterRatio,
-                         p.y / kPixelToMeterRatio);
+	bodyDef.position.Set(p.x / kPointsToMeterRatio,
+                         p.y / kPointsToMeterRatio);
     
 	bodyDef.userData = (__bridge void *)dynamicItem;
     
@@ -126,12 +135,28 @@
 	// a dynamic body reacts to forces right away
 	body->SetType(b2_dynamicBody);
     
-    [self.mutableBodies addObject:dynamicItem];
+    [self.bodyMap setObject:[NSValue valueWithPointer:body] forKey:[NSValue valueWithNonretainedObject:dynamicItem]];
 }
 
 - (NSArray *)bodies
 {
-    return [NSArray arrayWithArray:self.mutableBodies];
+    NSMutableArray *bodies = [NSMutableArray array];
+
+    for (NSValue *value in [[self.bodyMap allKeys] copy])
+    {
+        id <PHYDynamicItem>dynamicItem = [value nonretainedObjectValue];
+
+        if (dynamicItem)
+        {
+            [bodies addObject: dynamicItem];
+        }
+        else
+        {
+            [self.bodyMap removeObjectForKey: value];
+        }
+    }
+    
+    return [bodies copy];
 }
 
 - (BOOL)hasBodies
@@ -170,6 +195,19 @@
     
 }
 
+- (CGPoint)gravity
+{
+    return b2Vec2ToCGPoint(_b2world->GetGravity());
+}
 
+- (void)setGravity:(struct CGPoint)gravity
+{
+    _b2world->SetGravity(CGPointTob2Vec2(gravity));
+}
+
+- (b2Body *)b2BodyFromDynamicItem:(id <PHYDynamicItem>)dynamicItem
+{
+    return (b2Body*)[[self.bodyMap objectForKey:[NSValue valueWithNonretainedObject:dynamicItem]] pointerValue];
+}
 
 @end

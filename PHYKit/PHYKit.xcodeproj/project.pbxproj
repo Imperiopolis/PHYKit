@@ -38,6 +38,7 @@
 		2D951146177A286000196C2C /* PHYDynamicItemBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D951147177A286000196C2C /* PHYDynamicItemBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */; };
 		2D951148177A28C700196C2C /* PHYKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D951125177A264C00196C2C /* PHYKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DAF05B517AABB3900C7DE2C /* PHYGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DAF05B317AABB3900C7DE2C /* PHYGeometry.h */; };
 		2DEE69EB179C2CD3009D4F83 /* Box2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DEE6985179C2CD3009D4F83 /* Box2D.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2DEE69EC179C2CD3009D4F83 /* Box2DConfig.cmake in Resources */ = {isa = PBXBuildFile; fileRef = 2DEE6986179C2CD3009D4F83 /* Box2DConfig.cmake */; };
 		2DEE69ED179C2CD3009D4F83 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2DEE6987179C2CD3009D4F83 /* CMakeLists.txt */; };
@@ -178,6 +179,7 @@
 		2D951132177A267200196C2C /* PHYView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYView.m; sourceTree = "<group>"; };
 		2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYDynamicItemBehavior.h; sourceTree = "<group>"; };
 		2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYDynamicItemBehavior.m; sourceTree = "<group>"; };
+		2DAF05B317AABB3900C7DE2C /* PHYGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYGeometry.h; sourceTree = "<group>"; };
 		2DEE6985179C2CD3009D4F83 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Box2D.h; path = Box2D/Box2D.h; sourceTree = "<group>"; };
 		2DEE6986179C2CD3009D4F83 /* Box2DConfig.cmake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Box2DConfig.cmake; path = Box2D/Box2DConfig.cmake; sourceTree = "<group>"; };
 		2DEE6987179C2CD3009D4F83 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = Box2D/CMakeLists.txt; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				2D4A4DCE17A403A500B99F05 /* PHYJointWeld.h */,
 				2D4A4DCF17A403A500B99F05 /* PHYWorld.h */,
 				2D094B3317A4087F00003684 /* PHYWorld.m */,
+				2DAF05B317AABB3900C7DE2C /* PHYGeometry.h */,
 			);
 			name = Physics;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				2D951146177A286000196C2C /* PHYDynamicItemBehavior.h in Headers */,
 				7AFEF42F178D065C0074830D /* PHYPushBehavior.h in Headers */,
 				7AFEF433178D07A40074830D /* PHYSnapBehavior.h in Headers */,
+				2DAF05B517AABB3900C7DE2C /* PHYGeometry.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

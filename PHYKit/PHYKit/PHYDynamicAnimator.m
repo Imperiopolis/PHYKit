@@ -62,6 +62,16 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     switch ((NSKeyValueChange)[[change objectForKey:@"kind"] unsignedIntegerValue]) {
         case NSKeyValueChangeRemoval:
         {
+            PHYDynamicBehavior *behavior = (PHYDynamicBehavior*)object;
+            if ([behavior respondsToSelector:@selector(items)])
+            {
+                NSArray *items = [[(id)behavior items] objectsAtIndexes:[change objectForKey:@"indexes"]];
+                for (id<PHYDynamicItem> item in items)
+                {
+                    [self.world removeBody: item];
+                }
+            }
+
             BOOL hasItems = NO;
 
             for (PHYDynamicBehavior *behavior in self.behaviors)
@@ -84,7 +94,19 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
             break;
 
         case NSKeyValueChangeInsertion:
+        {
+            PHYDynamicBehavior *behavior = (PHYDynamicBehavior*)object;
+            if ([behavior respondsToSelector:@selector(items)])
+            {
+                NSArray *items = [[(id)behavior items] objectsAtIndexes:[change objectForKey:@"indexes"]];
+                for (id<PHYDynamicItem> item in items)
+                {
+                    [self.world addBody: item];
+                }
+            }
+
             [self startPhysics];
+        }
             break;
 
         default:
@@ -94,9 +116,28 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)addBehavior:(PHYDynamicBehavior *)behavior
 {
+    [behavior willMoveToAnimator: self];
+
+    behavior.dynamicAnimator = self;
+
     [_behaviors addObject: behavior];
 
     [behavior addObserver:self forKeyPath:@"items" options:0 context:NULL];
+
+    if ([behavior respondsToSelector:@selector(items)])
+    {
+        NSArray *items = [(id)behavior items];
+        for (id<PHYDynamicItem> item in items)
+        {
+            [self.world addBody: item];
+        }
+    }
+
+    if ([behavior isKindOfClass:[PHYGravityBehavior class]])
+    {
+        PHYGravityBehavior *gravity = (PHYGravityBehavior*)behavior;
+        self.world.gravity = CGPointMake(gravity.xComponent, gravity.yComponent);
+    }
 
     if ([_behaviors count])
     {
@@ -109,6 +150,16 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     [_behaviors removeObject:behavior];
 
     [behavior removeObserver:self forKeyPath:@"items"];
+    behavior.dynamicAnimator = nil;
+
+    if ([behavior respondsToSelector:@selector(items)])
+    {
+        NSArray *items = [(id)behavior items];
+        for (id<PHYDynamicItem> item in items)
+        {
+            [self.world removeBody: item];
+        }
+    }
 
     if ([_behaviors count])
     {
@@ -122,7 +173,14 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)removeAllBehaviors
 {
+    for (PHYDynamicBehavior *behavior in _behaviors)
+    {
+        [behavior removeObserver:self forKeyPath:@"items"];
+        behavior.dynamicAnimator = nil;
+    }
+
     [_behaviors removeAllObjects];
+    [self.world removeAllBodies];
     
     [self stopPhysics];
 }
@@ -184,37 +242,15 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)updatePhysics
 {
-    //TODO: this should really all be Box2D based on Apple Header dumps
-    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-    
-    for (PHYDynamicBehavior *behavior in self.behaviors)
+    @autoreleasepool
     {
-        // Calculate Gravity
-        if ([behavior isKindOfClass:[PHYGravityBehavior class]])
-        {
-            PHYGravityBehavior *gravity = (PHYGravityBehavior*)behavior;
-            NSTimeInterval elapsedTime = self.elapsedTime;
-            CGPoint velocity = CGPointMake((gravity.xComponent * 1000) * elapsedTime,
-                                           (gravity.yComponent * 1000) * elapsedTime);
+        NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
 
-            for (id <PHYDynamicItem>item in gravity.items)
-            {
-                CGPoint point = item.center;
-                point.x += velocity.x * (now - self.lastTime);
-                point.y += velocity.y * (now - self.lastTime);
+        [self.world stepWithTime:(now - self.lastTime)];
 
-                // Update item center and transform on the main thread
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    item.center = point;
-                });
-            }
-        }
-
-        //TODO: Add handling for other behaviors
+        self.lastTime = now;
+        self.elapsedTime = self.lastTime - self.startTime;
     }
-
-    self.lastTime = now;
-    self.elapsedTime = self.lastTime - self.startTime;
 }
 
 @end

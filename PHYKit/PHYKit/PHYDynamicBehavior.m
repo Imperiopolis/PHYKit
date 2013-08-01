@@ -7,6 +7,7 @@
 //
 
 #import "PHYDynamicBehavior.h"
+#import "PHYDynamicAnimator.h"
 
 @implementation PHYDynamicBehavior
 
@@ -16,6 +17,11 @@
 }
 
 - (void)removeChildBehavior:(PHYDynamicBehavior *)behavior
+{
+    
+}
+
+- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
 {
     
 }
