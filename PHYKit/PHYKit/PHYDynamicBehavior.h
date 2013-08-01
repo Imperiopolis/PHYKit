@@ -22,10 +22,11 @@
 
 - (void)addChildBehavior:(PHYDynamicBehavior *)behavior;
 - (void)removeChildBehavior:(PHYDynamicBehavior *)behavior;
-- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator;
+
+- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator; // nil when being removed from an animator
 
 @property (nonatomic, readonly, copy) NSArray *childBehaviors;
-@property (assign) PHYDynamicAnimator *dynamicAnimator;
+@property (nonatomic, readonly) PHYDynamicAnimator *dynamicAnimator;
 @property (nonatomic, copy) void (^action)(void);
 
 @end

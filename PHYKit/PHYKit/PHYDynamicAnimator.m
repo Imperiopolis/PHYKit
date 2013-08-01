@@ -120,8 +120,6 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 {
     [behavior willMoveToAnimator: self];
 
-    behavior.dynamicAnimator = self;
-
     [_behaviors addObject: behavior];
 
     [behavior addObserver:self forKeyPath:@"items" options:0 context:NULL];
@@ -149,10 +147,11 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)removeBehavior:(PHYDynamicBehavior *)behavior
 {
+    [behavior willMoveToAnimator: nil];
+    
     [_behaviors removeObject:behavior];
 
     [behavior removeObserver:self forKeyPath:@"items"];
-    behavior.dynamicAnimator = nil;
 
     if ([behavior respondsToSelector:@selector(items)])
     {
@@ -178,7 +177,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     for (PHYDynamicBehavior *behavior in _behaviors)
     {
         [behavior removeObserver:self forKeyPath:@"items"];
-        behavior.dynamicAnimator = nil;
+        [behavior willMoveToAnimator: nil];
     }
 
     [_behaviors removeAllObjects];
@@ -215,6 +214,12 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     }
     
     return items;
+}
+
+- (void)updateItemUsingCurrentState:(id <PHYDynamicItem>)item
+{
+    [self.world removeBody: item];
+    [self.world addBody: item];
 }
 
 // starts when a new behavior or item is added

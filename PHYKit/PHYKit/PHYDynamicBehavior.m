@@ -9,6 +9,12 @@
 #import "PHYDynamicBehavior.h"
 #import "PHYDynamicAnimator.h"
 
+@interface PHYDynamicBehavior ()
+
+@property (nonatomic) PHYDynamicAnimator *dynamicAnimator;
+
+@end
+
 @implementation PHYDynamicBehavior
 
 - (void)addChildBehavior:(PHYDynamicBehavior *)behavior
@@ -23,7 +29,7 @@
 
 - (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
 {
-    
+    self.dynamicAnimator = animator;
 }
 
 @end
