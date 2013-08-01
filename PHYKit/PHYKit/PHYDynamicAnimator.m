@@ -13,6 +13,8 @@
 #import <CoreVideo/CoreVideo.h>
 #import "PHYWorld.h"
 
+#define kGravityScaleFactory    (1000)
+
 @interface PHYDynamicAnimator ()
 {
     NSMutableArray *_behaviors;
@@ -136,7 +138,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     if ([behavior isKindOfClass:[PHYGravityBehavior class]])
     {
         PHYGravityBehavior *gravity = (PHYGravityBehavior*)behavior;
-        self.world.gravity = CGPointMake(gravity.xComponent, gravity.yComponent);
+        self.world.gravity = CGPointMake(gravity.gravityDirection.width * kGravityScaleFactory, gravity.gravityDirection.height * kGravityScaleFactory);
     }
 
     if ([_behaviors count])
