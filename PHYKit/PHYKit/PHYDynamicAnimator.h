@@ -11,6 +11,7 @@
 @class PHYDynamicBehavior;
 @class PHYDynamicAnimator;
 @class PHYWorld;
+@protocol PHYDynamicItem;
 
 @protocol PHYDynamicAnimatorDelegate <NSObject>
 
@@ -27,7 +28,11 @@
 - (void)addBehavior:(PHYDynamicBehavior *)behavior;
 - (void)removeBehavior:(PHYDynamicBehavior *)behavior;
 - (void)removeAllBehaviors;
+// Returns the dynamic items associated with the animator’s behaviors that intersect a specified rectangle
 - (NSArray*)itemsInRect:(CGRect)rect;
+// Update the item state in the animator if an external change was made to this item
+- (void)updateItemUsingCurrentState:(id <PHYDynamicItem>)item;
+
 - (NSTimeInterval)elapsedTime;
 
 @property (nonatomic, readonly) NSView* referenceView;
