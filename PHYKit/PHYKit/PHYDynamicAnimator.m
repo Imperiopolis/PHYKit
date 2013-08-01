@@ -11,12 +11,16 @@
 #import "PHYGravityBehavior.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CoreVideo/CoreVideo.h>
+#import "PHYWorld.h"
 
 @interface PHYDynamicAnimator ()
 {
     NSMutableArray *_behaviors;
     CVDisplayLinkRef _displayLink;
 }
+
+@property (nonatomic, strong) PHYWorld *world;
+
 @property (nonatomic, strong) NSView *referenceView;
 @property (nonatomic) NSTimeInterval elapsedTime;
 @property (nonatomic, weak) NSThread *thread;
@@ -38,6 +42,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 {
     if ((self = [super init]))
     {
+        self.world = [PHYWorld world];
         self.referenceView = view;
         _behaviors = [NSMutableArray array];
         self.thread = [NSThread currentThread];

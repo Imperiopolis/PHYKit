@@ -10,6 +10,7 @@
 
 @class PHYDynamicBehavior;
 @class PHYDynamicAnimator;
+@class PHYWorld;
 
 @protocol PHYDynamicAnimatorDelegate <NSObject>
 
