@@ -606,7 +606,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitPhysics/UIKitPhysics-Prefix.pch";
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}";
+				HEADER_SEARCH_PATHS = "./**";
 				INFOPLIST_FILE = "UIKitPhysics/UIKitPhysics-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -618,7 +618,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitPhysics/UIKitPhysics-Prefix.pch";
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}";
+				HEADER_SEARCH_PATHS = "./**";
 				INFOPLIST_FILE = "UIKitPhysics/UIKitPhysics-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
