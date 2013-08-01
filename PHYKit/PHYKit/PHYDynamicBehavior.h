@@ -16,12 +16,16 @@
 
 @end
 
+@class PHYDynamicAnimator;
+
 @interface PHYDynamicBehavior : NSObject
 
 - (void)addChildBehavior:(PHYDynamicBehavior *)behavior;
 - (void)removeChildBehavior:(PHYDynamicBehavior *)behavior;
+- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator;
 
 @property (nonatomic, readonly, copy) NSArray *childBehaviors;
+@property (assign) PHYDynamicAnimator *dynamicAnimator;
 @property (nonatomic, copy) void (^action)(void);
 
 @end

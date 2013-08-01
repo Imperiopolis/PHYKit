@@ -19,6 +19,7 @@ typedef void(^PHYWorldBlock)(void);
 @property (nonatomic, readonly) NSArray *bodies;
 
 + (instancetype)world;
+- (void)stepWithTime:(NSTimeInterval)timeInterval;
 - (void)stepWithTime:(NSTimeInterval)timeInterval velocityIterations:(NSUInteger)velocityIterations positionIterations:(NSUInteger)positionIterations;
 
 - (void)removeAllBodies;
