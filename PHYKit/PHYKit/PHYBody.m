@@ -44,6 +44,12 @@
 
 - (void)setWorld:(PHYWorld *)world
 {
+    if (_world)
+    {
+        self.body->DestroyFixture(self.fixture);
+        [_world _world]->DestroyBody(self.body);
+    }
+    
     _world = world;
 
     if (_world)
@@ -51,8 +57,8 @@
         // Define the dynamic body.
     
         CGPoint p = self.dynamicItem.center;
-        CGSize boxSize = CGSizeMake(self.dynamicItem.bounds.size.width / kPointsToMeterRatio / 2.0,
-                                    self.dynamicItem.bounds.size.height / kPointsToMeterRatio / 2.0);
+        CGSize boxSize = CGSizeMake(CGRectGetWidth(self.dynamicItem.bounds) / kPointsToMeterRatio / 2.0,
+                                    CGRectGetHeight(self.dynamicItem.bounds) / kPointsToMeterRatio / 2.0);
 
         _bodyDef.position.Set(p.x / kPointsToMeterRatio,
                               p.y / kPointsToMeterRatio);
@@ -63,7 +69,7 @@
         // Define another box shape for our dynamic body.
         b2PolygonShape dynamicBox;
 
-        dynamicBox.SetAsBox(self.dynamicItem.bounds.size.width, self.dynamicItem.bounds.size.height);
+        dynamicBox.SetAsBox(boxSize.width, boxSize.height);
 
         // Define the dynamic body fixture.
         _fixtureDef.shape = &dynamicBox;
@@ -180,7 +186,7 @@
 
 - (BOOL)affectedByGravity
 {
-    return self.body->GetGravityScale() != 0 ? YES : NO;
+    return (self.body->GetGravityScale() != 0);
 }
 
 - (void)setAngularDamping:(float)angularDamping
@@ -210,7 +216,7 @@
 
 - (float)rotation
 {
-    self.body->GetAngle();
+    return self.body->GetAngle();
 }
 
 - (void)setPosition:(struct CGPoint)position
@@ -227,6 +233,7 @@
 {
 
 }
+
 - (void)applyUnscaledImpulse:(struct CGPoint)impulse atPoint:(struct CGPoint)point
 {
 
@@ -236,6 +243,7 @@
 {
 
 }
+
 - (void)applyUnscaledForce:(struct CGPoint)force atPoint:(struct CGPoint)point
 {
 
@@ -250,6 +258,7 @@
 {
 
 }
+
 - (void)applyImpulse:(struct CGPoint)impulse atPoint:(struct CGPoint)point
 {
 
@@ -264,6 +273,7 @@
 {
 
 }
+
 - (void)applyForce:(struct CGPoint)force atPoint:(struct CGPoint)point
 {
     
