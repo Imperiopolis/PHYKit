@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D1768DB17AB1A2500761FEC /* GravityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1768DA17AB1A2500761FEC /* GravityViewController.m */; };
 		2D1768DE17AB1B4200761FEC /* Gravity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1768DC17AB1B4200761FEC /* Gravity.xib */; };
 		2D4585F8177E6B370000096B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4585F7177E6B370000096B /* Cocoa.framework */; };
 		2D458602177E6B370000096B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D458600177E6B370000096B /* InfoPlist.strings */; };
@@ -20,6 +19,7 @@
 		2D458620177E6B370000096B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D45861E177E6B370000096B /* InfoPlist.strings */; };
 		2D458622177E6B370000096B /* NewtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D458621177E6B370000096B /* NewtonTests.m */; };
 		2D458632177E6C200000096B /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D458630177E6BF90000096B /* PHYKit.framework */; };
+		6374DA4317AC7DAF0043D3B0 /* GravityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6374DA4217AC7DAF0043D3B0 /* GravityViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D1768D917AB1A2500761FEC /* GravityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GravityViewController.h; path = ../GravityViewController.h; sourceTree = "<group>"; };
-		2D1768DA17AB1A2500761FEC /* GravityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GravityViewController.m; path = ../GravityViewController.m; sourceTree = "<group>"; };
 		2D1768DD17AB1B4200761FEC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Gravity.xib; sourceTree = "<group>"; };
 		2D4585F4177E6B370000096B /* Newton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Newton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4585F7177E6B370000096B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -70,6 +68,8 @@
 		2D458621177E6B370000096B /* NewtonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewtonTests.m; sourceTree = "<group>"; };
 		2D45862B177E6BF90000096B /* PHYKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PHYKit.xcodeproj; path = ../../PHYKit/PHYKit.xcodeproj; sourceTree = "<group>"; };
 		2D484DA3177F535400036DF0 /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PHYKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6374DA4117AC7DAF0043D3B0 /* GravityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravityViewController.h; sourceTree = "<group>"; };
+		6374DA4217AC7DAF0043D3B0 /* GravityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GravityViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +140,7 @@
 			children = (
 				2D458609177E6B370000096B /* AppDelegate.h */,
 				2D45860A177E6B370000096B /* AppDelegate.m */,
-				2D1768D917AB1A2500761FEC /* GravityViewController.h */,
-				2D1768DA17AB1A2500761FEC /* GravityViewController.m */,
+				6374DA4017AC7DAF0043D3B0 /* ViewControllers */,
 				2D45860C177E6B370000096B /* MainMenu.xib */,
 				2D1768DC17AB1B4200761FEC /* Gravity.xib */,
 				2D4585FE177E6B370000096B /* Supporting Files */,
@@ -193,6 +192,15 @@
 				2D45862B177E6BF90000096B /* PHYKit.xcodeproj */,
 			);
 			name = "Project Dependencies";
+			sourceTree = "<group>";
+		};
+		6374DA4017AC7DAF0043D3B0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6374DA4117AC7DAF0043D3B0 /* GravityViewController.h */,
+				6374DA4217AC7DAF0043D3B0 /* GravityViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +320,7 @@
 			files = (
 				2D45860B177E6B370000096B /* AppDelegate.m in Sources */,
 				2D458604177E6B370000096B /* main.m in Sources */,
-				2D1768DB17AB1A2500761FEC /* GravityViewController.m in Sources */,
+				6374DA4317AC7DAF0043D3B0 /* GravityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
