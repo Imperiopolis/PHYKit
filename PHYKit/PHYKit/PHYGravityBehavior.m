@@ -25,6 +25,7 @@
     {
         _items = [NSMutableArray arrayWithArray:items];
         self.magnitude = 1;
+        self.angle = M_PI_2;
     }
     
     return self;
@@ -61,19 +62,14 @@
 
 - (void)setAngle:(CGFloat)angle
 {
-    _angle = angle * (180 / M_PI); // convert from radians
-    _gravityDirection = CGSizeMake(sin(_angle) * _magnitude, cos(_angle) * _magnitude);
-}
-
-- (CGFloat)angle
-{
-    return _angle * (M_PI / 180); // convert to radians
+    _angle = angle; // convert from radians
+    _gravityDirection = CGSizeMake(cos(_angle) * _magnitude, sin(_angle) * _magnitude);
 }
 
 - (void)setMagnitude:(CGFloat)magnitude
 {
     _magnitude = magnitude;
-    _gravityDirection = CGSizeMake(sin(_angle) * _magnitude, cos(_angle) * _magnitude);
+    _gravityDirection = CGSizeMake(cos(_angle) * _magnitude, sin(_angle) * _magnitude);
 }
 
 - (NSString *)description
