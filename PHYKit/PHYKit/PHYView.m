@@ -12,6 +12,8 @@
 @interface PHYView ()
 {
     CGPoint _center;
+    BOOL _loadedFromXib;
+    BOOL _coordinatesHaveBeenSantized;
 }
 @end
 
@@ -34,19 +36,40 @@
 // flip coordinates when loading a xib
 - (void)awakeFromNib
 {
-#warning find a better thing
+    _loadedFromXib = YES;
+    if (!_coordinatesHaveBeenSantized && self.superview)
+    {
+        self.center = [self flippedCoordinatesFromSuperview: self.superview];
+    }
+}
+
+- (void)viewWillMoveToSuperview:(NSView *)newSuperview
+{
+    if (_loadedFromXib)
+    {
+        self.center = [self flippedCoordinatesFromSuperview: newSuperview];
+    }
+
+    [super viewWillMoveToSuperview: newSuperview];
+}
+
+- (CGPoint)flippedCoordinatesFromSuperview:(NSView*)superview
+{
     CGFloat height;
-    if ([self.superview isKindOfClass:NSClassFromString(@"NSThemeFrame")])
+#warning find a better thing than themeframe
+    if ([superview isKindOfClass:NSClassFromString(@"NSThemeFrame")])
     {
         height = NSHeight(self.frame);
     }
     else
     {
-        height = NSHeight(self.superview.frame);
+        height = NSHeight(superview.frame);
     }
+    
+    _coordinatesHaveBeenSantized = YES;
 
-    self.center = CGPointMake(NSMinX(self.frame) + NSWidth(self.frame) / 2,
-                              height - NSMinY(self.frame) - NSHeight(self.frame) / 2);
+    return CGPointMake(NSMinX(self.frame) + NSWidth(self.frame) / 2,
+                       height - NSMinY(self.frame) - NSHeight(self.frame) / 2);
 }
 
 // Call PHYView initWithFrame instead of super
