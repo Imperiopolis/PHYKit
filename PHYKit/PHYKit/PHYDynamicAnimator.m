@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreVideo/CoreVideo.h>
 #import "PHYWorld.h"
+#import "PHYBody.h"
 
 #define kGravityScaleFactory    (1000)
 
@@ -59,6 +60,13 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     return self;
 }
 
+- (void)dealloc
+{
+    CVDisplayLinkStop(_displayLink);
+    CVDisplayLinkRelease(_displayLink);
+    _displayLink = NULL;
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     switch ((NSKeyValueChange)[[change objectForKey:@"kind"] unsignedIntegerValue]) {
@@ -70,7 +78,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
                 NSArray *items = [[(id)behavior items] objectsAtIndexes:[change objectForKey:@"indexes"]];
                 for (id<PHYDynamicItem> item in items)
                 {
-                    [self.world removeBody: item];
+                    [self.world removeBody: [self bodyFromDynamicItem: item]];
                 }
             }
 
@@ -103,7 +111,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
                 NSArray *items = [[(id)behavior items] objectsAtIndexes:[change objectForKey:@"indexes"]];
                 for (id<PHYDynamicItem> item in items)
                 {
-                    [self.world addBody: item];
+                    [self.world addBody: [[PHYBody alloc] initWithDynamicItem: item]];
                 }
             }
 
@@ -129,7 +137,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         NSArray *items = [(id)behavior items];
         for (id<PHYDynamicItem> item in items)
         {
-            [self.world addBody: item];
+            [self.world addBody: [[PHYBody alloc] initWithDynamicItem: item]];
         }
     }
 
@@ -158,7 +166,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         NSArray *items = [(id)behavior items];
         for (id<PHYDynamicItem> item in items)
         {
-            [self.world removeBody: item];
+            [self.world removeBody: [self bodyFromDynamicItem: item]];
         }
     }
 
@@ -218,8 +226,8 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)updateItemUsingCurrentState:(id <PHYDynamicItem>)item
 {
-    [self.world removeBody: item];
-    [self.world addBody: item];
+    [self.world removeBody: [self bodyFromDynamicItem: item]];
+    [self.world addBody: [[PHYBody alloc] initWithDynamicItem: item]];
 }
 
 // starts when a new behavior or item is added
@@ -258,6 +266,19 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         self.lastTime = now;
         self.elapsedTime = self.lastTime - self.startTime;
     }
+}
+
+- (PHYBody*)bodyFromDynamicItem:(id <PHYDynamicItem>)dynamicItem
+{
+    for (PHYBody *body in [self.world bodies])
+    {
+        if ([body.dynamicItem isEqual: dynamicItem])
+        {
+            return body;
+        }
+    }
+
+    return nil;
 }
 
 @end

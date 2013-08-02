@@ -10,7 +10,7 @@
 
 typedef void(^PHYWorldBlock)(void);
 
-@class NSMutableArray;
+@class NSMutableArray, PHYBody;
 @protocol PHYDynamicItem;
 
 @interface PHYWorld : NSObject
@@ -23,8 +23,8 @@ typedef void(^PHYWorldBlock)(void);
 - (void)stepWithTime:(NSTimeInterval)timeInterval velocityIterations:(NSUInteger)velocityIterations positionIterations:(NSUInteger)positionIterations;
 
 - (void)removeAllBodies;
-- (void)removeBody:(id<PHYDynamicItem>)body;
-- (void)addBody:(id<PHYDynamicItem>)body;
+- (void)removeBody:(PHYBody*)body;
+- (void)addBody:(PHYBody*)body;
 - (BOOL)hasBodies;
 
 - (id)bodyAlongRayStart:(struct CGPoint)startPoint end:(struct CGPoint)endPoint;
