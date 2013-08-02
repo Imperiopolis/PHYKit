@@ -45,7 +45,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 {
     if ((self = [super init]))
     {
-        self.world = [PHYWorld world];
+        self.world = [[PHYWorld alloc] init];
         self.referenceView = view;
         _behaviors = [NSMutableArray array];
         self.thread = [NSThread currentThread];
