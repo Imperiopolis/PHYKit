@@ -22,6 +22,7 @@
 		2D094B3117A4083800003684 /* PHYJointWeld.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DCE17A403A500B99F05 /* PHYJointWeld.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2D094B3217A4083800003684 /* PHYWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4A4DCF17A403A500B99F05 /* PHYWorld.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2D094B3417A4087F00003684 /* PHYWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D094B3317A4087F00003684 /* PHYWorld.m */; };
+		2D1768E017ABEE6200761FEC /* PHYBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1768DF17ABEE6200761FEC /* PHYBody.m */; };
 		2D458637177E6CFE0000096B /* PHYGravityBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D458635177E6CFE0000096B /* PHYGravityBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D458638177E6CFE0000096B /* PHYGravityBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D458636177E6CFE0000096B /* PHYGravityBehavior.m */; };
 		2D45863B177F0B1F0000096B /* PHYCollisionBehavior.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -143,6 +144,7 @@
 
 /* Begin PBXFileReference section */
 		2D094B3317A4087F00003684 /* PHYWorld.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PHYWorld.m; sourceTree = "<group>"; };
+		2D1768DF17ABEE6200761FEC /* PHYBody.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PHYBody.m; sourceTree = "<group>"; };
 		2D458635177E6CFE0000096B /* PHYGravityBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYGravityBehavior.h; sourceTree = "<group>"; };
 		2D458636177E6CFE0000096B /* PHYGravityBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYGravityBehavior.m; sourceTree = "<group>"; };
 		2D458639177F0B1F0000096B /* PHYCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYCollisionBehavior.h; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				2D4A4DC517A403A500B99F05 /* NSCopying-Protocol.h */,
 				2D4A4DC617A403A500B99F05 /* NSValue-PHYPath.h */,
 				2D4A4DC717A403A500B99F05 /* PHYBody.h */,
+				2D1768DF17ABEE6200761FEC /* PHYBody.m */,
 				2D4A4DC817A403A500B99F05 /* PHYContact.h */,
 				2D4A4DC917A403A500B99F05 /* PHYJoint.h */,
 				2D4A4DCA17A403A500B99F05 /* PHYJointDistance.h */,
@@ -766,6 +769,7 @@
 				2DEE6A24179C2CD3009D4F83 /* b2Contact.cpp in Sources */,
 				7AFEF434178D07A40074830D /* PHYSnapBehavior.m in Sources */,
 				2D094B3417A4087F00003684 /* PHYWorld.m in Sources */,
+				2D1768E017ABEE6200761FEC /* PHYBody.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

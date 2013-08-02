@@ -7,17 +7,19 @@
 //  Copyright (c) 2013 Nathan Trapp. All rights reserved.
 //
 
-#import <PHYWorld.h>
-#import <Box2D/Box2D.h>
-#import "PHYDynamicBehavior.h"
 #import "PHYGeometry.h"
+#import "PHYWorld.h"
+#import "PHYDynamicBehavior.h"
+#import "PHYBody.h"
+
+#import <Box2D/Box2D.h>
 
 @interface PHYWorld ()
 {
     b2World *_b2world;
+    NSMutableArray *_bodies;
+    
 }
-
-@property (strong, nonatomic) NSMutableDictionary *bodyMap;
 
 @end
 
@@ -39,10 +41,16 @@
         
         _b2world->SetContinuousPhysics(true);
         
-        self.bodyMap = [NSMutableDictionary dictionary];
+        _bodies = [NSMutableArray array];
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    delete _b2world;
+    _b2world = nil;
 }
 
 - (void)stepWithTime:(NSTimeInterval)timeInterval
@@ -56,24 +64,22 @@
     _b2world->Step(timeInterval, (int32)velocityIterations, (int32)positionIterations);
     
     //Iterate over the bodies in the physics world
-	for (id<PHYDynamicItem> dynamicItem in self.bodies)
+	for (PHYBody *body in _bodies)
 	{
-        b2Body *b = [self b2BodyFromDynamicItem: dynamicItem];
-        
-		if (b->GetUserData() != NULL)
+		if (body.dynamicItem)
 		{
 			// y Position subtracted because of flipped coordinate system
-			CGPoint newCenter = CGPointMake(b->GetPosition().x * kPointsToMeterRatio,
-                                            b->GetPosition().y * kPointsToMeterRatio);
+			CGPoint newCenter = CGPointMake(body.body->GetPosition().x * kPointsToMeterRatio,
+                                            body.body->GetPosition().y * kPointsToMeterRatio);
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                dynamicItem.center = newCenter;
+                body.dynamicItem.center = newCenter;
             });
 
 #warning make sure the minus sign is supposed to be there, and look here if we are getting backwards rotations
-			CGAffineTransform transform = CGAffineTransformMakeRotation(- b->GetAngle());
+			CGAffineTransform transform = CGAffineTransformMakeRotation(- body.body->GetAngle());
             
-			dynamicItem.transform = transform;
+			body.dynamicItem.transform = transform;
 		}
 	}
 
@@ -82,86 +88,33 @@
 
 - (void)removeAllBodies
 {
-    for (id<PHYDynamicItem> dynamicItem in self.bodies)
-    {
-        b2Body *body = [self b2BodyFromDynamicItem: dynamicItem];
-
-        _b2world->DestroyBody(body);
-    }
-    
-    [self.bodyMap removeAllObjects];
+    [_bodies removeAllObjects];
 }
 
-- (void)removeBody:(id<PHYDynamicItem>)dynamicItem
+- (void)removeBody:(PHYBody*)body
 {
-    b2Body *body = [self b2BodyFromDynamicItem: dynamicItem];
-
-    _b2world->DestroyBody(body);
-
-    //[self.bodyMap removeObjectForKey:[NSValue valueWithNonretainedObject:dynamicItem]];
+    [_bodies removeObject: body];
 }
 
-- (void)addBody:(id<PHYDynamicItem>)dynamicItem
+- (void)addBody:(PHYBody*)body
 {
-    // Define the dynamic body.
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-    
-	CGPoint p = dynamicItem.center;
-	CGSize boxSize = CGSizeMake(dynamicItem.bounds.size.width / kPointsToMeterRatio / 2.0,
-                                dynamicItem.bounds.size.height / kPointsToMeterRatio / 2.0);
-    
-	bodyDef.position.Set(p.x / kPointsToMeterRatio,
-                         p.y / kPointsToMeterRatio);
-    
-	bodyDef.userData = (__bridge void *)dynamicItem;
-    
-	// Tell the physics world to create the body
-	b2Body *body = _b2world->CreateBody(&bodyDef);
-    
-	// Define another box shape for our dynamic body.
-	b2PolygonShape dynamicBox;
-    
-	dynamicBox.SetAsBox(boxSize.width, boxSize.height);
-    
-	// Define the dynamic body fixture.
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;
-	fixtureDef.density = 3.0f;
-	fixtureDef.friction = 0.3f;
-	fixtureDef.restitution = 0.5f; // 0 is a lead ball, 1 is a super bouncy ball
-	body->CreateFixture(&fixtureDef);
-    
-	// a dynamic body reacts to forces right away
-	body->SetType(b2_dynamicBody);
-    
-    [self.bodyMap setObject:[NSValue valueWithPointer:body] forKey:[NSValue valueWithNonretainedObject:dynamicItem]];
+    body.world = self;
+    body.dynamic = YES;
+    body.density = 3.0f;
+    body.friction = 0.3f;
+    body.restitution = 0.5f; // 0 is a lead ball, 1 is a super bouncy ball
+
+    [_bodies addObject: body];
 }
 
 - (NSArray *)bodies
 {
-    NSMutableArray *bodies = [NSMutableArray array];
-
-    for (NSValue *value in [[self.bodyMap allKeys] copy])
-    {
-        id <PHYDynamicItem>dynamicItem = [value nonretainedObjectValue];
-
-        if (dynamicItem)
-        {
-            [bodies addObject: dynamicItem];
-        }
-        else
-        {
-            [self.bodyMap removeObjectForKey: value];
-        }
-    }
-    
-    return [bodies copy];
+    return [_bodies copy];
 }
 
 - (BOOL)hasBodies
 {
-    return [self.bodies count] != 0;
+    return [_bodies count] != 0;
 }
 
 
@@ -205,9 +158,9 @@
     _b2world->SetGravity(CGPointTob2Vec2(gravity));
 }
 
-- (b2Body *)b2BodyFromDynamicItem:(id <PHYDynamicItem>)dynamicItem
+- (b2World*)_world
 {
-    return (b2Body*)[[self.bodyMap objectForKey:[NSValue valueWithNonretainedObject:dynamicItem]] pointerValue];
+    return _b2world;
 }
 
 @end

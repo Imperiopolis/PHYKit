@@ -6,28 +6,11 @@
 //  Copyright (c) 2013 Nathan Trapp. All rights reserved.
 //
 
-static const CGFloat kPointsToMeterRatio = 32;
+#import <Box2D/Common/b2Math.h>
 
-float32 PointsToMeters(CGFloat points)
-{
-    return points / kPointsToMeterRatio;
-}
+#define kPointsToMeterRatio     (32)
 
-CGFloat MetersToPoints(float32 meters)
-{
-    return meters * kPointsToMeterRatio;
-}
-
-b2Vec2 CGPointTob2Vec2(CGPoint point)
-{
-    float32 x = PointsToMeters(point.x);
-    float32 y = PointsToMeters(point.y);
-    return b2Vec2(x, y);
-}
-
-CGPoint b2Vec2ToCGPoint(b2Vec2 vector)
-{
-    CGFloat x = MetersToPoints(vector.x);
-    CGFloat y = MetersToPoints(vector.y);
-    return CGPointMake(x, y);
-}
+#define PointsToMeters(points)  (points / kPointsToMeterRatio)
+#define MetersToPoints(meters)  (meters * kPointsToMeterRatio)
+#define CGPointTob2Vec2(point)  (b2Vec2(PointsToMeters(point.x), PointsToMeters(point.y)))
+#define b2Vec2ToCGPoint(vector) (CGPointMake(MetersToPoints(vector.x), MetersToPoints(vector.y)))
