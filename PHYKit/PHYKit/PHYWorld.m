@@ -17,18 +17,12 @@
 @interface PHYWorld ()
 {
     b2World *_b2world;
-    NSMutableArray *_bodies;
-    
+    NSMutableSet *_bodies;
 }
 
 @end
 
 @implementation PHYWorld
-
-+ (instancetype)world
-{
-    return [[PHYWorld alloc] init];
-}
 
 - (instancetype)init
 {
@@ -41,7 +35,7 @@
         
         _b2world->SetContinuousPhysics(true);
         
-        _bodies = [NSMutableArray array];
+        _bodies = [NSMutableSet set];
     }
     
     return self;
@@ -109,7 +103,7 @@
 
 - (NSArray *)bodies
 {
-    return [_bodies copy];
+    return [_bodies allObjects];
 }
 
 - (BOOL)hasBodies

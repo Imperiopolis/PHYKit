@@ -6,11 +6,9 @@
 //
 //
 
-#import <Foundation/NSObject.h>
-
 typedef void(^PHYWorldBlock)(void);
 
-@class NSMutableArray, PHYBody;
+@class PHYBody;
 @protocol PHYDynamicItem;
 
 @interface PHYWorld : NSObject
@@ -18,7 +16,6 @@ typedef void(^PHYWorldBlock)(void);
 @property (nonatomic) struct CGPoint gravity;
 @property (nonatomic, readonly) NSArray *bodies;
 
-+ (instancetype)world;
 - (void)stepWithTime:(NSTimeInterval)timeInterval;
 - (void)stepWithTime:(NSTimeInterval)timeInterval velocityIterations:(NSUInteger)velocityIterations positionIterations:(NSUInteger)positionIterations;
 

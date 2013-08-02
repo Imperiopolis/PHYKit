@@ -37,9 +37,15 @@
 
 - (void)dealloc
 {
-    self.body->DestroyFixture(self.fixture);
-    [self.world _world]->DestroyBody(self.body);
-    self.body = nil;
+    if (self.body)
+    {
+        if (self.world)
+        {
+            self.body->DestroyFixture(self.fixture);
+            [self.world _world]->DestroyBody(self.body);
+        }
+        self.body = nil;
+    }
 }
 
 - (void)setWorld:(PHYWorld *)world
@@ -83,18 +89,21 @@
 
 - (void)setDynamic:(BOOL)dynamic
 {
-    if (dynamic)
+    if (self.body)
     {
-        _bodyDef.type = b2_dynamicBody;
+        if (dynamic)
+        {
+            _bodyDef.type = b2_dynamicBody;
+        }
+        else
+        {
+            _bodyDef.type = b2_staticBody;
+        }
+        
+        _dynamic = dynamic;
+        
+        self.body->SetType(_dynamic ? b2_dynamicBody : b2_staticBody);
     }
-    else
-    {
-        _bodyDef.type = b2_staticBody;
-    }
-
-    _dynamic = dynamic;
-
-    self.body->SetType(_dynamic ? b2_dynamicBody : b2_staticBody);
 }
 
 - (void)setDensity:(float)density
