@@ -7,12 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import <PHYKit/PHYKit.h>
+#import "GravityViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <NSTableViewDelegate>
 
-@property (weak) IBOutlet PHYView *dropView;
-@property (nonatomic) PHYDynamicAnimator *animator;
+@property (strong) IBOutlet NSMutableArray *items;
+@property (weak) IBOutlet PHYView *physicsView;
+@property (strong) NSViewController *viewController;
 
 @end
 
@@ -20,16 +21,37 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.dropView.backgroundColor = [NSColor greenColor];
-    self.animator = [[PHYDynamicAnimator alloc] initWithReferenceView:self.window.contentView];
+    [self willChangeValueForKey:@"items"];
+    self.items = [NSMutableArray arrayWithArray:@[
+     @{@"items": @"Gravity"},
+     @{@"items": @"Collision + Gravity"},
+     @{@"items": @"Attachments"},
+     @{@"items": @"Collision + Gravity + Spring"},
+     @{@"items": @"Snap"},
+     @{@"items": @"Instantaneous Push"},
+     @{@"items": @"Continuous Push"},
+     @{@"items": @"Item Properties"}]];
+    [self didChangeValueForKey:@"items"];
+
     
-    PHYView *view = [[PHYView alloc] initWithFrame:NSMakeRect(20, 0200, 100, 100)];
-    view.backgroundColor = [NSColor blueColor];
-    [self.dropView.superview addSubview:view];
 
-    PHYGravityBehavior *gravity = [[PHYGravityBehavior alloc] initWithItems:@[self.dropView, view]];
+}
 
-    [self.animator addBehavior:gravity];
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    NSTableView *table = [notification object];
+
+    NSInteger selectedRow = [table selectedRow];
+
+    NSString *label = [[self.items objectAtIndex: selectedRow] objectForKey: @"items"];
+
+    [self.viewController.view removeFromSuperview];
+
+    self.viewController = nil;
+
+    self.viewController = [[NSClassFromString([NSString stringWithFormat:@"%@ViewController",label]) alloc] initWithNibName:label bundle:nil];
+
+    [self.physicsView addSubview: self.viewController.view];
 }
 
 @end

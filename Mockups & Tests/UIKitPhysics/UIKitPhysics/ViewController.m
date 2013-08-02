@@ -96,7 +96,7 @@
 	fixtureDef.friction = 0.3f;
 	fixtureDef.restitution = 0.5f; // 0 is a lead ball, 1 is a super bouncy ball
 	body->CreateFixture(&fixtureDef);
-    
+
 	// a dynamic body reacts to forces right away
 	body->SetType(b2_dynamicBody);
     
