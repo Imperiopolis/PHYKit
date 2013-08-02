@@ -15,7 +15,6 @@
 		2D458608177E6B370000096B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2D458606177E6B370000096B /* Credits.rtf */; };
 		2D45860B177E6B370000096B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D45860A177E6B370000096B /* AppDelegate.m */; };
 		2D45860E177E6B370000096B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D45860C177E6B370000096B /* MainMenu.xib */; };
-		2D458610177E6B370000096B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D45860F177E6B370000096B /* Images.xcassets */; };
 		2D458617177E6B370000096B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D458616177E6B370000096B /* XCTest.framework */; };
 		2D458618177E6B370000096B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4585F7177E6B370000096B /* Cocoa.framework */; };
 		2D458620177E6B370000096B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D45861E177E6B370000096B /* InfoPlist.strings */; };
@@ -64,7 +63,6 @@
 		2D458609177E6B370000096B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D45860A177E6B370000096B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D45860D177E6B370000096B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2D45860F177E6B370000096B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D458615177E6B370000096B /* NewtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = folder; includeInIndex = 0; path = NewtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D458616177E6B370000096B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2D45861D177E6B370000096B /* NewtonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NewtonTests-Info.plist"; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				2D1768DA17AB1A2500761FEC /* GravityViewController.m */,
 				2D45860C177E6B370000096B /* MainMenu.xib */,
 				2D1768DC17AB1B4200761FEC /* Gravity.xib */,
-				2D45860F177E6B370000096B /* Images.xcassets */,
 				2D4585FE177E6B370000096B /* Supporting Files */,
 			);
 			path = Newton;
@@ -292,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D458602177E6B370000096B /* InfoPlist.strings in Resources */,
-				2D458610177E6B370000096B /* Images.xcassets in Resources */,
 				2D458608177E6B370000096B /* Credits.rtf in Resources */,
 				2D45860E177E6B370000096B /* MainMenu.xib in Resources */,
 				2D1768DE17AB1B4200761FEC /* Gravity.xib in Resources */,
