@@ -21,8 +21,6 @@
 - (void)addAngularVelocity:(CGFloat)velocity forItem:(id <PHYDynamicItem>)item;
 - (CGFloat)angularVelocityForItem:(id <PHYDynamicItem>)item;
 
-@property (nonatomic, readonly, copy) NSArray* items;
-
 @property (readwrite, nonatomic) CGFloat elasticity;
 @property (readwrite, nonatomic) CGFloat friction;
 @property (readwrite, nonatomic) CGFloat density;

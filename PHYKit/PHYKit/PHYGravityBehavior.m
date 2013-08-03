@@ -11,8 +11,8 @@
 
 @interface PHYGravityBehavior ()
 {
-    NSMutableArray *_items;
     CGFloat _angle;
+    NSMutableSet *_items;
 }
 
 @end
@@ -23,7 +23,7 @@
 {
     if ((self = [super init]))
     {
-        _items = [NSMutableArray arrayWithArray:items];
+        _items = [NSMutableSet setWithArray: items];
         self.magnitude = 1;
         self.angle = M_PI_2;
     }
@@ -41,7 +41,7 @@
 
 - (void)removeItem:(id <PHYDynamicItem>)item
 {
-    NSIndexSet *idx = [NSIndexSet indexSetWithIndex:[_items indexOfObject:item]];
+    NSIndexSet *idx = [NSIndexSet indexSetWithIndex:[[_items allObjects] indexOfObject:item]];
     [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:idx forKey:@"items"];
     [_items removeObject:item];
     [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:idx forKey:@"items"];
@@ -75,6 +75,11 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<%@: %p; gravity = <%f, %f>>", [self className], self, self.angle, self.magnitude];
+}
+
+- (NSArray*)items
+{
+    return [_items allObjects];
 }
 
 @end

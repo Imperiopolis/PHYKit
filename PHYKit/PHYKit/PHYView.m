@@ -153,4 +153,20 @@
     return YES;
 }
 
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    if ([self.delegate respondsToSelector:@selector(viewClicked:)])
+    {
+        [self.delegate viewClicked: theEvent];
+    }
+}
+
+- (void)mouseDragged:(NSEvent*)theEvent
+{
+    if ([self.delegate respondsToSelector:@selector(viewDragged:)])
+    {
+        [self.delegate viewDragged: theEvent];
+    }
+}
+
 @end

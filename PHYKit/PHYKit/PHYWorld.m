@@ -94,9 +94,6 @@
 {
     body.world = self;
     body.dynamic = YES;
-    body.density = 3.0f;
-    body.friction = 0.3f;
-    body.restitution = 0.5f; // 0 is a lead ball, 1 is a super bouncy ball
 
     [_bodies addObject: body];
 }

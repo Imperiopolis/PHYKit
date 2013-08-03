@@ -8,11 +8,27 @@
 
 #import "PHYDynamicItemBehavior.h"
 
+@interface PHYDynamicItemBehavior ()
+{
+    NSMutableSet *_items;
+}
+
+@end
+
 @implementation PHYDynamicItemBehavior
 
 - (instancetype)initWithItems:(NSArray *)items
 {
-    return nil;
+    if ((self = [super init]))
+    {
+        _items = [NSMutableSet setWithArray: items];
+    }
+    return self;
+}
+
+- (NSArray*)items
+{
+    return [_items allObjects];
 }
 
 - (void)addItem:(id <PHYDynamicItem>)item
