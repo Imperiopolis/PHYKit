@@ -6,6 +6,13 @@
 //
 //
 
+typedef NS_ENUM(NSInteger, PHYCollisionCategory) {
+    PHYNoCollisions =           0x0000,
+    PHYReferenceCollisions =    0x0001,
+    PHYBoundaryCollisions =     0x0002,
+    PHYItemsCollisions  =       0x0003
+};
+
 typedef void(^PHYWorldBlock)(void);
 
 @class PHYBody;
@@ -15,6 +22,8 @@ typedef void(^PHYWorldBlock)(void);
 
 @property (nonatomic) struct CGPoint gravity;
 @property (nonatomic, readonly) NSArray *bodies;
+
+- (instancetype)initWithReferenceView:(NSView*)referenceView;
 
 - (void)stepWithTime:(NSTimeInterval)timeInterval;
 - (void)stepWithTime:(NSTimeInterval)timeInterval velocityIterations:(NSUInteger)velocityIterations positionIterations:(NSUInteger)positionIterations;
