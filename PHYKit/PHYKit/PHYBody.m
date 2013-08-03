@@ -79,6 +79,7 @@
 
         // Define the dynamic body fixture.
         _fixtureDef.shape = &dynamicBox;
+        _fixtureDef.filter.maskBits = PHYNoCollisions;
         
         self.fixture = self.body->CreateFixture(&_fixtureDef);
         
@@ -238,14 +239,45 @@
     return b2Vec2ToCGPoint(self.body->GetPosition());
 }
 
+- (unsigned int)categoryBitMask
+{
+    b2Filter filter = self.fixture->GetFilterData();
+
+    return filter.categoryBits;
+}
+
+- (void)setCategoryBitMask:(unsigned int)categoryBitMask
+{
+    b2Filter filter = self.fixture->GetFilterData();
+    filter.categoryBits = categoryBitMask;
+
+    self.fixture->SetFilterData(filter);
+}
+
+- (unsigned int)collisionBitMask
+{
+    b2Filter filter = self.fixture->GetFilterData();
+
+    return filter.maskBits;
+}
+
+
+- (void)setCollisionBitMask:(unsigned int)collisionBitMask
+{
+    b2Filter filter = self.fixture->GetFilterData();
+    filter.maskBits = collisionBitMask;
+
+    self.fixture->SetFilterData(filter);
+}
+
 - (void)applyUnscaledImpulse:(struct CGPoint)impulse
 {
-
+    self.body->ApplyLinearImpulse(CGPointTob2Vec2(impulse), self.body->GetPosition());
 }
 
 - (void)applyUnscaledImpulse:(struct CGPoint)impulse atPoint:(struct CGPoint)point
 {
-
+    self.body->ApplyLinearImpulse(CGPointTob2Vec2(impulse), CGPointTob2Vec2(point));
 }
 
 - (void)applyUnscaledForce:(struct CGPoint)force

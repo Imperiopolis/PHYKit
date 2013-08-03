@@ -10,7 +10,7 @@
 
 #import "PHYDynamicBehavior.h"
 #import "PHYGravityBehavior.h"
-#import "PHYSnapBehavior.h"
+#import "PHYCollisionBehavior.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <CoreVideo/CoreVideo.h>
@@ -48,7 +48,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 {
     if ((self = [super init]))
     {
-        self.world = [[PHYWorld alloc] init];
+        self.world = [[PHYWorld alloc] initWithReferenceView: view];
         self.referenceView = view;
         _behaviors = [NSMutableArray array];
         self.thread = [NSThread currentThread];
@@ -145,13 +145,39 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     // Gravity
     if ([behavior isKindOfClass:[PHYGravityBehavior class]])
     {
-        PHYGravityBehavior *gravity = (PHYGravityBehavior*)behavior;
-        self.world.gravity = CGPointMake(gravity.gravityDirection.width * kGravityScaleFactory, gravity.gravityDirection.height * kGravityScaleFactory);
+        PHYGravityBehavior *gravityBehavior = (PHYGravityBehavior*)behavior;
+        self.world.gravity = CGPointMake(gravityBehavior.gravityDirection.width * kGravityScaleFactory, gravityBehavior.gravityDirection.height * kGravityScaleFactory);
 
-        for (id<PHYDynamicItem> item in gravity.items)
+        for (id<PHYDynamicItem> item in gravityBehavior.items)
         {
             PHYBody *body = [self bodyFromDynamicItem: item];
             body.affectedByGravity = YES;
+        }
+    }
+    // Collisions
+    if ([behavior isKindOfClass:[PHYCollisionBehavior class]])
+    {
+        PHYCollisionBehavior *collisionBehavior = (PHYCollisionBehavior*)behavior;
+
+        for (id<PHYDynamicItem> item in collisionBehavior.items)
+        {
+            PHYBody *body = [self bodyFromDynamicItem: item];
+
+            if (collisionBehavior.translatesReferenceBoundsIntoBoundary)
+            {
+                body.collisionBitMask = PHYReferenceCollisions;
+            }
+
+            switch (collisionBehavior.collisionMode) {
+                case PHYCollisionBehaviorModeEverything:
+                    body.collisionBitMask = PHYReferenceCollisions | PHYBoundaryCollisions | PHYCollisionBehaviorModeItems;
+                case PHYCollisionBehaviorModeBoundaries:
+                    body.collisionBitMask = body.collisionBitMask | PHYBoundaryCollisions;
+                    break;
+                case PHYCollisionBehaviorModeItems:
+                    body.collisionBitMask = body.collisionBitMask | PHYCollisionBehaviorModeItems;
+                    break;
+            }
         }
     }
 

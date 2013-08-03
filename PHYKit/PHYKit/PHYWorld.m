@@ -20,15 +20,19 @@
     NSMutableSet *_bodies;
 }
 
+@property (weak) NSView *referenceView;
+
 @end
 
 @implementation PHYWorld
 
-- (instancetype)init
+- (instancetype)initWithReferenceView:(NSView*)referenceView
 {
     self = [super init];
     if (self)
     {
+        self.referenceView = referenceView;
+
         b2Vec2 gravity;
         gravity.SetZero();
         _b2world = new b2World(gravity);
@@ -36,8 +40,53 @@
         _b2world->SetContinuousPhysics(true);
         
         _bodies = [NSMutableSet set];
+
+        // Define the ground body.
+        b2BodyDef groundBodyDef;
+        groundBodyDef.position.Set(0, 0); // bottom-left corner
+
+        // Call the body factory which allocates memory for the ground body
+        // from a pool and creates the ground box shape (also from a pool).
+        // The body is also added to the world.
+        b2Body* groundBody = _b2world->CreateBody(&groundBodyDef);
+
+        // Define the ground box shape.
+        b2EdgeShape groundBox;
+        
+        // bottom
+        b2FixtureDef botFixtureDef;
+        botFixtureDef.filter.maskBits = PHYReferenceCollisions;
+
+        groundBox.Set(b2Vec2(0,0), b2Vec2(CGRectGetWidth(self.referenceView.bounds) / kPointsToMeterRatio, 0));
+        // Define the dynamic body fixture.
+        botFixtureDef.shape = &groundBox;
+        groundBody->CreateFixture(&botFixtureDef);
+
+        // top
+        b2FixtureDef topFixtureDef;
+        botFixtureDef.filter.maskBits = PHYReferenceCollisions;
+
+        groundBox.Set(b2Vec2(0, CGRectGetHeight(self.referenceView.bounds) / kPointsToMeterRatio), b2Vec2(CGRectGetWidth(self.referenceView.bounds) / kPointsToMeterRatio, CGRectGetHeight(self.referenceView.bounds) / kPointsToMeterRatio));
+        topFixtureDef.shape = &groundBox;
+        groundBody->CreateFixture(&topFixtureDef);
+
+        // left
+        b2FixtureDef leftFixtureDef;
+        botFixtureDef.filter.maskBits = PHYReferenceCollisions;
+
+        groundBox.Set(b2Vec2(0, CGRectGetHeight(self.referenceView.bounds) / kPointsToMeterRatio), b2Vec2(0, 0));
+        leftFixtureDef.shape = &groundBox;
+        groundBody->CreateFixture(&leftFixtureDef);
+
+        // right
+        b2FixtureDef rightFixtureDef;
+        botFixtureDef.filter.maskBits = PHYReferenceCollisions;
+
+        groundBox.Set(b2Vec2(CGRectGetWidth(self.referenceView.bounds) / kPointsToMeterRatio, CGRectGetHeight(self.referenceView.bounds) / kPointsToMeterRatio), b2Vec2(CGRectGetWidth(self.referenceView.bounds) / kPointsToMeterRatio, 0));
+        rightFixtureDef.shape = &groundBox;
+        groundBody->CreateFixture(&rightFixtureDef);
     }
-    
+
     return self;
 }
 

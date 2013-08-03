@@ -10,7 +10,7 @@
 
 @interface PHYCollisionBehavior ()
 {
-    NSMutableArray *_items;
+    NSMutableSet *_items;
 }
 
 @end
@@ -21,21 +21,32 @@
 {
     if ((self = [super init]))
     {
-        _items = [NSMutableArray arrayWithArray:items];
+        _items = [NSMutableSet setWithArray:items];
     }
     
     return self;
 }
 
+- (NSArray*)items
+{
+    return [_items allObjects];
+}
+
 
 - (void)addItem:(id <PHYDynamicItem>)item
 {
+    NSIndexSet *idx = [NSIndexSet indexSetWithIndex:[_items count]];
+    [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:idx forKey:@"items"];
     [_items addObject:item];
+    [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:idx forKey:@"items"];
 }
 
 - (void)removeItem:(id <PHYDynamicItem>)item
 {
+    NSIndexSet *idx = [NSIndexSet indexSetWithIndex:[[_items allObjects] indexOfObject:item]];
+    [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:idx forKey:@"items"];
     [_items removeObject:item];
+    [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:idx forKey:@"items"];
 }
 
 
