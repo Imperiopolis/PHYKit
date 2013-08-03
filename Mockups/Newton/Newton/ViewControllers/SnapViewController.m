@@ -8,20 +8,32 @@
 
 #import "SnapViewController.h"
 
-@interface SnapViewController ()
+@interface SnapViewController ()<PHYViewDelegate>
+
+@property (nonatomic, weak) IBOutlet PHYView *square1;
+@property (nonatomic, strong) PHYDynamicAnimator *animator;
+@property (nonatomic, strong) PHYSnapBehavior *snapBehavior;
 
 @end
 
 @implementation SnapViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)awakeFromNib
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+    self.square1.backgroundColor = [NSColor grayColor];
+    [(PHYView*)self.view setDelegate: self];
+
+    self.animator = [[PHYDynamicAnimator alloc] initWithReferenceView:self.view];
+}
+
+- (void)viewClicked:(NSEvent *)theEvent
+{
+    NSPoint point = [self.view convertPoint:theEvent.locationInWindow fromView:nil];
+
+    [self.animator removeBehavior: self.snapBehavior];
+
+    self.snapBehavior = [[PHYSnapBehavior alloc] initWithItem:self.square1 snapToPoint:point];
+    [self.animator addBehavior: self.snapBehavior];
 }
 
 @end

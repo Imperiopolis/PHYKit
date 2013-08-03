@@ -11,4 +11,7 @@
 #import "PHYDynamicBehavior.h"
 #import "PHYGravityBehavior.h"
 #import "PHYCollisionBehavior.h"
+#import "PHYAttachmentBehavior.h"
+#import "PHYSnapBehavior.h"
+#import "PHYPushBehavior.h"
 #import "PHYView.h"

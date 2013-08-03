@@ -42,7 +42,6 @@ typedef NS_OPTIONS(NSUInteger, PHYCollisionBehaviorMode) {
 - (void)removeBoundaryWithIdentifier:(id <NSCopying>)identifier;
 - (void)removeAllBoundaries;
 
-@property (nonatomic, readonly, copy) NSArray* items;
 @property (nonatomic, readwrite) PHYCollisionBehaviorMode collisionMode;
 @property (nonatomic, readwrite) BOOL translatesReferenceBoundsIntoBoundary;
 @property (nonatomic, readonly, copy) NSArray* boundaryIdentifiers;

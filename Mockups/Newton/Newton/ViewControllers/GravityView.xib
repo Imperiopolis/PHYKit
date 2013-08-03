@@ -71,6 +71,14 @@
 					</object>
 					<int key="connectionID">11</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">square1</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="666917419"/>
+					</object>
+					<int key="connectionID">14</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -127,7 +135,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">14</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -135,13 +143,13 @@
 					<string key="className">GravityViewController</string>
 					<string key="superclassName">NSViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">dropView</string>
+						<string key="NS.key.0">square1</string>
 						<string key="NS.object.0">PHYView</string>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">dropView</string>
+						<string key="NS.key.0">square1</string>
 						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">dropView</string>
+							<string key="name">square1</string>
 							<string key="candidateClassName">PHYView</string>
 						</object>
 					</object>

@@ -10,7 +10,7 @@
 
 @interface GravityViewController ()
 
-@property (weak) IBOutlet PHYView *dropView;
+@property (weak) IBOutlet PHYView *square1;
 @property (nonatomic) PHYDynamicAnimator *animator;
 
 
@@ -20,12 +20,12 @@
 
 - (void)awakeFromNib
 {
-    self.dropView.backgroundColor = [NSColor greenColor];
-    self.animator = [[PHYDynamicAnimator alloc] initWithReferenceView:self.view];
-
-    PHYGravityBehavior *gravity = [[PHYGravityBehavior alloc] initWithItems:@[self.dropView]];
-
-    [self.animator addBehavior:gravity];
+    self.square1.backgroundColor = [NSColor grayColor];
+    
+    PHYDynamicAnimator* animator = [[PHYDynamicAnimator alloc] initWithReferenceView:self.view];
+    PHYGravityBehavior* gravityBeahvior = [[PHYGravityBehavior alloc] initWithItems:@[self.square1]];
+    [animator addBehavior:gravityBeahvior];
+    self.animator = animator;
 }
 
 @end

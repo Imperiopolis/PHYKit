@@ -54,7 +54,9 @@
     self.viewController = nil;
 
     NSString *className = [classPrefix stringByAppendingString:@"ViewController"];
-    self.viewController = [[NSClassFromString(className) alloc] initWithNibName:className bundle:nil];
+    NSString *nibName = [classPrefix stringByAppendingString:@"View"];
+    
+    self.viewController = [[NSClassFromString(className) alloc] initWithNibName:nibName bundle:nil];
 
     [self.physicsView addSubview: self.viewController.view];
 }

@@ -7,8 +7,11 @@
 //
 
 #import "PHYDynamicAnimator.h"
+
 #import "PHYDynamicBehavior.h"
 #import "PHYGravityBehavior.h"
+#import "PHYSnapBehavior.h"
+
 #import <QuartzCore/QuartzCore.h>
 #import <CoreVideo/CoreVideo.h>
 #import "PHYWorld.h"
@@ -62,6 +65,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)dealloc
 {
+    [self removeAllBehaviors];
     CVDisplayLinkStop(_displayLink);
     CVDisplayLinkRelease(_displayLink);
     _displayLink = NULL;
@@ -73,14 +77,12 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         case NSKeyValueChangeRemoval:
         {
             PHYDynamicBehavior *behavior = (PHYDynamicBehavior*)object;
-            if ([behavior respondsToSelector:@selector(items)])
+            NSArray *items = [behavior.items objectsAtIndexes:[change objectForKey:@"indexes"]];
+            for (id<PHYDynamicItem> item in items)
             {
-                NSArray *items = [[(id)behavior items] objectsAtIndexes:[change objectForKey:@"indexes"]];
-                for (id<PHYDynamicItem> item in items)
-                {
-                    [self.world removeBody: [self bodyFromDynamicItem: item]];
-                }
+                [self.world removeBody: [self bodyFromDynamicItem: item]];
             }
+
 
             BOOL hasItems = NO;
 
@@ -106,13 +108,11 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         case NSKeyValueChangeInsertion:
         {
             PHYDynamicBehavior *behavior = (PHYDynamicBehavior*)object;
-            if ([behavior respondsToSelector:@selector(items)])
+
+            NSArray *items = [behavior.items objectsAtIndexes:[change objectForKey:@"indexes"]];
+            for (id<PHYDynamicItem> item in items)
             {
-                NSArray *items = [[(id)behavior items] objectsAtIndexes:[change objectForKey:@"indexes"]];
-                for (id<PHYDynamicItem> item in items)
-                {
-                    [self.world addBody: [[PHYBody alloc] initWithDynamicItem: item]];
-                }
+                [self.world addBody: [[PHYBody alloc] initWithDynamicItem: item]];
             }
 
             [self startPhysics];
@@ -126,26 +126,30 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)addBehavior:(PHYDynamicBehavior *)behavior
 {
-    [behavior willMoveToAnimator: self];
-
     [_behaviors addObject: behavior];
 
     [behavior addObserver:self forKeyPath:@"items" options:0 context:NULL];
 
-    if ([behavior respondsToSelector:@selector(items)])
+    for (id<PHYDynamicItem> item in behavior.items)
     {
-        NSArray *items = [(id)behavior items];
-        for (id<PHYDynamicItem> item in items)
+        if (![self bodyFromDynamicItem: item])
         {
             [self.world addBody: [[PHYBody alloc] initWithDynamicItem: item]];
         }
     }
 
+
+    // Special case for each behavior
+    // custom behaviors are just a collection of these special cases
+
+    // Gravity
     if ([behavior isKindOfClass:[PHYGravityBehavior class]])
     {
         PHYGravityBehavior *gravity = (PHYGravityBehavior*)behavior;
         self.world.gravity = CGPointMake(gravity.gravityDirection.width * kGravityScaleFactory, gravity.gravityDirection.height * kGravityScaleFactory);
     }
+
+    [behavior willMoveToAnimator: self];
 
     if ([_behaviors count])
     {
@@ -154,21 +158,17 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 }
 
 - (void)removeBehavior:(PHYDynamicBehavior *)behavior
-{
-    [behavior willMoveToAnimator: nil];
-    
+{    
     [_behaviors removeObject:behavior];
 
     [behavior removeObserver:self forKeyPath:@"items"];
 
-    if ([behavior respondsToSelector:@selector(items)])
+    for (id<PHYDynamicItem> item in behavior.items)
     {
-        NSArray *items = [(id)behavior items];
-        for (id<PHYDynamicItem> item in items)
-        {
-            [self.world removeBody: [self bodyFromDynamicItem: item]];
-        }
+        [self.world removeBody: [self bodyFromDynamicItem: item]];
     }
+
+    [behavior willMoveToAnimator: nil];
 
     if ([_behaviors count])
     {
@@ -265,6 +265,19 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
         self.lastTime = now;
         self.elapsedTime = self.lastTime - self.startTime;
+
+        [self applyPostStepBlocks];
+    }
+}
+
+- (void)applyPostStepBlocks
+{
+    for (PHYDynamicBehavior *behavior in _behaviors)
+    {
+        if (behavior.action)
+        {
+            behavior.action();
+        }
     }
 }
 
