@@ -147,6 +147,12 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     {
         PHYGravityBehavior *gravity = (PHYGravityBehavior*)behavior;
         self.world.gravity = CGPointMake(gravity.gravityDirection.width * kGravityScaleFactory, gravity.gravityDirection.height * kGravityScaleFactory);
+
+        for (id<PHYDynamicItem> item in gravity.items)
+        {
+            PHYBody *body = [self bodyFromDynamicItem: item];
+            body.affectedByGravity = YES;
+        }
     }
 
     [behavior willMoveToAnimator: self];
