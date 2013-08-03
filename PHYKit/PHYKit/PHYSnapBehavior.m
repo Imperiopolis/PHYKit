@@ -10,7 +10,7 @@
 #import "PHYDynamicAnimator.h"
 #import "PHYBody.h"
 
-@interface PHYDynamicAnimator (PHYSnapAnimator)
+@interface PHYDynamicAnimator (PHYPrivateAnimator)
 
 - (PHYBody*)bodyFromDynamicItem:(id <PHYDynamicItem>)dynamicItem;
 
@@ -19,9 +19,11 @@
 @interface PHYSnapBehavior ()
 {
     NSMutableSet *_items;
+    void (^_action)(void);
 }
 
 @property (assign) CGPoint point;
+@property (nonatomic, copy) void (^internalAction)(void);
 
 @end
 
@@ -44,6 +46,17 @@
     return [_items allObjects];
 }
 
+- (void (^)(void))action
+{
+    __weak typeof(_internalAction) internalAction = _internalAction;
+    __weak typeof(_action) action = _action;
+
+    return ^{
+        if (internalAction) internalAction();
+        if (action) action();
+    };
+}
+
 - (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
 {
     if (animator)
@@ -53,7 +66,7 @@
         
         if (body)
         {
-            self.action = ^{
+            self.internalAction = ^{
                 body.linearDamping = bself.damping;
                 body.velocity = CGPointMake((bself.point.x - body.position.x) * 5, (bself.point.y - body.position.y) * 5);
                 
