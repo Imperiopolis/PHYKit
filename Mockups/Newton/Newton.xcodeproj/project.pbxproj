@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D1768DE17AB1B4200761FEC /* Gravity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1768DC17AB1B4200761FEC /* Gravity.xib */; };
 		2D4585F8177E6B370000096B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4585F7177E6B370000096B /* Cocoa.framework */; };
 		2D458602177E6B370000096B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D458600177E6B370000096B /* InfoPlist.strings */; };
 		2D458604177E6B370000096B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D458603177E6B370000096B /* main.m */; };
@@ -20,6 +19,21 @@
 		2D458622177E6B370000096B /* NewtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D458621177E6B370000096B /* NewtonTests.m */; };
 		2D458632177E6C200000096B /* PHYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D458630177E6BF90000096B /* PHYKit.framework */; };
 		6374DA4317AC7DAF0043D3B0 /* GravityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6374DA4217AC7DAF0043D3B0 /* GravityViewController.m */; };
+		63F6A05617AC824300371EE3 /* AttachmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6A05417AC824300371EE3 /* AttachmentsViewController.m */; };
+		63F6A05717AC824300371EE3 /* AttachmentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F6A05517AC824300371EE3 /* AttachmentsViewController.xib */; };
+		63F6A05917AC827800371EE3 /* GravityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F6A05817AC827800371EE3 /* GravityViewController.xib */; };
+		63F6A05F17AC82CD00371EE3 /* CollisionGravityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F6A05A17AC82CD00371EE3 /* CollisionGravityViewController.xib */; };
+		63F6A06217AC82CD00371EE3 /* InstantaneousPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F6A05D17AC82CD00371EE3 /* InstantaneousPushViewController.xib */; };
+		63F6A06317AC82CD00371EE3 /* ItemPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F6A05E17AC82CD00371EE3 /* ItemPropertiesViewController.xib */; };
+		63F6A06617AC832600371EE3 /* CollisionGravityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6A06517AC832600371EE3 /* CollisionGravityViewController.m */; };
+		63F6A06917AC833600371EE3 /* CollisionGravitySpringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6A06817AC833600371EE3 /* CollisionGravitySpringViewController.m */; };
+		63F6A06C17AC841C00371EE3 /* CollisionGravitySpringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F6A06B17AC841C00371EE3 /* CollisionGravitySpringViewController.xib */; };
+		63F6A06E17AC842E00371EE3 /* ContinuousPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F6A06D17AC842E00371EE3 /* ContinuousPushViewController.xib */; };
+		63F6A07117AC845600371EE3 /* SnapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F6A07017AC845600371EE3 /* SnapViewController.xib */; };
+		63F6A07417AC846000371EE3 /* SnapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6A07317AC846000371EE3 /* SnapViewController.m */; };
+		63F6A07717AC847400371EE3 /* InstantaneousPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6A07617AC847400371EE3 /* InstantaneousPushViewController.m */; };
+		63F6A07A17AC848200371EE3 /* ContinuousPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6A07917AC848200371EE3 /* ContinuousPushViewController.m */; };
+		63F6A07D17AC848C00371EE3 /* ItemPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F6A07C17AC848C00371EE3 /* ItemPropertiesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +61,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D1768DD17AB1B4200761FEC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Gravity.xib; sourceTree = "<group>"; };
 		2D4585F4177E6B370000096B /* Newton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Newton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4585F7177E6B370000096B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2D4585FA177E6B370000096B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -61,7 +74,7 @@
 		2D458609177E6B370000096B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D45860A177E6B370000096B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D45860D177E6B370000096B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2D458615177E6B370000096B /* NewtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = folder; includeInIndex = 0; path = NewtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D458615177E6B370000096B /* NewtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D458616177E6B370000096B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2D45861D177E6B370000096B /* NewtonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NewtonTests-Info.plist"; sourceTree = "<group>"; };
 		2D45861F177E6B370000096B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -70,6 +83,28 @@
 		2D484DA3177F535400036DF0 /* PHYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PHYKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6374DA4117AC7DAF0043D3B0 /* GravityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravityViewController.h; sourceTree = "<group>"; };
 		6374DA4217AC7DAF0043D3B0 /* GravityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GravityViewController.m; sourceTree = "<group>"; };
+		63F6A05317AC824300371EE3 /* AttachmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentsViewController.h; sourceTree = "<group>"; };
+		63F6A05417AC824300371EE3 /* AttachmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentsViewController.m; sourceTree = "<group>"; };
+		63F6A05517AC824300371EE3 /* AttachmentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentsViewController.xib; sourceTree = "<group>"; };
+		63F6A05817AC827800371EE3 /* GravityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GravityViewController.xib; sourceTree = "<group>"; };
+		63F6A05A17AC82CD00371EE3 /* CollisionGravityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollisionGravityViewController.xib; sourceTree = "<group>"; };
+		63F6A05D17AC82CD00371EE3 /* InstantaneousPushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstantaneousPushViewController.xib; sourceTree = "<group>"; };
+		63F6A05E17AC82CD00371EE3 /* ItemPropertiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemPropertiesViewController.xib; sourceTree = "<group>"; };
+		63F6A06417AC832600371EE3 /* CollisionGravityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionGravityViewController.h; sourceTree = "<group>"; };
+		63F6A06517AC832600371EE3 /* CollisionGravityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionGravityViewController.m; sourceTree = "<group>"; };
+		63F6A06717AC833600371EE3 /* CollisionGravitySpringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionGravitySpringViewController.h; sourceTree = "<group>"; };
+		63F6A06817AC833600371EE3 /* CollisionGravitySpringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionGravitySpringViewController.m; sourceTree = "<group>"; };
+		63F6A06B17AC841C00371EE3 /* CollisionGravitySpringViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollisionGravitySpringViewController.xib; sourceTree = "<group>"; };
+		63F6A06D17AC842E00371EE3 /* ContinuousPushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContinuousPushViewController.xib; sourceTree = "<group>"; };
+		63F6A07017AC845600371EE3 /* SnapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnapViewController.xib; sourceTree = "<group>"; };
+		63F6A07217AC846000371EE3 /* SnapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapViewController.h; sourceTree = "<group>"; };
+		63F6A07317AC846000371EE3 /* SnapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapViewController.m; sourceTree = "<group>"; };
+		63F6A07517AC847400371EE3 /* InstantaneousPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstantaneousPushViewController.h; sourceTree = "<group>"; };
+		63F6A07617AC847400371EE3 /* InstantaneousPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstantaneousPushViewController.m; sourceTree = "<group>"; };
+		63F6A07817AC848200371EE3 /* ContinuousPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContinuousPushViewController.h; sourceTree = "<group>"; };
+		63F6A07917AC848200371EE3 /* ContinuousPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContinuousPushViewController.m; sourceTree = "<group>"; };
+		63F6A07B17AC848C00371EE3 /* ItemPropertiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemPropertiesViewController.h; sourceTree = "<group>"; };
+		63F6A07C17AC848C00371EE3 /* ItemPropertiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemPropertiesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +177,6 @@
 				2D45860A177E6B370000096B /* AppDelegate.m */,
 				6374DA4017AC7DAF0043D3B0 /* ViewControllers */,
 				2D45860C177E6B370000096B /* MainMenu.xib */,
-				2D1768DC17AB1B4200761FEC /* Gravity.xib */,
 				2D4585FE177E6B370000096B /* Supporting Files */,
 			);
 			path = Newton;
@@ -199,6 +233,28 @@
 			children = (
 				6374DA4117AC7DAF0043D3B0 /* GravityViewController.h */,
 				6374DA4217AC7DAF0043D3B0 /* GravityViewController.m */,
+				63F6A05817AC827800371EE3 /* GravityViewController.xib */,
+				63F6A05A17AC82CD00371EE3 /* CollisionGravityViewController.xib */,
+				63F6A06417AC832600371EE3 /* CollisionGravityViewController.h */,
+				63F6A06517AC832600371EE3 /* CollisionGravityViewController.m */,
+				63F6A05317AC824300371EE3 /* AttachmentsViewController.h */,
+				63F6A05417AC824300371EE3 /* AttachmentsViewController.m */,
+				63F6A05517AC824300371EE3 /* AttachmentsViewController.xib */,
+				63F6A06717AC833600371EE3 /* CollisionGravitySpringViewController.h */,
+				63F6A06817AC833600371EE3 /* CollisionGravitySpringViewController.m */,
+				63F6A06B17AC841C00371EE3 /* CollisionGravitySpringViewController.xib */,
+				63F6A07217AC846000371EE3 /* SnapViewController.h */,
+				63F6A07317AC846000371EE3 /* SnapViewController.m */,
+				63F6A07017AC845600371EE3 /* SnapViewController.xib */,
+				63F6A07517AC847400371EE3 /* InstantaneousPushViewController.h */,
+				63F6A07617AC847400371EE3 /* InstantaneousPushViewController.m */,
+				63F6A05D17AC82CD00371EE3 /* InstantaneousPushViewController.xib */,
+				63F6A07817AC848200371EE3 /* ContinuousPushViewController.h */,
+				63F6A07917AC848200371EE3 /* ContinuousPushViewController.m */,
+				63F6A06D17AC842E00371EE3 /* ContinuousPushViewController.xib */,
+				63F6A07B17AC848C00371EE3 /* ItemPropertiesViewController.h */,
+				63F6A07C17AC848C00371EE3 /* ItemPropertiesViewController.m */,
+				63F6A05E17AC82CD00371EE3 /* ItemPropertiesViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -299,7 +355,14 @@
 				2D458602177E6B370000096B /* InfoPlist.strings in Resources */,
 				2D458608177E6B370000096B /* Credits.rtf in Resources */,
 				2D45860E177E6B370000096B /* MainMenu.xib in Resources */,
-				2D1768DE17AB1B4200761FEC /* Gravity.xib in Resources */,
+				63F6A05717AC824300371EE3 /* AttachmentsViewController.xib in Resources */,
+				63F6A05917AC827800371EE3 /* GravityViewController.xib in Resources */,
+				63F6A05F17AC82CD00371EE3 /* CollisionGravityViewController.xib in Resources */,
+				63F6A06217AC82CD00371EE3 /* InstantaneousPushViewController.xib in Resources */,
+				63F6A06317AC82CD00371EE3 /* ItemPropertiesViewController.xib in Resources */,
+				63F6A06C17AC841C00371EE3 /* CollisionGravitySpringViewController.xib in Resources */,
+				63F6A06E17AC842E00371EE3 /* ContinuousPushViewController.xib in Resources */,
+				63F6A07117AC845600371EE3 /* SnapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +384,13 @@
 				2D45860B177E6B370000096B /* AppDelegate.m in Sources */,
 				2D458604177E6B370000096B /* main.m in Sources */,
 				6374DA4317AC7DAF0043D3B0 /* GravityViewController.m in Sources */,
+				63F6A05617AC824300371EE3 /* AttachmentsViewController.m in Sources */,
+				63F6A06617AC832600371EE3 /* CollisionGravityViewController.m in Sources */,
+				63F6A06917AC833600371EE3 /* CollisionGravitySpringViewController.m in Sources */,
+				63F6A07417AC846000371EE3 /* SnapViewController.m in Sources */,
+				63F6A07717AC847400371EE3 /* InstantaneousPushViewController.m in Sources */,
+				63F6A07A17AC848200371EE3 /* ContinuousPushViewController.m in Sources */,
+				63F6A07D17AC848C00371EE3 /* ItemPropertiesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,14 +418,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2D1768DC17AB1B4200761FEC /* Gravity.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D1768DD17AB1B4200761FEC /* en */,
-			);
-			name = Gravity.xib;
-			sourceTree = "<group>";
-		};
 		2D458600177E6B370000096B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -44,12 +44,17 @@
     NSInteger selectedRow = [table selectedRow];
 
     NSString *label = [[self.items objectAtIndex: selectedRow] objectForKey: @"items"];
+    
+    // Strip spaces and pluses
+    NSCharacterSet *charactersToRemove = [NSCharacterSet characterSetWithCharactersInString:@" +"];
+    NSString *classPrefix = [[label componentsSeparatedByCharactersInSet:charactersToRemove] componentsJoinedByString:@""];
 
     [self.viewController.view removeFromSuperview];
 
     self.viewController = nil;
 
-    self.viewController = [[NSClassFromString([NSString stringWithFormat:@"%@ViewController",label]) alloc] initWithNibName:label bundle:nil];
+    NSString *className = [classPrefix stringByAppendingString:@"ViewController"];
+    self.viewController = [[NSClassFromString(className) alloc] initWithNibName:className bundle:nil];
 
     [self.physicsView addSubview: self.viewController.view];
 }
