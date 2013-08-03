@@ -71,11 +71,11 @@
 
         // Tell the physics world to create the body
         self.body = [self.world _world]->CreateBody(&_bodyDef);
+        self.affectedByGravity = NO;
 
         // Define another box shape for our dynamic body.
         b2PolygonShape dynamicBox;
-
-        dynamicBox.SetAsBox(boxSize.width, boxSize.height);
+        dynamicBox.SetAsBox(boxSize.width, boxSize.height, CGPointTob2Vec2(self.dynamicItem.bounds.origin), 0.0);
 
         // Define the dynamic body fixture.
         _fixtureDef.shape = &dynamicBox;
