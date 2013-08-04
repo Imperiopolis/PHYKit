@@ -7,11 +7,23 @@
 //
 
 #import "PHYPushBehavior.h"
+#import "PHYDynamicAnimator.h"
+#import "PHYBody.h"
+
+@interface PHYDynamicAnimator (PHYPrivateAnimator)
+
+- (PHYBody*)bodyFromDynamicItem:(id <PHYDynamicItem>)dynamicItem;
+
+@end
 
 @interface PHYPushBehavior ()
 {
     NSMutableSet *_items;
+    void (^_action)(void);
 }
+
+@property (weak) PHYBody *body;
+@property (nonatomic, copy) void (^internalAction)(void);
 
 @end
 
@@ -24,6 +36,14 @@
     {
         _items = [NSMutableSet setWithArray: items];
         _mode = mode;
+
+        switch (self.mode) {
+            case PHYPushBehaviorModeInstantaneous:
+                self.active = NO;
+                break;
+            case PHYPushBehaviorModeContinuous:
+                self.active = YES;
+        }
     }
     return self;
 }
@@ -84,5 +104,43 @@
     _pushDirection = CGSizeMake(cos(_angle) * _magnitude, sin(_angle) * _magnitude);
 }
 
+- (void (^)(void))action
+{
+    __weak typeof(_internalAction) internalAction = _internalAction;
+    __weak typeof(_action) action = _action;
+
+    return ^{
+        if (internalAction) internalAction();
+        if (action) action();
+    };
+}
+
+- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
+{
+    if (animator)
+    {
+        __weak typeof(self) bself = self;
+
+        self.internalAction = ^{
+            if (bself.active)
+            {
+                for (id<PHYDynamicItem> dynamicItem in bself.items)
+                {
+                    PHYBody *body = [animator bodyFromDynamicItem:dynamicItem];
+
+                    if (body)
+                    {
+                        [body applyUnscaledImpulse: CGPointMake(bself.pushDirection.width * 5, bself.pushDirection.height * 5)];
+
+                        if (bself.mode == PHYPushBehaviorModeInstantaneous)
+                        {
+                            bself.active = NO;
+                        }
+                    }
+                }
+            }
+        };
+    }
+}
 
 @end
