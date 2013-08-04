@@ -6,7 +6,8 @@
 //
 //
 
-typedef NS_ENUM(NSInteger, PHYCollisionCategory) {
+typedef NS_ENUM(NSInteger, PHYCollisionCategory)
+{
     PHYNoCollisions =           0x0000,
     PHYReferenceCollisions =    0x0001,
     PHYBoundaryCollisions =     0x0002,

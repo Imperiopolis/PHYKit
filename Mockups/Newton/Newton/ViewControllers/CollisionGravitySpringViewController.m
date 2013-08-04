@@ -8,7 +8,7 @@
 
 #import "CollisionGravitySpringViewController.h"
 
-@interface CollisionGravitySpringViewController ()<PHYViewDelegate>
+@interface CollisionGravitySpringViewController () <PHYViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PHYView *square1;
 @property (nonatomic, weak) IBOutlet PHYView *redSquare;

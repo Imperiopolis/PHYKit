@@ -8,7 +8,7 @@
 
 #import "ContinuousPushViewController.h"
 
-@interface ContinuousPushViewController ()<PHYViewDelegate>
+@interface ContinuousPushViewController () <PHYViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PHYView *square1;
 @property (nonatomic, weak) IBOutlet PHYView *vectorView;

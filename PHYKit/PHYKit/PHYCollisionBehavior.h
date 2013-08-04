@@ -10,7 +10,8 @@
 
 @class PHYCollisionBehavior;
 
-typedef NS_OPTIONS(NSUInteger, PHYCollisionBehaviorMode) {
+typedef NS_OPTIONS(NSUInteger, PHYCollisionBehaviorMode)
+{
     PHYCollisionBehaviorModeItems        = 1 << 0,
     PHYCollisionBehaviorModeBoundaries   = 1 << 1,
     PHYCollisionBehaviorModeEverything   = NSUIntegerMax

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-typedef struct PHYOffset {
+typedef struct PHYOffset
+{
     CGFloat horizontal, vertical; // specify amount to offset a position, positive for right or down, negative for left or up
 } PHYOffset;
 

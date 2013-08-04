@@ -8,7 +8,7 @@
 
 #import "SnapViewController.h"
 
-@interface SnapViewController ()<PHYViewDelegate>
+@interface SnapViewController () <PHYViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PHYView *square1;
 @property (nonatomic, strong) PHYDynamicAnimator *animator;
