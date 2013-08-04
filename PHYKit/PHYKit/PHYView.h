@@ -22,5 +22,12 @@
 
 @property (nonatomic) CGAffineTransform transform;
 @property (nonatomic) NSColor *backgroundColor;
+@property (nonatomic) CGFloat alpha;
+
++ (void)animateWithDuration:(NSTimeInterval)duration
+                 animations:(void (^)(void))animationBlock;
++ (void)animateWithDuration:(NSTimeInterval)duration
+                 animations:(void (^)(void))animationBlock
+                 completion:(void (^)(void))completionBlock;
 
 @end

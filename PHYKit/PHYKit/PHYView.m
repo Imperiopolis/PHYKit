@@ -72,6 +72,31 @@
                        height - NSMinY(self.frame) - NSHeight(self.frame) / 2);
 }
 
+// animations
+
++ (void)animateWithDuration:(NSTimeInterval)duration
+                 animations:(void (^)(void))animationBlock
+{
+    [self animateWithDuration:duration animations:animationBlock completion:nil];
+}
+
++ (void)animateWithDuration:(NSTimeInterval)duration
+                 animations:(void (^)(void))animationBlock
+                 completion:(void (^)(void))completionBlock
+{
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:duration];
+    animationBlock();
+    [NSAnimationContext endGrouping];
+
+    if(completionBlock)
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration), dispatch_get_current_queue(), ^{
+            completionBlock();
+        });
+    }
+}
+
 // Call PHYView initWithFrame instead of super
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
@@ -140,6 +165,16 @@
 - (CGPoint)center
 {
     return _center;
+}
+
+- (void)setAlpha:(CGFloat)alpha
+{
+    [self setAlphaValue: alpha];
+}
+
+- (CGFloat)alpha
+{
+    return [self alphaValue];
 }
 
 - (NSString *)description
