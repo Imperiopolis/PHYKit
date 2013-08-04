@@ -93,20 +93,20 @@
 
     if (animator)
     {
-        __weak typeof(self) bself = self;
+        __weak typeof(self) weakSelf = self;
 
         self.internalAction = ^{
 
-            for (id<PHYDynamicItem> dynamicItem in bself.items)
+            for (id<PHYDynamicItem> dynamicItem in weakSelf.items)
             {
                 PHYBody *body = [animator bodyFromDynamicItem:dynamicItem];
 
                 if (body)
                 {
-                    body.restitution = bself.elasticity;
-                    body.friction = bself.friction;
-                    body.density = bself.density;
-                    body.allowsRotation = bself.allowsRotation;
+                    body.restitution = weakSelf.elasticity;
+                    body.friction = weakSelf.friction;
+                    body.density = weakSelf.density;
+                    body.allowsRotation = weakSelf.allowsRotation;
                 }
             }
         };

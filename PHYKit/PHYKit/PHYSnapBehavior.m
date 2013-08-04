@@ -62,15 +62,15 @@
     if (animator)
     {
         PHYBody *body = [animator bodyFromDynamicItem: [self.items lastObject]];
-        __weak typeof(self) bself = self;
+        __weak typeof(self) weakSelf = self;
         
         if (body)
         {
             self.internalAction = ^{
-                body.linearDamping = bself.damping;
-                body.velocity = CGPointMake((bself.point.x - body.position.x) * 5, (bself.point.y - body.position.y) * 5);
+                body.linearDamping = weakSelf.damping;
+                body.velocity = CGPointMake((weakSelf.point.x - body.position.x) * 5, (weakSelf.point.y - body.position.y) * 5);
                 
-                if (ceil(body.position.x) == ceil(bself.point.x) && ceil(body.position.y) == ceil(bself.point.y))
+                if (ceil(body.position.x) == ceil(weakSelf.point.x) && ceil(body.position.y) == ceil(weakSelf.point.y))
                 {
                     body.velocity = CGPointMake(0, 0);
                 }
