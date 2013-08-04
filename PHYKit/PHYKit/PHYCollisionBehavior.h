@@ -46,6 +46,6 @@ typedef NS_OPTIONS(NSUInteger, PHYCollisionBehaviorMode)
 @property (nonatomic, readwrite) PHYCollisionBehaviorMode collisionMode;
 @property (nonatomic, readwrite) BOOL translatesReferenceBoundsIntoBoundary;
 @property (nonatomic, readonly, copy) NSArray* boundaryIdentifiers;
-@property (nonatomic, assign, readwrite) id <PHYCollisionBehaviorDelegate> collisionDelegate;
+@property (nonatomic, weak) id <PHYCollisionBehaviorDelegate> collisionDelegate;
 
 @end
