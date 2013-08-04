@@ -119,22 +119,22 @@
 {
     if (animator)
     {
-        __weak typeof(self) bself = self;
+        __weak typeof(self) weakSelf = self;
 
         self.internalAction = ^{
-            if (bself.active)
+            if (weakSelf.active)
             {
-                for (id<PHYDynamicItem> dynamicItem in bself.items)
+                for (id<PHYDynamicItem> dynamicItem in weakSelf.items)
                 {
                     PHYBody *body = [animator bodyFromDynamicItem:dynamicItem];
 
                     if (body)
                     {
-                        [body applyUnscaledImpulse: CGPointMake(bself.pushDirection.width * 5, bself.pushDirection.height * 5)];
+                        [body applyUnscaledImpulse: CGPointMake(weakSelf.pushDirection.width * 5, weakSelf.pushDirection.height * 5)];
 
-                        if (bself.mode == PHYPushBehaviorModeInstantaneous)
+                        if (weakSelf.mode == PHYPushBehaviorModeInstantaneous)
                         {
-                            bself.active = NO;
+                            weakSelf.active = NO;
                         }
                     }
                 }

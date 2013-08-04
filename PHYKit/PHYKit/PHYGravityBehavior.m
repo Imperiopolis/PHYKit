@@ -113,12 +113,12 @@
 {
     if (animator)
     {
-        __weak typeof(self) bself = self;
+        __weak typeof(self) weakSelf = self;
 
         self.internalAction = ^{
-            animator.world.gravity = CGPointMake(bself.gravityDirection.width * kGravityScaleFactory, bself.gravityDirection.height * kGravityScaleFactory);
+            animator.world.gravity = CGPointMake(weakSelf.gravityDirection.width * kGravityScaleFactory, weakSelf.gravityDirection.height * kGravityScaleFactory);
 
-            for (id<PHYDynamicItem> dynamicItem in bself.items)
+            for (id<PHYDynamicItem> dynamicItem in weakSelf.items)
             {
                 PHYBody *body = [animator bodyFromDynamicItem:dynamicItem];
 
