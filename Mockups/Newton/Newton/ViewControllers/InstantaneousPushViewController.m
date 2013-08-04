@@ -55,13 +55,15 @@
     CGFloat angle = atan2(p.y-o.y,p.x-o.x);
     distance = MIN(distance, 100.0);
 
-    self.vectorView.bounds = CGRectMake(0.0, 0.0, distance, 5.0);
-    self.vectorView.transform = CGAffineTransformMakeRotation(angle);
-    
-//    self.vectorView.alpha = 1.0;
-//    [PHYView animateWithDuration:1.0 animations:^{
-//        self.vectorView.alpha = 0.0;
-//    }];
+    [PHYView animateWithDuration:0 animations:^{
+        self.vectorView.bounds = CGRectMake(0.0, 0.0, distance, 5.0);
+        self.vectorView.transform = CGAffineTransformMakeRotation(angle);
+        self.vectorView.alpha = 1;
+    }];
+
+    [PHYView animateWithDuration:1.0 animations:^{
+        self.vectorView.alpha = 0.0;
+    }];
 
     // These two lines change the actual force vector.
     [self.pushBehavior setMagnitude:distance / 100.0];
