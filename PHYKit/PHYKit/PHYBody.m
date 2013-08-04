@@ -9,17 +9,19 @@
 #import "PHYGeometry.h"
 #import "PHYBody.h"
 #import "PHYWorld.h"
+#import "PHYJoint.h"
 #import "PHYDynamicBehavior.h"
 
 #import <Box2D/Box2D.h>
 
-@interface PHYWorld (PHYB2World)
-- (b2World*)_world;
+@interface PHYWorld (PHYPrivateWorld)
+- (b2World*)b2world;
 @end
 
 @interface PHYBody ()
-
-@property (strong) NSMutableArray *joints;
+{
+    NSMutableSet *_joints;
+}
 
 @end
 
@@ -30,6 +32,7 @@
     if ((self = [super init]))
     {
         self.dynamicItem = dynamicItem;
+        _joints = [NSMutableSet set];
     }
 
     return self;
@@ -42,10 +45,15 @@
         if (self.world)
         {
             self.body->DestroyFixture(self.fixture);
-            [self.world _world]->DestroyBody(self.body);
+            [self.world b2world]->DestroyBody(self.body);
         }
         self.body = nil;
     }
+}
+
+- (NSArray*)joints
+{
+    return [_joints allObjects];
 }
 
 - (void)setWorld:(PHYWorld *)world
@@ -53,7 +61,7 @@
     if (_world)
     {
         self.body->DestroyFixture(self.fixture);
-        [_world _world]->DestroyBody(self.body);
+        [_world b2world]->DestroyBody(self.body);
     }
     
     _world = world;
@@ -70,7 +78,7 @@
                               p.y / kPointsToMeterRatio);
 
         // Tell the physics world to create the body
-        self.body = [self.world _world]->CreateBody(&_bodyDef);
+        self.body = [_world b2world]->CreateBody(&_bodyDef);
         self.affectedByGravity = NO;
 
         // Define another box shape for our dynamic body.
@@ -321,6 +329,27 @@
 - (void)applyForce:(struct CGPoint)force atPoint:(struct CGPoint)point
 {
     
+}
+
+- (void)addJoint:(PHYJoint*)joint
+{
+    [_joints addObject: joint];
+    
+    if (!joint.joint)
+    {
+        joint.joint = [self.world b2world]->CreateJoint(joint.jointDef);
+    }
+}
+
+- (void)removeJoint:(PHYJoint*)joint
+{
+    [_joints removeObject: joint];
+
+    if (joint.joint)
+    {
+        [self.world b2world]->DestroyJoint(joint.joint);
+        joint.joint = nil;
+    }
 }
 
 @end
