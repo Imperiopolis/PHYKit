@@ -8,7 +8,7 @@
 
 #import "InstantaneousPushViewController.h"
 
-@interface InstantaneousPushViewController ()<PHYViewDelegate>
+@interface InstantaneousPushViewController () <PHYViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PHYView *square1;
 @property (nonatomic, weak) IBOutlet PHYView *vectorView;
@@ -71,7 +71,7 @@
     /*
      A push behavior in instantaneous (impulse) mode automatically deactivate itself after applying the impulse. We thus need to reactivate it when changing the impulse vector.
      */
-    [self.pushBehavior setActive:TRUE];
+    [self.pushBehavior setActive:YES];
 }
 
 @end

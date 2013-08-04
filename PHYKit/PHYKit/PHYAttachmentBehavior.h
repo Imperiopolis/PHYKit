@@ -8,7 +8,8 @@
 
 #import "PHYDynamicBehavior.h"
 
-typedef NS_ENUM(NSInteger, PHYAttachmentBehaviorType) {
+typedef NS_ENUM(NSInteger, PHYAttachmentBehaviorType)
+{
     PHYAttachmentBehaviorTypeItems,
     PHYAttachmentBehaviorTypeAnchor
 };

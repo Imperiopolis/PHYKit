@@ -8,7 +8,7 @@
 
 #import "CollisionGravityViewController.h"
 
-@interface CollisionGravityViewController ()<PHYCollisionBehaviorDelegate>
+@interface CollisionGravityViewController () <PHYCollisionBehaviorDelegate>
 
 @property (weak) IBOutlet PHYView *square1;
 @property (nonatomic) PHYDynamicAnimator *animator;

@@ -8,7 +8,7 @@
 
 #import "AttachmentsViewController.h"
 
-@interface AttachmentsViewController ()<PHYViewDelegate>
+@interface AttachmentsViewController () <PHYViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PHYView *square1;
 @property (nonatomic, weak) IBOutlet PHYView *redSquare;

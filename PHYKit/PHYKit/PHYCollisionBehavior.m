@@ -107,19 +107,19 @@
 {
     if (animator)
     {
-        __weak typeof(self) bself = self;
+        __weak typeof(self) weakSelf = self;
 
         self.internalAction = ^{
-            for (id<PHYDynamicItem> dynamicItem in bself.items)
+            for (id<PHYDynamicItem> dynamicItem in weakSelf.items)
             {
                 PHYBody *body = [animator bodyFromDynamicItem:dynamicItem];
 
-                if (bself.translatesReferenceBoundsIntoBoundary)
+                if (weakSelf.translatesReferenceBoundsIntoBoundary)
                 {
                     body.collisionBitMask = PHYReferenceCollisions;
                 }
 
-                switch (bself.collisionMode) {
+                switch (weakSelf.collisionMode) {
                     case PHYCollisionBehaviorModeEverything:
                         body.collisionBitMask = PHYReferenceCollisions | PHYBoundaryCollisions | PHYCollisionBehaviorModeItems;
                     case PHYCollisionBehaviorModeBoundaries:
