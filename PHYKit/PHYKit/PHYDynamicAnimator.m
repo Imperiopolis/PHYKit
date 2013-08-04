@@ -194,8 +194,8 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
                 CGRect itemRect = CGRectMake(itemCenter.x - CGRectGetWidth(itemBounds) / 2,
                                              itemCenter.y - CGRectGetHeight(itemBounds) / 2,
-                                             itemBounds.size.width,
-                                             itemBounds.size.height);
+                                             CGRectGetWidth(itemBounds),
+                                             CGRectGetHeight(itemBounds));
 
                 if (CGRectIntersectsRect(rect, itemRect))
                 {
