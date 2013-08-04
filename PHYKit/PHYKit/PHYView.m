@@ -86,7 +86,10 @@
 {
     [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:duration];
-    animationBlock();
+    if (animationBlock)
+    {
+        animationBlock();
+    }
     [NSAnimationContext endGrouping];
 
     if(completionBlock)
