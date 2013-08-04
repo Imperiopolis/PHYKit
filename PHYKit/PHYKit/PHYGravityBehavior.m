@@ -7,13 +7,29 @@
 //
 
 #import "PHYGravityBehavior.h"
+#import "PHYDynamicAnimator.h"
+#import "PHYBody.h"
+#import "PHYWorld.h"
+
 #import <math.h>
+
+#define kGravityScaleFactory    (1000)
+
+@interface PHYDynamicAnimator (PHYPrivateAnimator)
+
+- (PHYBody*)bodyFromDynamicItem:(id <PHYDynamicItem>)dynamicItem;
+@property (nonatomic, strong) PHYWorld *world;
+
+@end
 
 @interface PHYGravityBehavior ()
 {
     CGFloat _angle;
     NSMutableSet *_items;
+    void (^_action)(void);
 }
+
+@property (nonatomic, copy) void (^internalAction)(void);
 
 @end
 
@@ -80,6 +96,39 @@
 - (NSArray*)items
 {
     return [_items allObjects];
+}
+
+- (void (^)(void))action
+{
+    __weak typeof(_internalAction) internalAction = _internalAction;
+    __weak typeof(_action) action = _action;
+
+    return ^{
+        if (internalAction) internalAction();
+        if (action) action();
+    };
+}
+
+- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
+{
+    if (animator)
+    {
+        __weak typeof(self) bself = self;
+
+        self.internalAction = ^{
+            animator.world.gravity = CGPointMake(bself.gravityDirection.width * kGravityScaleFactory, bself.gravityDirection.height * kGravityScaleFactory);
+
+            for (id<PHYDynamicItem> dynamicItem in bself.items)
+            {
+                PHYBody *body = [animator bodyFromDynamicItem:dynamicItem];
+
+                if (body)
+                {
+                    body.affectedByGravity = YES;
+                }
+            }
+        };
+    }
 }
 
 @end

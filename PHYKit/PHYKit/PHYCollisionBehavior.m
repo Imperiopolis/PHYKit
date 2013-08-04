@@ -7,11 +7,23 @@
 //
 
 #import "PHYCollisionBehavior.h"
+#import "PHYDynamicAnimator.h"
+#import "PHYBody.h"
+#import "PHYWorld.h"
+
+@interface PHYDynamicAnimator (PHYPrivateAnimator)
+
+- (PHYBody*)bodyFromDynamicItem:(id <PHYDynamicItem>)dynamicItem;
+
+@end
 
 @interface PHYCollisionBehavior ()
 {
     NSMutableSet *_items;
+    void (^_action)(void);
 }
+
+@property (nonatomic, copy) void (^internalAction)(void);
 
 @end
 
@@ -78,6 +90,48 @@
 - (void)removeAllBoundaries
 {
     
+}
+
+- (void (^)(void))action
+{
+    __weak typeof(_internalAction) internalAction = _internalAction;
+    __weak typeof(_action) action = _action;
+
+    return ^{
+        if (internalAction) internalAction();
+        if (action) action();
+    };
+}
+
+- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
+{
+    if (animator)
+    {
+        __weak typeof(self) bself = self;
+
+        self.internalAction = ^{
+            for (id<PHYDynamicItem> dynamicItem in bself.items)
+            {
+                PHYBody *body = [animator bodyFromDynamicItem:dynamicItem];
+
+                if (bself.translatesReferenceBoundsIntoBoundary)
+                {
+                    body.collisionBitMask = PHYReferenceCollisions;
+                }
+
+                switch (bself.collisionMode) {
+                    case PHYCollisionBehaviorModeEverything:
+                        body.collisionBitMask = PHYReferenceCollisions | PHYBoundaryCollisions | PHYCollisionBehaviorModeItems;
+                    case PHYCollisionBehaviorModeBoundaries:
+                        body.collisionBitMask = body.collisionBitMask | PHYBoundaryCollisions;
+                        break;
+                    case PHYCollisionBehaviorModeItems:
+                        body.collisionBitMask = body.collisionBitMask | PHYCollisionBehaviorModeItems;
+                        break;
+                }
+            }
+        };
+    }
 }
 
 @end

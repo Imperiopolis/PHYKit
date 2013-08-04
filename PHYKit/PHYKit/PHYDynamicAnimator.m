@@ -7,17 +7,12 @@
 //
 
 #import "PHYDynamicAnimator.h"
-
 #import "PHYDynamicBehavior.h"
-#import "PHYGravityBehavior.h"
-#import "PHYCollisionBehavior.h"
-
-#import <QuartzCore/QuartzCore.h>
-#import <CoreVideo/CoreVideo.h>
 #import "PHYWorld.h"
 #import "PHYBody.h"
+#import <QuartzCore/QuartzCore.h>
+#import <CoreVideo/CoreVideo.h>
 
-#define kGravityScaleFactory    (1000)
 
 @interface PHYDynamicAnimator ()
 {
@@ -135,49 +130,6 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         if (![self bodyFromDynamicItem: item])
         {
             [self.world addBody: [[PHYBody alloc] initWithDynamicItem: item]];
-        }
-    }
-
-
-    // Special case for each behavior
-    // custom behaviors are just a collection of these special cases
-
-    // Gravity
-    if ([behavior isKindOfClass:[PHYGravityBehavior class]])
-    {
-        PHYGravityBehavior *gravityBehavior = (PHYGravityBehavior*)behavior;
-        self.world.gravity = CGPointMake(gravityBehavior.gravityDirection.width * kGravityScaleFactory, gravityBehavior.gravityDirection.height * kGravityScaleFactory);
-
-        for (id<PHYDynamicItem> item in gravityBehavior.items)
-        {
-            PHYBody *body = [self bodyFromDynamicItem: item];
-            body.affectedByGravity = YES;
-        }
-    }
-    // Collisions
-    if ([behavior isKindOfClass:[PHYCollisionBehavior class]])
-    {
-        PHYCollisionBehavior *collisionBehavior = (PHYCollisionBehavior*)behavior;
-
-        for (id<PHYDynamicItem> item in collisionBehavior.items)
-        {
-            PHYBody *body = [self bodyFromDynamicItem: item];
-
-            if (collisionBehavior.translatesReferenceBoundsIntoBoundary)
-            {
-                body.collisionBitMask = PHYReferenceCollisions;
-            }
-
-            switch (collisionBehavior.collisionMode) {
-                case PHYCollisionBehaviorModeEverything:
-                    body.collisionBitMask = PHYReferenceCollisions | PHYBoundaryCollisions | PHYCollisionBehaviorModeItems;
-                case PHYCollisionBehaviorModeBoundaries:
-                    body.collisionBitMask = body.collisionBitMask | PHYBoundaryCollisions;
-                    break;
-                case PHYCollisionBehaviorModeItems:
-                    body.collisionBitMask = body.collisionBitMask | PHYCollisionBehaviorModeItems;
-                    break;
-            }
         }
     }
 
