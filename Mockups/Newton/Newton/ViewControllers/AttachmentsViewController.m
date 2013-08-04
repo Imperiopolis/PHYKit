@@ -8,7 +8,7 @@
 
 #import "AttachmentsViewController.h"
 
-@interface AttachmentsViewController ()
+@interface AttachmentsViewController ()<PHYViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PHYView *square1;
 @property (nonatomic, weak) IBOutlet PHYView *redSquare;
@@ -22,6 +22,8 @@
 
 - (void)awakeFromNib
 {
+    [(PHYView*)self.view setDelegate: self];
+
     self.square1.backgroundColor = [NSColor grayColor];
     self.redSquare.backgroundColor = [NSColor redColor];
     self.blueSquare.backgroundColor = [NSColor blueColor];
@@ -46,6 +48,12 @@
     self.animator = animator;
 
     self.attachmentBehavior = attachmentBehavior;
+}
+
+- (void)viewDragged:(NSEvent *)event
+{
+    [self.attachmentBehavior setAnchorPoint:[self.view convertPoint:event.locationInWindow fromView:nil]];
+    self.redSquare.center = self.attachmentBehavior.anchorPoint;
 }
 
 @end
