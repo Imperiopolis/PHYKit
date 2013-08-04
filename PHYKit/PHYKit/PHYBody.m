@@ -80,7 +80,10 @@
         // Define the dynamic body fixture.
         _fixtureDef.shape = &dynamicBox;
         _fixtureDef.filter.maskBits = PHYNoCollisions;
-        
+        _fixtureDef.density = 1.0f;
+        _fixtureDef.friction = 0.2f;
+        _fixtureDef.restitution = 0.2f;
+
         self.fixture = self.body->CreateFixture(&_fixtureDef);
         
         // a dynamic body reacts to forces right away
@@ -109,32 +112,32 @@
 
 - (void)setDensity:(float)density
 {
-    _fixtureDef.density = density;
+    self.fixture->SetDensity(density);
 }
 
 - (float)density
 {
-    return _fixtureDef.density;
+    return self.fixture->GetDensity();
 }
 
 - (void)setFriction:(float)friction
 {
-    _fixtureDef.friction = friction;
+    self.fixture->SetFriction(friction);
 }
 
 - (float)friction
 {
-    return _fixtureDef.friction;
+    return self.fixture->GetFriction();
 }
 
 - (void)setRestitution:(float)restitution
 {
-    _fixtureDef.restitution = restitution;
+    self.fixture->SetRestitution(restitution);
 }
 
 - (float)restitution
 {
-    return _fixtureDef.restitution;
+    return self.fixture->GetRestitution();
 }
 
 - (float)area
@@ -146,7 +149,7 @@
 {
     _mass = mass;
 
-    _fixtureDef.density = mass / self.area;
+    self.density = mass / self.area;
 }
 
 - (void)setResting:(BOOL)resting
