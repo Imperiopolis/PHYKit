@@ -150,7 +150,7 @@
 
 - (float)area
 {
-    return self.dynamicItem.bounds.size.width * self.dynamicItem.bounds.size.height;
+    return CGRectGetWidth(self.dynamicItem.bounds) * CGRectGetHeight(self.dynamicItem.bounds);
 }
 
 - (void)setMass:(float)mass
