@@ -8,7 +8,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray, PHYWorld;
+@class NSArray, NSMutableArray, PHYWorld, PHYJoint;
 @protocol PHYDynamicItem;
 
 @interface PHYBody : NSObject
@@ -59,6 +59,9 @@
 
 - (void)applyForce:(struct CGPoint)force;
 - (void)applyForce:(struct CGPoint)force atPoint:(struct CGPoint)point;
+
+- (void)addJoint:(PHYJoint*)joint;
+- (void)removeJoint:(PHYJoint*)joint;
 
 @end
 

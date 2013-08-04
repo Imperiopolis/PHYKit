@@ -198,7 +198,7 @@
     _b2world->SetGravity(CGPointTob2Vec2(gravity));
 }
 
-- (b2World*)_world
+- (b2World*)b2world
 {
     return _b2world;
 }
