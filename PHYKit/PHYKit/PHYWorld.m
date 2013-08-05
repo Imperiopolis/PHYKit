@@ -107,36 +107,45 @@
     _b2world->Step(timeInterval, (int32)velocityIterations, (int32)positionIterations);
     
     //Iterate over the bodies in the physics world
-	for (PHYBody *body in _bodies)
-	{
-		if (body.dynamicItem)
-		{
-			// y Position subtracted because of flipped coordinate system
-			CGPoint newCenter = CGPointMake(body.body->GetPosition().x * kPointsToMeterRatio,
-                                            body.body->GetPosition().y * kPointsToMeterRatio);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                body.dynamicItem.center = newCenter;
-            });
+    @synchronized(_bodies)
+    {
+        for (PHYBody *body in _bodies)
+        {
+            if (body.dynamicItem)
+            {
+                // y Position subtracted because of flipped coordinate system
+                CGPoint newCenter = CGPointMake(body.body->GetPosition().x * kPointsToMeterRatio,
+                                                body.body->GetPosition().y * kPointsToMeterRatio);
 
 #warning make sure the minus sign is supposed to be there, and look here if we are getting backwards rotations
-			CGAffineTransform transform = CGAffineTransformMakeRotation(- body.body->GetAngle());
-            
-			body.dynamicItem.transform = transform;
-		}
-	}
+                CGAffineTransform transform = CGAffineTransformMakeRotation(- body.body->GetAngle());
 
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    body.dynamicItem.center = newCenter;
+                    body.dynamicItem.transform = transform;
+                });
+
+                
+            }
+        }
+    }
 }
 
 
 - (void)removeAllBodies
 {
-    [_bodies removeAllObjects];
+    @synchronized(_bodies)
+    {
+        [_bodies removeAllObjects];
+    }
 }
 
 - (void)removeBody:(PHYBody*)body
 {
-    [_bodies removeObject: body];
+    @synchronized(_bodies)
+    {
+        [_bodies removeObject: body];
+    }
 }
 
 - (void)addBody:(PHYBody*)body
@@ -144,7 +153,10 @@
     body.world = self;
     body.dynamic = YES;
 
-    [_bodies addObject: body];
+    @synchronized(_bodies)
+    {
+        [_bodies addObject: body];
+    }
 }
 
 - (NSArray *)bodies
