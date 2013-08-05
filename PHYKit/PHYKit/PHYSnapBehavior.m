@@ -59,6 +59,8 @@
 
 - (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
 {
+    [super willMoveToAnimator: animator];
+
     if (animator)
     {
         PHYBody *body = [animator bodyFromDynamicItem: [self.items lastObject]];

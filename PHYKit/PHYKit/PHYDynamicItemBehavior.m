@@ -90,6 +90,7 @@
 
 - (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
 {
+    [super willMoveToAnimator: animator];
 
     if (animator)
     {
