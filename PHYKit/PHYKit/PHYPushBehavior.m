@@ -117,6 +117,8 @@
 
 - (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
 {
+    [super willMoveToAnimator: animator];
+
     if (animator)
     {
         __weak typeof(self) weakSelf = self;

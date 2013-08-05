@@ -111,6 +111,8 @@
 
 - (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
 {
+    [super willMoveToAnimator: animator];
+
     if (animator)
     {
         __weak typeof(self) weakSelf = self;
@@ -122,7 +124,7 @@
             {
                 PHYBody *body = [animator bodyFromDynamicItem:dynamicItem];
 
-                if (body)
+                if (body && !body.affectedByGravity)
                 {
                     body.affectedByGravity = YES;
                 }
