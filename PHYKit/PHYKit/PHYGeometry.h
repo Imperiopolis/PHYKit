@@ -8,7 +8,7 @@
 
 #import <Box2D/Common/b2Math.h>
 
-#define kPointsToMeterRatio     (32)
+#define kPointsToMeterRatio     (32.0)
 
 #define PointsToMeters(points)  (points / kPointsToMeterRatio)
 #define MetersToPoints(meters)  (meters * kPointsToMeterRatio)
