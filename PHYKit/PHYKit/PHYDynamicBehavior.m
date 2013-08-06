@@ -11,7 +11,7 @@
 
 @interface PHYDynamicBehavior ()
 
-@property (nonatomic) PHYDynamicAnimator *dynamicAnimator;
+@property (nonatomic, weak) PHYDynamicAnimator *dynamicAnimator;
 
 @end
 
