@@ -78,7 +78,7 @@
 
 - (void)setAngle:(CGFloat)angle
 {
-    _angle = angle; // convert from radians
+    _angle = angle;
     _gravityDirection = CGSizeMake(cos(_angle) * _magnitude, sin(_angle) * _magnitude);
 }
 
