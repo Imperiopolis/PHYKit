@@ -68,7 +68,8 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    switch ((NSKeyValueChange)[[change objectForKey:@"kind"] unsignedIntegerValue]) {
+    switch ((NSKeyValueChange)[[change objectForKey:@"kind"] unsignedIntegerValue])
+    {
         case NSKeyValueChangeRemoval:
         {
             PHYDynamicBehavior *behavior = (PHYDynamicBehavior*)object;
