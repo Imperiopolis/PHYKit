@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) PHYWorld *world;
 
-@property (nonatomic, strong) NSView *referenceView;
+@property (nonatomic, weak) NSView *referenceView;
 @property (nonatomic) NSTimeInterval elapsedTime;
 @property (nonatomic, weak) NSThread *thread;
 @property (nonatomic) NSTimeInterval startTime;
