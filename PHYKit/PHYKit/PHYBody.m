@@ -23,6 +23,8 @@
     NSMutableSet *_joints;
 }
 
+@property (nonatomic) float area;
+
 @end
 
 @implementation PHYBody
@@ -38,8 +40,27 @@
     return self;
 }
 
+- (id)initWithWorld:(PHYWorld*)world
+{
+    if ((self = [super init]))
+    {
+        self.world = world;
+    }
+
+    return self;
+}
+
 - (void)dealloc
 {
+    for (PHYJoint *joint in self.joints)
+    {
+        if (self.world)
+        {
+            [self.world b2world]->DestroyJoint(joint.joint);
+            joint.joint = nil;
+        }
+    }
+
     if (self.body)
     {
         if (self.world)
@@ -69,13 +90,21 @@
     if (_world)
     {
         // Define the dynamic body.
-    
-        CGPoint p = self.dynamicItem.center;
-        CGSize boxSize = CGSizeMake(CGRectGetWidth(self.dynamicItem.bounds) / kPointsToMeterRatio / 2.0,
-                                    CGRectGetHeight(self.dynamicItem.bounds) / kPointsToMeterRatio / 2.0);
 
-        _bodyDef.position.Set(p.x / kPointsToMeterRatio,
-                              p.y / kPointsToMeterRatio);
+        CGPoint center = CGPointZero;
+        CGSize boxSize = CGSizeZero;
+        CGPoint origin = CGPointZero;
+
+        if (self.dynamicItem)
+        {
+            center = self.dynamicItem.center;
+            boxSize = CGSizeMake(PointsToMeters(CGRectGetWidth(self.dynamicItem.bounds)) / 2.0,
+                                 PointsToMeters(CGRectGetHeight(self.dynamicItem.bounds)) / 2.0);
+            origin = self.dynamicItem.bounds.origin;
+        }
+
+        _bodyDef.position.Set(center.x / kPointsToMeterRatio,
+                              center.y / kPointsToMeterRatio);
 
         // Tell the physics world to create the body
         self.body = [_world b2world]->CreateBody(&_bodyDef);
@@ -83,7 +112,9 @@
 
         // Define another box shape for our dynamic body.
         b2PolygonShape dynamicBox;
-        dynamicBox.SetAsBox(boxSize.width, boxSize.height, CGPointTob2Vec2(self.dynamicItem.bounds.origin), 0.0);
+        dynamicBox.SetAsBox(boxSize.width, boxSize.height, CGPointTob2Vec2(origin), 0.0);
+
+        self.area = boxSize.width * boxSize.height;
 
         // Define the dynamic body fixture.
         _fixtureDef.shape = &dynamicBox;
@@ -103,15 +134,6 @@
 {
     if (self.body)
     {
-        if (dynamic)
-        {
-            _bodyDef.type = b2_dynamicBody;
-        }
-        else
-        {
-            _bodyDef.type = b2_staticBody;
-        }
-        
         _dynamic = dynamic;
         
         self.body->SetType(_dynamic ? b2_dynamicBody : b2_staticBody);
@@ -146,11 +168,6 @@
 - (float)restitution
 {
     return self.fixture->GetRestitution();
-}
-
-- (float)area
-{
-    return CGRectGetWidth(self.dynamicItem.bounds) * CGRectGetHeight(self.dynamicItem.bounds);
 }
 
 - (void)setMass:(float)mass
