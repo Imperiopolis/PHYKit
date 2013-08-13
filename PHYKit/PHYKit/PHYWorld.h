@@ -25,6 +25,7 @@ typedef void(^PHYWorldBlock)(void);
 @property (nonatomic, readonly) NSArray *bodies;
 
 - (instancetype)initWithReferenceView:(NSView*)referenceView;
+- (id)initWithWorld:(struct b2World*)world;
 
 - (void)stepWithTime:(NSTimeInterval)timeInterval;
 - (void)stepWithTime:(NSTimeInterval)timeInterval velocityIterations:(NSUInteger)velocityIterations positionIterations:(NSUInteger)positionIterations;

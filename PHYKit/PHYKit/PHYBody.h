@@ -43,6 +43,7 @@
 @property (weak, nonatomic) PHYWorld *world;
 
 - (id)initWithDynamicItem:(id<PHYDynamicItem>)dynamicItem;
+- (id)initWithWorld:(PHYWorld*)world;
 
 - (void)applyUnscaledImpulse:(struct CGPoint)impulse;
 - (void)applyUnscaledImpulse:(struct CGPoint)impulse atPoint:(struct CGPoint)point;

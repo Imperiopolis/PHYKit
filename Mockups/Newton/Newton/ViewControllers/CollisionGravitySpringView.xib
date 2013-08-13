@@ -40,7 +40,7 @@
 						<int key="NSvFlags">1292</int>
 						<array class="NSMutableArray" key="NSSubviews"/>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{20, 452}, {8, 8}}</string>
+						<string key="NSFrame">{{269, 37}, {8, 8}}</string>
 						<reference key="NSSuperview" ref="970689009"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="824158509"/>
@@ -62,7 +62,7 @@
 							</object>
 						</array>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{110, 380}, {100, 100}}</string>
+						<string key="NSFrame">{{110, 324}, {100, 100}}</string>
 						<reference key="NSSuperview" ref="970689009"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="407260786"/>
@@ -141,8 +141,8 @@
 						<int key="objectID">14</int>
 						<reference key="object" ref="970689009"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="1073616028"/>
 							<reference ref="824158509"/>
+							<reference ref="1073616028"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
