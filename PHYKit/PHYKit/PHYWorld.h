@@ -6,12 +6,12 @@
 //
 //
 
-typedef NS_ENUM(NSInteger, PHYCollisionCategory)
+typedef NS_OPTIONS(NSInteger, PHYCollisionCategory)
 {
-    PHYNoCollisions =           0x0000,
-    PHYReferenceCollisions =    0x0001,
-    PHYBoundaryCollisions =     0x0002,
-    PHYItemsCollisions  =       0x0003
+    PHYNoCollisions =           0,
+    PHYReferenceCollisions =    1 << 0,
+    PHYBoundaryCollisions =     1 << 1,
+    PHYItemsCollisions  =       1 << 2
 };
 
 typedef void(^PHYWorldBlock)(void);
