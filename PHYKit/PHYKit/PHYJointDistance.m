@@ -39,22 +39,35 @@
 
         if (self.bodyA.world == self.bodyB.world)
         {
+            self.bodyA = bodyA;
+            self.bodyB = bodyB;
+            
+            if (!self.bodyB)
+            {
+                self.bodyB = [[PHYBody alloc] initWithWorld:bodyA.world];
+            }
+            
             _jointDef.bodyA = self.bodyA.body;
             _jointDef.bodyB = self.bodyB.body;
-
-            _anchorA = localAnchorA;
-            _anchorB = localAnchorB;
-
             
-
+            b2Vec2 anchorA = _jointDef.bodyA->GetWorldPoint(CGPointTob2Vec2(localAnchorA));
+            b2Vec2 anchorB = _jointDef.bodyB->GetWorldPoint(CGPointTob2Vec2(localAnchorB));
+            
+            _anchorA = b2Vec2ToCGPoint(anchorA);
+            _anchorB = b2Vec2ToCGPoint(anchorB);
+            
             _jointDef.localAnchorA = CGPointTob2Vec2(localAnchorA);
             _jointDef.localAnchorB = CGPointTob2Vec2(localAnchorB);
-            _jointDef.collideConnected = true;
-
-            _jointDef.Initialize(self.bodyA.body, self.bodyB.body, CGPointTob2Vec2(localAnchorA), CGPointTob2Vec2(localAnchorB));
-
+            
+            _jointDef.Initialize(self.bodyA.body, self.bodyB.body, anchorA, anchorB);
+            
             [self.bodyA addJoint: self];
             [self.bodyB addJoint: self];
+            
+            if (!bodyB)
+            {
+                self.bodyB.position = _anchorA;
+            }
         }
     }
     return self;
@@ -83,14 +96,16 @@
 
         _jointDef.localAnchorA = localAnchorA;
         _jointDef.localAnchorB = localAnchorB;
-        _jointDef.collideConnected = false;
 
         _jointDef.Initialize(self.bodyA.body, self.bodyB.body, CGPointTob2Vec2(anchorA), CGPointTob2Vec2(anchorB));
 
         [self.bodyA addJoint: self];
         [self.bodyB addJoint: self];
 
-        self.bodyB.position = anchorA;
+        if (!bodyB)
+        {
+            self.bodyB.position = _anchorA;
+        }
     }
     return self;
 }

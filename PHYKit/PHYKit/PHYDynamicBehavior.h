@@ -19,6 +19,10 @@ static inline PHYOffset PHYOffsetMake(CGFloat horizontal, CGFloat vertical)
     return offset;
 };
 
+#define PHYOffsetZero                   (PHYOffsetMake(0, 0))
+#define CGPointFromPHYOffset(offset)    (CGPointMake(offset.horizontal, offset.vertical))
+
+
 @protocol PHYDynamicItem <NSObject>
 
 @property (nonatomic, readwrite) CGPoint center;
