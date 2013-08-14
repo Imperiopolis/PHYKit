@@ -32,12 +32,7 @@
 
 - (instancetype)initWithItem:(id <PHYDynamicItem>)item attachedToAnchor:(CGPoint)point
 {
-    if ((self = [super init]))
-    {
-        self.anchorPoint = point;
-        self.item1 = item;
-    }
-    return self;
+    return [self initWithItem:item offsetFromCenter:PHYOffsetZero attachedToAnchor:point];
 }
 
 - (instancetype)initWithItem:(id <PHYDynamicItem>)item offsetFromCenter:(PHYOffset)offset attachedToAnchor:(CGPoint)point
@@ -53,12 +48,7 @@
 
 - (instancetype)initWithItem:(id <PHYDynamicItem>)item1 attachedToItem:(id <PHYDynamicItem>)item2
 {
-    if ((self = [super init]))
-    {
-        self.item1 = item1;
-        self.item2 = item2;
-    }
-    return self;
+    return [self initWithItem:item1 offsetFromCenter:PHYOffsetZero attachedToItem:item2 offsetFromCenter:PHYOffsetZero];
 }
 
 - (instancetype)initWithItem:(id <PHYDynamicItem>)item1 offsetFromCenter:(PHYOffset)offset1 attachedToItem:(id <PHYDynamicItem>)item2 offsetFromCenter:(PHYOffset)offset2
@@ -84,51 +74,49 @@
 {
     if (self.dynamicAnimator)
     {
-        if (!self.joint)
+        if ([self.items count] == 2)
         {
-            if ([self.items count] == 2)
+            PHYBody *bodyA = [self.dynamicAnimator bodyFromDynamicItem:self.item1];
+            PHYBody *bodyB = [self.dynamicAnimator bodyFromDynamicItem:self.item2];
+            
+            if (self.joint)
             {
-                PHYBody *bodyA = [self.dynamicAnimator bodyFromDynamicItem:self.item1];
-                PHYBody *bodyB = [self.dynamicAnimator bodyFromDynamicItem:self.item2];
-
-                if (self.joint)
-                {
-                    [bodyA removeJoint: self.joint];
-                    [bodyB removeJoint: self.joint];
-                    self.joint = nil;
-                }
-
-                if (bodyA && bodyB)
-                {
-                    self.joint = [[PHYJointDistance alloc] initWithBodyA:bodyA
-                                                                   bodyB:bodyB
-                                                                 anchorA:self.anchorPoint
-                                                                 anchorB:self.anchorPoint];
-                }
+                [bodyA removeJoint: self.joint];
+                [bodyB removeJoint: self.joint];
+                self.joint = nil;
             }
-            else if ([self.items count] == 1)
+            
+            if (bodyA && bodyB)
             {
-                PHYBody *bodyA = [self.dynamicAnimator bodyFromDynamicItem:self.item1];
-
-                if (self.joint)
-                {
-                    [bodyA removeJoint: self.joint];
-                    self.joint = nil;
-                }
-
-                if (bodyA)
-                {
-                    self.joint = [[PHYJointDistance alloc] initWithBodyA:bodyA
-                                                                   bodyB:nil
-                                                                 anchorA:self.anchorPoint
-                                                                 anchorB:CGPointZero];
-                }
+                self.joint = [[PHYJointDistance alloc] initWithBodyA:bodyA
+                                                               bodyB:bodyB
+                                                             anchorA:CGPointFromPHYOffset(self.item1Offset)
+                                                             anchorB:CGPointFromPHYOffset(self.item2Offset)];
+                self.joint.frequency = self.frequency;
+                self.joint.length = self.length;
+                self.joint.damping = self.damping;
             }
         }
-        else
+        else if ([self.items count] == 1)
         {
-            self.joint.bodyB.position = self.anchorPoint;
-            self.joint.bodyA.resting = YES;
+            PHYBody *bodyA = [self.dynamicAnimator bodyFromDynamicItem:self.item1];
+            
+            if (self.joint)
+            {
+                [bodyA removeJoint: self.joint];
+                self.joint = nil;
+            }
+            
+            if (bodyA)
+            {
+                self.joint = [[PHYJointDistance alloc] initWithBodyA:bodyA
+                                                               bodyB:nil
+                                                             anchorA:self.anchorPoint
+                                                             anchorB:CGPointZero];
+                self.joint.frequency = self.frequency;
+                self.joint.length = self.length;
+                self.joint.damping = self.damping;
+            }
         }
     }
 }
@@ -140,68 +128,58 @@
 
 - (void)setLength:(CGFloat)length
 {
+    _length = length;
+    
     if (self.joint)
     {
         self.joint.length = length;
     }
-}
-
-- (CGFloat)length
-{
-    if (self.joint)
+    else if (self.dynamicAnimator)
     {
-        return self.joint.length;
-    }
-    else
-    {
-        return 0;
+        [self initializeJoints];
     }
 }
 
 - (void)setDamping:(CGFloat)damping
 {
+    _damping = damping;
+
     if (self.joint)
     {
         self.joint.damping = damping;
     }
-}
-
-- (CGFloat)damping
-{
-    if (self.joint)
+    else if (self.dynamicAnimator)
     {
-        return self.joint.damping;
-    }
-    else
-    {
-        return 0;
+        [self initializeJoints];
     }
 }
 
 - (void)setFrequency:(CGFloat)frequency
 {
+    _frequency = frequency;
+    
     if (self.joint)
     {
         self.joint.frequency = frequency;
     }
-}
-
-- (CGFloat)frequency
-{
-    if (self.joint)
+    else if (self.dynamicAnimator)
     {
-        return self.joint.frequency;
-    }
-    else
-    {
-        return 0;
+        [self initializeJoints];
     }
 }
 
 - (void)setAnchorPoint:(CGPoint)anchorPoint
 {
     _anchorPoint = anchorPoint;
-    [self initializeJoints];
+    if (self.joint)
+    {
+        self.joint.bodyB.position = anchorPoint;
+        self.joint.bodyA.resting = NO;
+    }
+    else if (self.dynamicAnimator)
+    {
+        [self initializeJoints];
+    }
 }
 
 @end

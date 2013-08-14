@@ -179,7 +179,7 @@
 
 - (void)setResting:(BOOL)resting
 {
-    self.body->SetAwake(resting);
+    self.body->SetAwake(!resting);
 }
 
 - (BOOL)resting
