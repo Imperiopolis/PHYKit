@@ -24,7 +24,7 @@
 
 @property (nonatomic, weak) NSView *referenceView;
 @property (nonatomic) NSTimeInterval elapsedTime;
-@property (nonatomic, weak) NSThread *thread;
+
 @property (nonatomic) NSTimeInterval startTime;
 @property (nonatomic) NSTimeInterval lastTime;
 @property (assign) BOOL isSimulating;
@@ -46,8 +46,6 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         self.world = [[PHYWorld alloc] initWithReferenceView: view];
         self.referenceView = view;
         _behaviors = [NSMutableArray array];
-        self.thread = [NSThread currentThread];
-        
         
         CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
         
