@@ -88,7 +88,7 @@
     [self.motionManager startDeviceMotionUpdatesToQueue:self.motionQueue withHandler:^(CMDeviceMotion *motion, NSError *error) {
         CMAcceleration gravity = motion.gravity;
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.gravity.gravityDirection = CGSizeMake(gravity.x, -gravity.y);
+            self.gravity.gravityDirection = CGVectorMake(gravity.x, -gravity.y);
         });
     }];
 }

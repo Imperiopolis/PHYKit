@@ -2,37 +2,51 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4E987CB9-3E46-49E2-89E2-715A6169CC95</string>
+	<string>5E4169DB-E725-4AC5-A62B-B0333A9BEC28</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Newton</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DCCA657E-0955-43F4-9DC8-96722E00F51C</key>
+		<key>1CB96116-B4ED-4250-BCE5-9CB8E082A868</key>
 		<string>ssh://bitbucket.org/Imperiopolis/ui-physics-simulator.git</string>
+		<key>F59DF621-8C54-45F1-87FC-455000E5CD29</key>
+		<string>ssh://bitbucket.org/ZevEisenberg/box2d.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Mockups &amp; Tests/Newton/Newton.xcodeproj/project.xcworkspace</string>
+	<string>Mockups/Newton/Newton.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DCCA657E-0955-43F4-9DC8-96722E00F51C</key>
+		<key>1CB96116-B4ED-4250-BCE5-9CB8E082A868</key>
 		<string>../../../..</string>
+		<key>F59DF621-8C54-45F1-87FC-455000E5CD29</key>
+		<string>../../../../PHYKit/Box2D</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://bitbucket.org/Imperiopolis/ui-physics-simulator.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DCCA657E-0955-43F4-9DC8-96722E00F51C</string>
+	<string>1CB96116-B4ED-4250-BCE5-9CB8E082A868</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DCCA657E-0955-43F4-9DC8-96722E00F51C</string>
+			<string>F59DF621-8C54-45F1-87FC-455000E5CD29</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ui-physics-simulator</string>
+			<string>Box2D</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1CB96116-B4ED-4250-BCE5-9CB8E082A868</string>
+			<key>IDESourceControlWCCName</key>
+			<string>UI-Physics-Simulator</string>
 		</dict>
 	</array>
 </dict>
