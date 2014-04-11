@@ -1,8 +1,0 @@
-//
-// Prefix header for all source files of the 'DragonDrop' target in the 'DragonDrop' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-    #import <PHYKit/PHYKit.h>
-#endif

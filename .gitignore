@@ -12,3 +12,6 @@ project.xcworkspace
 *.orig
 *~
 *.swp
+
+#Cocoapods
+Pods
