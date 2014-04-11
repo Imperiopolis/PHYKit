@@ -10,4 +10,4 @@ PHYKit currently supports gravity, collisions, and pushing. Not all functionalit
 
 Attachments and springs are a work in progress.
 
-PHYKit was created by @imperiopolis and @ZevEisenberg.
+PHYKit was created by [Imperiopolis](http://github.com/Imperiopolis) and [ZevEisenberg](http://github.com/ZevEisenberg).
