@@ -15,14 +15,14 @@ PHYKit currently supports gravity, collisions, and pushing. Not all functionalit
 Attachments and springs are a work in progress.
                    DESC
 
-  s.homepage     = "http://github.com/Imperiopolis/PHYKit"
+  s.homepage     = "https://github.com/Imperiopolis/PHYKit"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.authors              = { "Nora Trapp" => "nora@trappdesign.net",
                               "Zev Eisenberg" => "zev@zeveisenberg.com" }
 
   s.platform     = :osx, "10.8"
 
-  s.source       = { :git => "http://github.com/Imperiopolis/PHYKit.git", :tag => '0.0.1' }
+  s.source       = { :git => "https://github.com/Imperiopolis/PHYKit.git", :tag => '0.0.1' }
 
   s.source_files  = "PHYKit/PHYKit.h", "PHYKit/**/*.{h,m,mm}"
   s.public_header_files = "PHYKit/PHYKit.h" "PHYKit/Public/*.h" "PHYKit/Behaviors/*.h"
