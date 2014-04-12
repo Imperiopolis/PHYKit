@@ -22,12 +22,17 @@ Attachments and springs are a work in progress.
 
   s.platform     = :osx, "10.8"
 
-  s.source       = { :git => "http://github.com/Imperiopolis/PHYKit.git", :tag => "0.0.1" }
+  s.source       = { :git => "http://github.com/Imperiopolis/PHYKit.git", :tag => '0.0.1' }
 
-  s.source_files  = "PHYKit/PHYKit.h"
+  s.source_files  = "PHYKit/PHYKit.h", "PHYKit/**/*.{h,m,mm}"
   s.public_header_files = "PHYKit/PHYKit.h" "PHYKit/Public/*.h" "PHYKit/Behaviors/*.h"
 
-  s.requires_arc = true
-  s.dependency "box2d"
+  s.libraries = 'c++'
+  s.xcconfig = {
+    'CLANG_CXX_LANGUAGE_STANDARD' => 'c++11',
+    'CLANG_CXX_LIBRARY' => 'libc++'
+  }
 
+  s.requires_arc = true
+  s.dependency 'box2d'
 end

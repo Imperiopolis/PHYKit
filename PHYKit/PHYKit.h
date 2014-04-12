@@ -23,12 +23,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <PHYDynamicAnimator.h>
-#import <PHYDynamicItemBehavior.h>
-#import <PHYDynamicBehavior.h>
-#import <PHYGravityBehavior.h>
-#import <PHYCollisionBehavior.h>
-#import <PHYAttachmentBehavior.h>
-#import <PHYSnapBehavior.h>
-#import <PHYPushBehavior.h>
-#import <PHYView.h>
+#import "PHYDynamicAnimator.h"
+#import "PHYDynamicItemBehavior.h"
+#import "PHYDynamicBehavior.h"
+#import "PHYGravityBehavior.h"
+#import "PHYCollisionBehavior.h"
+#import "PHYAttachmentBehavior.h"
+#import "PHYSnapBehavior.h"
+#import "PHYPushBehavior.h"
+#import "PHYView.h"
