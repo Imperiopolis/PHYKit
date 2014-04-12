@@ -1,3 +1,0 @@
-[submodule "PHYKit/Box2D"]
-	path = PHYKit/Box2D
-	url = git@bitbucket.org:ZevEisenberg/box2d.git
