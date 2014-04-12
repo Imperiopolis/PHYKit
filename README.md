@@ -2,6 +2,8 @@
 
 __Currently this is incomplete and should not be used in production!__ 
 
+![Newton](https://dl.dropboxusercontent.com/u/58266447/PHYKit/Newton.gif)
+
 The PHYKit project was started right after WWDC 2013, but our time to dedicate to the project dwindled so we decided to push it to GitHub in case our efforts could benefit anyone else.
 
 PHYKit aims to be an API-compatible implementation of UIKit Dynamics for AppKit (OS X). The dynamics use Box2D under the hood, just like UIKit Dynamics does.
