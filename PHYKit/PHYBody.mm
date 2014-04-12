@@ -241,7 +241,7 @@
 
 - (BOOL)affectedByGravity
 {
-    return (self.body->GetGravityScale() != 0);
+    return (self.body->GetGravityScale() > 0);
 }
 
 - (void)setAngularDamping:(float)angularDamping

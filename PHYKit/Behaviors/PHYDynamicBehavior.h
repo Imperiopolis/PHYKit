@@ -34,7 +34,7 @@ static inline PHYOffset PHYOffsetMake(CGFloat horizontal, CGFloat vertical)
 {
     PHYOffset offset = {horizontal, vertical};
     return offset;
-};
+}
 
 #define PHYOffsetZero                   (PHYOffsetMake(0, 0))
 #define CGPointFromPHYOffset(offset)    (CGPointMake(offset.horizontal, offset.vertical))

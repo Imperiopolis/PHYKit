@@ -101,19 +101,12 @@
                  animations:(void (^)(void))animationBlock
                  completion:(void (^)(void))completionBlock
 {
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:duration];
     if (animationBlock)
     {
-        animationBlock();
-    }
-    [NSAnimationContext endGrouping];
-
-    if(completionBlock)
-    {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration), dispatch_get_current_queue(), ^{
-            completionBlock();
-        });
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+            [context setDuration:duration];
+            animationBlock();
+        } completionHandler:completionBlock];
     }
 }
 
