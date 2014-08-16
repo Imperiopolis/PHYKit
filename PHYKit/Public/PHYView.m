@@ -26,14 +26,6 @@
 #import "PHYView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface PHYView ()
-{
-    CGPoint _center;
-    BOOL _loadedFromXib;
-    BOOL _coordinatesHaveBeenSantized;
-}
-@end
-
 @implementation PHYView
 
 // For the PHYDyanmicItem Protocol
@@ -51,42 +43,13 @@
 }
 
 // flip coordinates when loading a xib
-- (void)awakeFromNib
-{
-    _loadedFromXib = YES;
-    if (!_coordinatesHaveBeenSantized && self.superview)
-    {
-        self.center = [self flippedCoordinatesFromSuperview: self.superview];
+// see: http://lists.apple.com/archives/xcode-users/2009/Jan/msg00005.html
+- (void)awakeFromNib {
+    for(NSView *view in [self subviews]) {
+        NSRect frame = [view frame];
+        frame.origin.y = NSMaxY([self bounds]) - NSMaxY([view frame]);
+        [view setFrame:frame];
     }
-}
-
-- (void)viewWillMoveToSuperview:(NSView *)newSuperview
-{
-    if (_loadedFromXib)
-    {
-        self.center = [self flippedCoordinatesFromSuperview: newSuperview];
-    }
-
-    [super viewWillMoveToSuperview: newSuperview];
-}
-
-- (CGPoint)flippedCoordinatesFromSuperview:(NSView*)superview
-{
-    CGFloat height;
-#warning find a better thing than themeframe
-    if ([superview isKindOfClass:NSClassFromString(@"NSThemeFrame")])
-    {
-        height = NSHeight(self.frame);
-    }
-    else
-    {
-        height = NSHeight(superview.frame);
-    }
-    
-    _coordinatesHaveBeenSantized = YES;
-
-    return CGPointMake(NSMinX(self.frame) + NSWidth(self.frame) / 2,
-                       height - NSMinY(self.frame) - NSHeight(self.frame) / 2);
 }
 
 // animations
@@ -131,9 +94,6 @@
     if ((self = [super initWithFrame:frame]))
     {
         [self setupLayer];
-
-        self.center = CGPointMake(NSMinX(self.frame) + NSWidth(self.frame) / 2,
-                                  NSMinY(self.frame) + NSHeight(self.frame) / 2);
     }
     
     return self;
@@ -167,8 +127,6 @@
 
 - (void)setCenter:(CGPoint)center
 {
-    _center = center;
-
     NSRect frame = self.frame;
     frame.origin = NSMakePoint(center.x - NSWidth(frame) / 2,
                                center.y - NSHeight(frame) / 2);
@@ -177,7 +135,9 @@
 
 - (CGPoint)center
 {
-    return _center;
+    NSRect frame = self.frame;
+    return CGPointMake(NSWidth(frame) / 2 + frame.origin.x,
+                       NSHeight(frame) / 2 + frame.origin.y);
 }
 
 - (void)setAlpha:(CGFloat)alpha
