@@ -132,7 +132,7 @@
     };
 }
 
-- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
+- (void)willMoveToAnimator:(PHYDynamicAnimator *__weak)animator
 {
     [super willMoveToAnimator: animator];
 
