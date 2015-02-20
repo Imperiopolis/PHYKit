@@ -109,7 +109,7 @@
 - (void)dealloc
 {
     delete _b2world;
-    _b2world = nil;
+    _b2world = NULL;
 }
 
 - (void)stepWithTime:(NSTimeInterval)timeInterval
@@ -120,7 +120,7 @@
 
 - (void)stepWithTime:(NSTimeInterval)timeInterval velocityIterations:(NSUInteger)velocityIterations positionIterations:(NSUInteger)positionIterations
 {
-    _b2world->Step(timeInterval, (int32)velocityIterations, (int32)positionIterations);
+    _b2world->Step(timeInterval, static_cast<int32>(velocityIterations), static_cast<int32>(positionIterations));
     
     //Iterate over the bodies in the physics world
     @synchronized(_bodies)
@@ -188,17 +188,17 @@
 
 - (id)bodyAlongRayStart:(struct CGPoint)startPoint end:(struct CGPoint)endPoint
 {
-    return nil;
+    return NULL;
 }
 
 - (id)bodyInRect:(struct CGRect)rect
 {
-    return nil;
+    return NULL;
 }
 
 - (id)bodyAtPoint:(struct CGPoint)point
 {
-    return nil;
+    return NULL;
 }
 
 - (void)enumerateBodiesAlongRayStart:(struct CGPoint)startPoint end:(struct CGPoint)endPoint usingBlock:(PHYWorldBlock)block

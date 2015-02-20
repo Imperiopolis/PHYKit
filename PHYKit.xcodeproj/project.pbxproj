@@ -449,6 +449,18 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-objc-property-synthesis",
+					"-Wno-direct-ivar-access",
+					"-Wno-assign-enum",
+					"-Wno-float-equal",
+					"-Wno-sign-compare",
+					"-Wno-switch-enum",
+					"-Wno-gnu",
+					"-Wnoc++98-compat",
+				);
 			};
 			name = Debug;
 		};
@@ -474,6 +486,18 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-objc-property-synthesis",
+					"-Wno-direct-ivar-access",
+					"-Wno-assign-enum",
+					"-Wno-float-equal",
+					"-Wno-sign-compare",
+					"-Wno-switch-enum",
+					"-Wno-gnu",
+					"-Wnoc++98-compat",
+				);
 			};
 			name = Release;
 		};

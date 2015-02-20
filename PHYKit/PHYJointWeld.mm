@@ -32,7 +32,7 @@
 @interface PHYJointWeld ()
 {
     struct b2WeldJointDef _jointDef;
-    struct b2WeldJoint *_joint;
+    b2WeldJoint *_joint;
 }
 
 @end

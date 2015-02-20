@@ -117,8 +117,8 @@
 
 - (void (^)(void))action
 {
-    __weak typeof(_internalAction) internalAction = _internalAction;
-    __weak typeof(_action) action = _action;
+    __weak __typeof(_internalAction) internalAction = _internalAction;
+    __weak __typeof(_action) action = _action;
 
     return ^{
         if (internalAction) internalAction();
@@ -132,7 +132,7 @@
 
     if (animator)
     {
-        __weak typeof(self) weakSelf = self;
+        __weak __typeof(self) weakSelf = self;
 
         self.internalAction = ^{
             animator.world.gravity = CGPointMake(weakSelf.gravityDirection.width * kGravityScaleFactor, weakSelf.gravityDirection.height * kGravityScaleFactor);

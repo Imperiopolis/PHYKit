@@ -65,8 +65,8 @@
 
 - (void (^)(void))action
 {
-    __weak typeof(_internalAction) internalAction = _internalAction;
-    __weak typeof(_action) action = _action;
+    __weak __typeof(_internalAction) internalAction = _internalAction;
+    __weak __typeof(_action) action = _action;
 
     return ^{
         if (internalAction) internalAction();
@@ -81,7 +81,7 @@
     if (animator)
     {
         PHYBody *body = [animator bodyFromDynamicItem: [self.items lastObject]];
-        __weak typeof(self) weakSelf = self;
+        __weak __typeof(self) weakSelf = self;
         
         if (body)
         {
