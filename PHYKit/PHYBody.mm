@@ -74,7 +74,7 @@
         if (self.world)
         {
             [self.world b2world]->DestroyJoint(joint.joint);
-            joint.joint = nil;
+            joint.joint = NULL;
         }
     }
 
@@ -85,7 +85,7 @@
             self.body->DestroyFixture(self.fixture);
             [self.world b2world]->DestroyBody(self.body);
         }
-        self.body = nil;
+        self.body = NULL;
     }
 }
 
@@ -382,7 +382,7 @@
     if (joint.joint)
     {
         [self.world b2world]->DestroyJoint(joint.joint);
-        joint.joint = nil;
+        joint.joint = NULL;
     }
 }
 

@@ -38,7 +38,7 @@
 @interface PHYJointDistance ()
 {
     struct b2DistanceJointDef _jointDef;
-    struct b2DistanceJoint *_joint;
+    b2DistanceJoint *_joint;
     struct CGPoint _anchorA;
     struct CGPoint _anchorB;
 }
