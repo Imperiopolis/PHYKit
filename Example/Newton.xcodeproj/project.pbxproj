@@ -423,10 +423,6 @@
 			baseConfigurationReference = 0B71903B4AB1FA33F6FFB425 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Newton-gmilwnvcwcenticsadexhgdvarns/Build/Products/Debug",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Newton/Newton-Prefix.pch";
 				INFOPLIST_FILE = "Newton/Newton-Info.plist";
@@ -440,10 +436,6 @@
 			baseConfigurationReference = DD1917E3DB7646392A132807 /* Pods.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Newton-gmilwnvcwcenticsadexhgdvarns/Build/Products/Debug",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Newton/Newton-Prefix.pch";
 				INFOPLIST_FILE = "Newton/Newton-Info.plist";
