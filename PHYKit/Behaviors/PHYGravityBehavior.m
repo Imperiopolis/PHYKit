@@ -30,7 +30,7 @@
 
 #import <math.h>
 
-#define kGravityScaleFactory    (1000)
+#define kGravityScaleFactor    (1000)
 
 @interface PHYDynamicAnimator (PHYPrivateAnimator)
 
@@ -135,7 +135,7 @@
         __weak typeof(self) weakSelf = self;
 
         self.internalAction = ^{
-            animator.world.gravity = CGPointMake(weakSelf.gravityDirection.width * kGravityScaleFactory, weakSelf.gravityDirection.height * kGravityScaleFactory);
+            animator.world.gravity = CGPointMake(weakSelf.gravityDirection.width * kGravityScaleFactor, weakSelf.gravityDirection.height * kGravityScaleFactor);
 
             for (id<PHYDynamicItem> dynamicItem in weakSelf.items)
             {
