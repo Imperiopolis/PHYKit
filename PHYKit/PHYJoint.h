@@ -29,8 +29,8 @@
 
 @interface PHYJoint : NSObject
 
-@property(retain, nonatomic) PHYBody *bodyB;
-@property(retain, nonatomic) PHYBody *bodyA;
+@property(weak, nonatomic) PHYBody *bodyB;
+@property(weak, nonatomic) PHYBody *bodyA;
 @property(readonly, nonatomic) struct b2JointDef *jointDef;
 @property(nonatomic) struct b2Joint *joint;
 

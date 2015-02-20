@@ -43,86 +43,69 @@
     struct CGPoint _anchorB;
 }
 
+@property (strong, nonatomic) PHYBody *internalBodyB;
+
 @end
 
 @implementation PHYJointDistance
 
-- (id)initWithBodyA:(PHYBody*)bodyA bodyB:(PHYBody*)bodyB localAnchorA:(struct CGPoint)localAnchorA localAnchorB:(struct CGPoint)localAnchorB
+- (instancetype)initWithBodyA:(PHYBody*)bodyA bodyB:(PHYBody*)bodyB localAnchorA:(struct CGPoint)localAnchorA localAnchorB:(struct CGPoint)localAnchorB
 {
-    if ((self = [super init]))
-    {
-        self.bodyA = bodyA;
-        self.bodyB = bodyB;
-
-        if (self.bodyA.world == self.bodyB.world)
-        {
-            self.bodyA = bodyA;
-            self.bodyB = bodyB;
-            
-            if (!self.bodyB)
-            {
-                self.bodyB = [[PHYBody alloc] initWithWorld:bodyA.world];
-            }
-            
-            _jointDef.bodyA = self.bodyA.body;
-            _jointDef.bodyB = self.bodyB.body;
-            
-            b2Vec2 anchorA = _jointDef.bodyA->GetWorldPoint(CGPointTob2Vec2(localAnchorA));
-            b2Vec2 anchorB = _jointDef.bodyB->GetWorldPoint(CGPointTob2Vec2(localAnchorB));
-            
-            _anchorA = b2Vec2ToCGPoint(anchorA);
-            _anchorB = b2Vec2ToCGPoint(anchorB);
-            
-            _jointDef.localAnchorA = CGPointTob2Vec2(localAnchorA);
-            _jointDef.localAnchorB = CGPointTob2Vec2(localAnchorB);
-            
-            _jointDef.Initialize(self.bodyA.body, self.bodyB.body, anchorA, anchorB);
-            
-            [self.bodyA addJoint: self];
-            [self.bodyB addJoint: self];
-            
-            if (!bodyB)
-            {
-                self.bodyB.position = _anchorA;
-            }
-        }
-    }
-    return self;
+    return [self initWithBodyA:bodyA bodyB:bodyB anchorA:localAnchorA anchorB:localAnchorB localAnchors:YES];
 }
 
-- (id)initWithBodyA:(PHYBody*)bodyA bodyB:(PHYBody*)bodyB anchorA:(struct CGPoint)anchorA anchorB:(struct CGPoint)anchorB
+- (instancetype)initWithBodyA:(PHYBody*)bodyA bodyB:(PHYBody*)bodyB anchorA:(struct CGPoint)anchorA anchorB:(struct CGPoint)anchorB
+{
+    return [self initWithBodyA:bodyA bodyB:bodyB anchorA:anchorA anchorB:anchorB localAnchors:NO];
+}
+
+- (instancetype)initWithBodyA:(PHYBody *)bodyA bodyB:(PHYBody *)bodyB anchorA:(struct CGPoint)anchorA anchorB:(struct CGPoint)anchorB localAnchors:(BOOL)localAnchors
 {
     if ((self = [super init]))
     {
-        self.bodyA = bodyA;
-        self.bodyB = bodyB;
+        PHYBody *internalBodyA = bodyA;
+        PHYBody *internalBodyB = bodyB;
 
-        if (!self.bodyB)
+        if (!internalBodyB)
         {
-            self.bodyB = [[PHYBody alloc] initWithWorld:bodyA.world];
+            internalBodyB = [[PHYBody alloc] initWithWorld:internalBodyA.world];
+            self.internalBodyB = internalBodyB;
         }
 
-        _jointDef.bodyA = self.bodyA.body;
-        _jointDef.bodyB = self.bodyB.body;
+        _jointDef.bodyA = internalBodyA.body;
+        _jointDef.bodyB = internalBodyB.body;
 
         _anchorA = anchorA;
         _anchorB = anchorB;
 
-        b2Vec2 localAnchorA = _jointDef.bodyA->GetLocalPoint(CGPointTob2Vec2(anchorA));
-        b2Vec2 localAnchorB = _jointDef.bodyB->GetLocalPoint(CGPointTob2Vec2(anchorB));
+        b2Vec2 internalAnchorA;
+        b2Vec2 internalAnchorB;
 
-        _jointDef.localAnchorA = localAnchorA;
-        _jointDef.localAnchorB = localAnchorB;
+        if ( localAnchors ) {
+            internalAnchorA = _jointDef.bodyA->GetWorldPoint(CGPointTob2Vec2(anchorA));
+            internalAnchorB = _jointDef.bodyB->GetWorldPoint(CGPointTob2Vec2(anchorB));
 
-        _jointDef.Initialize(self.bodyA.body, self.bodyB.body, CGPointTob2Vec2(anchorA), CGPointTob2Vec2(anchorB));
+        }
+        else {
+            internalAnchorA = _jointDef.bodyA->GetWorldPoint(CGPointTob2Vec2(anchorA));
+            internalAnchorB = _jointDef.bodyB->GetWorldPoint(CGPointTob2Vec2(anchorB));
+        }
 
-        [self.bodyA addJoint: self];
-        [self.bodyB addJoint: self];
+        _jointDef.localAnchorA = internalAnchorA;
+        _jointDef.localAnchorB = internalAnchorB;
+
+        _jointDef.Initialize(internalBodyA.body, internalBodyB.body, CGPointTob2Vec2(anchorA), CGPointTob2Vec2(anchorB));
+
+        [internalBodyA addJoint: self];
+        [internalBodyB addJoint: self];
 
         if (!bodyB)
         {
-            self.bodyB.position = _anchorA;
+            internalBodyB.position = _anchorA;
         }
+
+        self.bodyA = internalBodyA;
+        self.bodyB = internalBodyB;
     }
     return self;
 }
