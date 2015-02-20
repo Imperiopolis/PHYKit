@@ -58,7 +58,7 @@ static inline PHYOffset PHYOffsetMake(CGFloat horizontal, CGFloat vertical)
 - (void)willMoveToAnimator:(PHYDynamicAnimator *)animator; // nil when being removed from an animator
 
 @property (nonatomic, readonly, copy) NSArray *childBehaviors;
-@property (nonatomic, readonly) PHYDynamicAnimator *dynamicAnimator;
+@property (nonatomic, readonly, weak) PHYDynamicAnimator *dynamicAnimator;
 @property (nonatomic, readonly, copy) NSArray* items;
 
 @property (nonatomic, copy) void (^action)(void);
