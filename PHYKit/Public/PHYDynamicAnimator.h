@@ -51,7 +51,7 @@
 
 - (NSTimeInterval)elapsedTime;
 
-@property (nonatomic, readonly) NSView* referenceView;
+@property (nonatomic, readonly, weak) NSView *referenceView;
 @property (nonatomic, readonly, copy) NSArray* behaviors;
 @property (nonatomic, readonly, getter = isRunning) BOOL running;
 @property (nonatomic, weak) id <PHYDynamicAnimatorDelegate> delegate;
