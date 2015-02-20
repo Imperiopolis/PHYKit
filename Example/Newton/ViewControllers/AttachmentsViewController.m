@@ -62,6 +62,7 @@
     self.blueSquare.center = CGPointMake(25.0, 25.0);
 
     [animator addBehavior:attachmentBehavior];
+    [animator addBehavior:collisionBehavior];
     self.animator = animator;
 
     self.attachmentBehavior = attachmentBehavior;
