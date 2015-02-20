@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1F0B9D9F-956A-4FEB-ADEE-04266EC8716B</string>
+	<string>93A39DF9-E94D-4DF6-B8D9-8F69AFD3A88E</string>
 	<key>IDESourceControlProjectName</key>
 	<string>PHYKit</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>97533DE9-B306-4DEB-A42E-1C5F3DF869A2</key>
-		<string>ssh://github.com/Imperiopolis/PHYKit.git</string>
+		<key>C51241142F1C4239A9BF9218077F52432CEC3014</key>
+		<string>github.com:Imperiopolis/PHYKit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>PHYKit.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>97533DE9-B306-4DEB-A42E-1C5F3DF869A2</key>
+		<key>C51241142F1C4239A9BF9218077F52432CEC3014</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/Imperiopolis/PHYKit.git</string>
+	<string>github.com:Imperiopolis/PHYKit.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>97533DE9-B306-4DEB-A42E-1C5F3DF869A2</string>
+	<string>C51241142F1C4239A9BF9218077F52432CEC3014</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>97533DE9-B306-4DEB-A42E-1C5F3DF869A2</string>
+			<string>C51241142F1C4239A9BF9218077F52432CEC3014</string>
 			<key>IDESourceControlWCCName</key>
 			<string>PHYKit</string>
 		</dict>
