@@ -44,7 +44,7 @@
     
 }
 
-- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
+- (void)willMoveToAnimator:(PHYDynamicAnimator *__weak)animator
 {
     self.dynamicAnimator = animator;
 }
