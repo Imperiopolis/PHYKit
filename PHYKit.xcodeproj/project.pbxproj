@@ -55,7 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		120799624C494884A14CF516 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		2D094B3317A4087F00003684 /* PHYWorld.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PHYWorld.mm; sourceTree = "<group>"; };
 		2D1768DF17ABEE6200761FEC /* PHYBody.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PHYBody.mm; sourceTree = "<group>"; };
 		2D23F7DF17AE9D96004788A9 /* PHYJointWeld.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PHYJointWeld.mm; sourceTree = "<group>"; };
@@ -91,12 +90,14 @@
 		2D951130177A267200196C2C /* PHYDynamicBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYDynamicBehavior.m; sourceTree = "<group>"; };
 		2D951144177A286000196C2C /* PHYDynamicItemBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYDynamicItemBehavior.h; sourceTree = "<group>"; };
 		2D951145177A286000196C2C /* PHYDynamicItemBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYDynamicItemBehavior.m; sourceTree = "<group>"; };
+		431A492A0E1F3E1418034C5A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6313788D177A299A0016F625 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7AFEF42D178D065C0074830D /* PHYPushBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYPushBehavior.h; sourceTree = "<group>"; };
 		7AFEF42E178D065C0074830D /* PHYPushBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYPushBehavior.m; sourceTree = "<group>"; };
 		7AFEF431178D07A40074830D /* PHYSnapBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHYSnapBehavior.h; sourceTree = "<group>"; };
 		7AFEF432178D07A40074830D /* PHYSnapBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHYSnapBehavior.m; sourceTree = "<group>"; };
 		BE96CDE4959E42339FC1E827 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC0DDC0124202A10CDA92042 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D80014C018F80F8000E9E373 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D80014C118F80F8000E9E373 /* PHYKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PHYKit-Info.plist"; sourceTree = "<group>"; };
 		D80014C218F80F8000E9E373 /* PHYKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHYKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -156,7 +157,7 @@
 				D80014BE18F80F8000E9E373 /* Resources */,
 				2D951117177A264C00196C2C /* Frameworks */,
 				2D951116177A264C00196C2C /* Products */,
-				120799624C494884A14CF516 /* Pods.xcconfig */,
+				F7431CFE426ECA8B64D546A1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,6 +245,15 @@
 			path = Public;
 			sourceTree = "<group>";
 		};
+		F7431CFE426ECA8B64D546A1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				431A492A0E1F3E1418034C5A /* Pods.debug.xcconfig */,
+				CC0DDC0124202A10CDA92042 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -310,7 +320,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = PHY;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Nora Trapp and Zev Eisenberg";
 			};
 			buildConfigurationList = 2D95110F177A264C00196C2C /* Build configuration list for PBXProject "PHYKit" */;
@@ -369,7 +379,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,7 +424,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -447,7 +456,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -471,40 +479,34 @@
 		};
 		2D95112B177A264C00196C2C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 120799624C494884A14CF516 /* Pods.xcconfig */;
+			baseConfigurationReference = 431A492A0E1F3E1418034C5A /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/PHYKit-Prefix.pch";
-				HEADER_SEARCH_PATHS = "./**";
 				INFOPLIST_FILE = "Resources/PHYKit-Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
 		2D95112C177A264C00196C2C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 120799624C494884A14CF516 /* Pods.xcconfig */;
+			baseConfigurationReference = CC0DDC0124202A10CDA92042 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resources/PHYKit-Prefix.pch";
-				HEADER_SEARCH_PATHS = "./**";
 				INFOPLIST_FILE = "Resources/PHYKit-Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
