@@ -396,7 +396,7 @@
 					"-Wno-sign-compare",
 					"-Wno-switch-enum",
 					"-Wno-gnu",
-					"-Wnoc++98-compat",
+					"-Wno-c++98-compat",
 				);
 			};
 			name = Debug;
@@ -437,7 +437,7 @@
 					"-Wno-sign-compare",
 					"-Wno-switch-enum",
 					"-Wno-gnu",
-					"-Wnoc++98-compat",
+					"-Wno-c++98-compat",
 				);
 			};
 			name = Release;
