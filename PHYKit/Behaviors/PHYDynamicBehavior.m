@@ -28,7 +28,7 @@
 
 @interface PHYDynamicBehavior ()
 
-@property (nonatomic, weak) PHYDynamicAnimator *dynamicAnimator;
+@property (nonatomic, weak, readwrite) PHYDynamicAnimator *dynamicAnimator;
 
 @end
 
@@ -44,7 +44,7 @@
     
 }
 
-- (void)willMoveToAnimator:(PHYDynamicAnimator *)animator
+- (void)willMoveToAnimator:(PHYDynamicAnimator *__weak)animator
 {
     self.dynamicAnimator = animator;
 }

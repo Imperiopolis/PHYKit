@@ -20,7 +20,7 @@ Attachments and springs are a work in progress.
   s.authors              = { "Nora Trapp" => "nora@trappdesign.net",
                               "Zev Eisenberg" => "zev@zeveisenberg.com" }
 
-  s.platform     = :osx, "10.8"
+  s.platform     = :osx, "10.10"
 
   s.source       = { :git => "https://github.com/Imperiopolis/PHYKit.git", :tag => '0.0.1' }
 
