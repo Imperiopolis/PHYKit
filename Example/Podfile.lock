@@ -1,6 +1,6 @@
 PODS:
   - box2d (2.3.0)
-  - PHYKit (0.0.1):
+  - PHYKit (0.0.2):
     - box2d
 
 DEPENDENCIES:
@@ -12,6 +12,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   box2d: bf5224ea31e1f5d926c84385c1fa50f4b19666b8
-  PHYKit: 2e9bee7a8ce92765bb206ab6d21c53bb4dcf4ee9
+  PHYKit: 6d5cc1e1386f635793dc1de28b5d40dc2f125993
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.2

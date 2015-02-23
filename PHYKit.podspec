@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PHYKit"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "PHYKit aims to be an API compatible implementation of UIKitDynamics for AppKit (OS X)."
 
   s.description  = <<-DESC
@@ -22,10 +22,10 @@ Attachments and springs are a work in progress.
 
   s.platform     = :osx, "10.10"
 
-  s.source       = { :git => "https://github.com/Imperiopolis/PHYKit.git", :tag => '0.0.1' }
+  s.source       = { :git => "https://github.com/Imperiopolis/PHYKit.git", :tag => '0.0.2' }
 
   s.source_files  = "PHYKit/PHYKit.h", "PHYKit/**/*.{h,m,mm}"
-  s.public_header_files = "PHYKit/PHYKit.h" "PHYKit/Public/*.h" "PHYKit/Behaviors/*.h"
+  s.public_header_files = "PHYKit/PHYKit.h", "PHYKit/Public/*.h", "PHYKit/Behaviors/*.h"
 
   s.libraries = 'c++'
   s.xcconfig = {
